@@ -1,17 +1,80 @@
 <template>
     <div class="train-list">
-        <!-- <vTitle :title="('杭州-北京')"></vTitle> -->
+        <vTitle :title="('杭州-北京')"></vTitle>
         <timeCalender></timeCalender>
          <div class="lists">
             <scroller lock-x>
-            <div class="list"><router-link to="./trainFillOrder">
+            <div class="list">
                 <flexbox>
                     <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
                 </flexbox>
-                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div></router-link>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+            </div>
+            <div class="list">
+                <flexbox>
+                    <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
+                </flexbox>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+            </div>
+            <div class="list">
+                <flexbox>
+                    <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
+                </flexbox>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+            </div>
+            <div class="list">
+                <flexbox>
+                    <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
+                </flexbox>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+            </div>
+            <div class="list">
+                <flexbox>
+                    <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
+                </flexbox>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+            </div>
+            <div class="list">
+                <flexbox>
+                    <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
+                </flexbox>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+            </div>
+            <div class="list">
+                <flexbox>
+                    <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
+                </flexbox>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+            </div>
+            <div class="list">
+                <flexbox>
+                    <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
+                </flexbox>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
             </div>
             <!-- <load-more tip="loading"></load-more> -->
             </scroller>
@@ -21,90 +84,50 @@
 </template>
 
 <script>
-import axios from 'axios'
 import vTitle from '@/components/header/v-title'
 import timeCalender from '@/components/header/time-calender'
 import vFilter from '@/components/footer/filter'
 import {Flexbox, FlexboxItem,Scroller,LoadMore } from 'vux'
-import {trainQueryUrl} from '@/service/interface.service'
-import TraintripServer from '@/service/traintrip.server';
-const traintripServer = new TraintripServer();
-
 export default{
-    name:'trainList',
     components:{vTitle,vFilter,timeCalender,Flexbox, FlexboxItem,Scroller,LoadMore },
     data(){
         return{
             scrollTop:0,
             onFetching:false,
             bottomCount:5,
-            questData: {
-            trainList:[]
-            },
-            trainTripArg: {
-            FromStation: this.$route.query.FromStation,
-            ToStation: this.$route.query.ToStation,
-            FromDate: this.$route.query.FromDate,
-            // PageSize:7,
-            // PageNo:1,
-            // SortType:'',
-            TrainType:this.$route.query.gaoDong,
-            // FilterTime:'',
-            // FilterStation:''
-          }
-
+            
         }
     },
-    beforeRouteEnter(to,from,next){
-    let option={
-      headSwiper:false,
-      headNav:false,
-      headTitle:true,
-      sTitle: '杭州-北京',
-      sTo: {
-        url: '/',
-        name: true
-      }
-    }
-    next(vm=>{
-      vm.$store.commit('publicSetEvent',option);
-    })
-  },
-    created(){
-        console.log(this.trainTripArg)
-       // this.loadTrainList(this.trainTripArg)
-       this.loadTrainList()
-    },
+    // mounted(){
+    //    this.$nextTick(()=>{
+    //     // this.$refs.scrollerEvent.reset({top:0})
+    //    })
+    //    this.$refs.scrollerBottom.reset({top:0})
+    // },
     methods:{
-        loadTrainList(data){
-          axios.get(trainQueryUrl)
-            .then((res)=>{
-                console.log(err)
-            })
-            .catch((err)=>{
-              console.log(err)
-            })
-            // traintripServer.sendTripListServer({
-            //     params:data,
-            //     onSuccess: (response) => {
-            //       if(response.status==='error'){
-            //         alert(response.tipsinfo);
-            //         return;
-            //       }
-            //     },
-            //     onFalied: (error) => {
+        // bookTicket(){
+        //     link:'bookTicket'
+        // }
+        // onScrollButtom(){
+        //     if(this.onFetching){
 
-            //       console.log(error);
-            //     }
-            // });
-
-        }
+        //     }else{
+        //         this.onFetching = true
+        //         setTimeout(()=>{
+        //             this.bottomCount += 10
+        //             this.$nextTick(()=>{
+        //                 this.$refs.scrollerBottom.reset()
+        //             })
+        //             this.onFetching = false
+        //         },2000)
+        //     }
+        // }
     }
 }
 
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @yellow:#FFC300;
 @orange:#ff6600;
 .col999{color:#999;}

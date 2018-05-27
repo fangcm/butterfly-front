@@ -3,8 +3,8 @@
 		<x-header :left-options="{backText: ''}" :right-options="{showMore: true}" class="btn btn-default">{{title}}</x-header>
 		<popover placement="bottom" style="margin: 20px;">
           <div slot="content" class="popover-demo-content">
-             <li><i class="fa fa-commenting-o"></i>消息</li>
-             <router-link to="./"><li><i class="fa fa-home"></i>首页</li></router-link>
+             <li><i class="fa fa-commenting-o"</i>消息</li>
+             <li><i class="fa fa-home"></i>首页</li>
              <li><i class="fa fa-headphones"></i>联系飞猪</li>
              <li><i class="fa fa-file-text-o"></i>我要反馈</li>
              <li><i class="fa fa-user"></i>我的飞猪</li>
@@ -66,7 +66,6 @@ export default {
       i{margin-right:0.2rem;}
       }}
   }
-  a{color: #fff;}
 }
 
 </style>
