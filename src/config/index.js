@@ -1,1 +1,1 @@
-export const API_PREFIX = 'http://192.168.0.188:8090'
+export const API_PREFIX = 'http://127.0.0.1:8080'
