@@ -1,5 +1,4 @@
-module.exports = {
-  API: require('./api'),
-  getQuery: require('./getQuery'),
-}
+import axios from './fetch'
 
+/* 登录 */
+export const login = data => axios.post('/api/Account/Authenticate', data)

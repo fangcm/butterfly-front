@@ -13,7 +13,11 @@ const webpackConfig = require('./webpack.prod.conf')
 
 const spinner = ora('building for production...')
 spinner.start()
-
+// 移除app调试生成的文件
+rm(path.join(config.build.assetsRoot, 'app.js'), err => {
+  if(err) throw err
+})
+// 移除生成的文件夹
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, function (err, stats) {
