@@ -47,6 +47,11 @@
     },
     methods: {
       async login () {
+        this.$store.commit('setToken', "abcd")
+        this.$store.commit('setAutoLogin', false)
+        this.$router.push({name: 'home'})
+        return;
+        /*
         this.loading = true
         let result = await login({'usernameOrEmailAddress': this.userInfo.userName, 'password': this.userInfo.password})
         this.loading = false
@@ -58,6 +63,7 @@
         } else {
           this.$vux.toast.text((result.error && result.error.message) || '登录失败')
         }
+        */
       }
     }
   }
