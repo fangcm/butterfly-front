@@ -41,7 +41,7 @@
     },
     created() {
       if (this.token && this.autoLogin) {
-        this.$router.push({name: 'home'})
+        //this.$router.push({name: 'home'})
       }
     },
     methods: {
