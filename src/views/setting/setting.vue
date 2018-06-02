@@ -1,9 +1,19 @@
 <template>
   <div>
+    <tab :line-width="1">
+      <tab-item selected>关于</tab-item>
+      <tab-item>我的信息</tab-item>
+      <tab-item>修改密码</tab-item>
+      <tab-item>修改密码</tab-item>
+      <tab-item>修改密码</tab-item>
+      <tab-item>修改密码</tab-item>
+      <tab-item>修改密码</tab-item>
+      <tab-item>修改手机</tab-item>
+    </tab>
     <group>
-      <cell title="关于" is-link link="/setting/about"></cell>
+      <cell title="关于" link="about" inline-desc='作者及软件简介'></cell>
     </group>
-    <group>
+    <group title="退出本系统登录状态">
       <x-button type="primary" @click.native="logout">退出登录</x-button>
     </group>
   </div>
@@ -11,11 +21,13 @@
 
 <script>
   import {mapGetters} from 'vuex'
-  import {Group, Cell, XButton} from 'vux'
+  import {Group, Cell, XButton, Tab, TabItem} from 'vux'
 
   export default {
     name: 'setting',
     components: {
+      Tab,
+      TabItem,
       Group,
       Cell,
       XButton
@@ -29,21 +41,37 @@
     methods: {
       logout () {
         this.$store.commit('setToken', null)
-        this.$router.push({name: '/'})
+        this.$router.push({name: 'login'})
       }
     }
   }
 </script>
 
-<style scoped lang="less">
-  .logout {
-    padding: 0 0.1rem;
-    button {
-      width: 100%;
-      height: 0.45rem;
-      border: none;
-      background-color: #fc3;
-      margin-top: 0.2rem;
-    }
+<style lang="less" scoped>
+  @import '~vux/src/styles/1px.less';
+  @import '~vux/src/styles/center.less';
+
+  .box {
+    padding: 15px;
+  }
+
+  .active-6-1 {
+    color: rgb(252, 55, 140) !important;
+    border-color: rgb(252, 55, 140) !important;
+  }
+
+  .active-6-2 {
+    color: #04be02 !important;
+    border-color: #04be02 !important;
+  }
+
+  .active-6-3 {
+    color: rgb(55, 174, 252) !important;
+    border-color: rgb(55, 174, 252) !important;
+  }
+
+  .tab-swiper {
+    background-color: #fff;
+    height: 100px;
   }
 </style>

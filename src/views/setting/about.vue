@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div class="about-me">
+    <div class="about">
       <div class="about-content">
         <h3>黑狼</h3>
-        <p class="mt-20">本人热衷于计算机编程，也喜欢看小说、骑自行车等。请关注我的博客：<span class="c-fc3">http://blog.sina.com.cn/fangcm</span></p>
+        <p class="mt-20">本人热衷于计算机编程，也喜欢看小说、骑自行车等。请关注我的博客：
+          <span class="c-fc3">http://blog.sina.com.cn/fangcm</span>
+        </p>
       </div>
     </div>
   </div>
@@ -27,7 +29,7 @@
 </script>
 
 <style scoped lang="less">
-  .about-me {
+  .about {
     width: 100%;
   }
 
