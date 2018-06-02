@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/apps/components/demo/HelloFromVux'
-import demo from '@/apps/components/demo/demo'
-import login from '@/apps/views/login'
-import main from '@/apps/components/main'
-import home from '@/apps/views/home'
+import blank from '@/views/common/blank.vue'
+import login from '@/views/login/login.vue'
+import home from '@/views/demo/Home.vue'
+import newsDetail from '@/views/demo/NewsDetail.vue'
+import mySettings from '@/views/demo/MySettings.vue'
 
 Vue.use(Router)
 
@@ -13,43 +13,30 @@ export default new Router({
     {
       path: '/',
       name: 'login',
-      component: login,
-      meta: {
-        index: 0
-      }
-    },
-    {
-      path: '/main',
-      component: main,
-      meta: {
-        index: 1
-      },
-      children: [
-        {
-          path: '/',
-          name: 'home',
-          component: home,
-          meta: {
-            index: 1
-          }
-        },
-        {
-          path: '/demo',
-          name: 'demo',
-          component: demo,
-          meta: {
-            index: 2
-          }
+      component: blank,
+      children: [{
+        path: '',
+        name: 'login',
+        component: login,
+        meta: {
+          title: '登录页面'
         }
-      ]
+      }]
     },
     {
-      path: '/hello',
-      name: 'HelloWorld',
-      component: HelloWorld,
-      meta: {
-        index: 3
-      }
+      path: '/home',
+      name: 'home',
+      component: home
+    },
+    {
+      path: '/newsDetail',
+      name: 'newsDetail',
+      component: newsDetail
+    },
+    {
+      path: '/mySettings',
+      name: 'mySettings',
+      component: mySettings
     }
   ]
 })

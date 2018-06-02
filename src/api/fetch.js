@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {API_PREFIX} from '@/config'
+import {API_PREFIX} from '@/views/common/config'
 
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {

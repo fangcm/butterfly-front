@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import AppFooter from '@/components/common/Footer'
+  import AppFooter from '@/views/common/footer'
 
   export default {
     name: 'app',
