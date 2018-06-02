@@ -11,7 +11,8 @@
 
 <script>
   // import axios from '../../libs/axios.js'
-  import { Group, Cell } from 'vux'
+  import {Group, Cell} from 'vux'
+
   export default {
     name: 'about',
     components: {
@@ -19,11 +20,9 @@
       Cell
     },
     data () {
-      return {
-      }
+      return {}
     },
-    methods: {
-    }
+    methods: {}
   }
 </script>
 
@@ -31,6 +30,7 @@
   .about-me {
     width: 100%;
   }
+
   .about-content {
     margin: 0.35rem;
   }
@@ -45,7 +45,8 @@
     font-size: 0.125rem;
     color: #999;
   }
-  .c-fc3{
+
+  .c-fc3 {
     color: #fc3;
   }
 </style>

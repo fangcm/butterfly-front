@@ -9,7 +9,6 @@ import changePhone from '@/views/setting/changePhone'
 import changePassword from '@/views/setting/changePassword'
 import about from '@/views/setting/about'
 
-
 Vue.use(Router)
 
 export default new Router({

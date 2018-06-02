@@ -20,16 +20,16 @@
       Cell,
       XButton
     },
-    data() {
+    data () {
       return {}
     },
     computed: {
       ...mapGetters({token: 'getToken'})
     },
     methods: {
-      logout() {
-        this.$store.commit('setToken', null);
-        this.$router.push({name: '/'});
+      logout () {
+        this.$store.commit('setToken', null)
+        this.$router.push({name: '/'})
       }
     }
   }

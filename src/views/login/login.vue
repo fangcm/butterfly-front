@@ -28,7 +28,7 @@
       XButton,
       CheckIcon
     },
-    data() {
+    data () {
       return {
         mobile: '',
         password: '',
@@ -39,13 +39,13 @@
     computed: {
       ...mapGetters({token: 'getToken'})
     },
-    created() {
+    created () {
       if (this.token && this.autoLogin) {
-        //this.$router.push({name: 'home'})
+        // this.$router.push({name: 'home'})
       }
     },
     methods: {
-      async login() {
+      async login () {
         this.loading = true
         let result = await login({'username': this.mobile, 'password': this.password})
         this.loading = false
