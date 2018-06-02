@@ -19,7 +19,7 @@
         <img slot="icon-active" src="../../assets/image/ic_nav_discover_actived.png">
         <span slot="label">发现</span>
       </tabbar-item>
-      <tabbar-item :link="{path:'/mysettings'}">
+      <tabbar-item :link="{path:'/setting'}">
         <img slot="icon" src="../../assets/image/ic_nav_my_normal.png">
         <img slot="icon-active" src="../../assets/image/ic_nav_my_pressed.png">
         <span slot="label">我的</span>
