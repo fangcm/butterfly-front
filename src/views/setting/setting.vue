@@ -1,5 +1,5 @@
 <template>
-  <tab :line-width="2" active-color="#fc378c">
+  <tab>
     <tab-item :selected="demo2 === item" v-for="item in list2" @click="demo2 = item">美食酒店</tab-item>
   </tab>
 </template>
