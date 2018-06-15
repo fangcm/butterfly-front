@@ -1,20 +1,33 @@
 <template>
-  <tab>
-    <tab-item :selected="demo2 === item" v-for="item in list2" @click="demo2 = item">美食酒店</tab-item>
-  </tab>
+  <div class="v-setting">
+    <x-header :right-options="{showMore: false}"
+              @on-click-more="showMenus = true" @on-click-title="scrollTop" class="v-hd">我的设置
+    </x-header>
+
+    <group>
+      <cell title="昵称" is-link :value="userName" link="/setting/changeName"></cell>
+      <cell title="更换手机" is-link :value="userPhone" link="/setting/changePhone"></cell>
+      <cell title="更换密码" is-link link="/setting/changePassword"></cell>
+    </group>
+    <group title="作者及软件简介">
+      <h3>黑狼</h3>
+      <p class="mt-20">本人热衷于计算机编程，也喜欢看小说、骑自行车等。请关注我的博客：
+        <span class="c-fc3">http://blog.sina.com.cn/fangcm</span>
+      </p>
+    </group>
+    <group title="退出本系统登录状态">
+      <x-button type="primary" @click.native="logout">退出登录</x-button>
+    </group>
+  </div>
 </template>
 
 <script>
-  //引入组件
-  import {
-    Sticky,
-    Tab,
-    TabItem
-  } from 'vux'
-  //创造构造器
+  // 引入组件
+  import {XHeader, Cell, Group, XButton} from 'vux'
+  // 创造构造器
   export default {
-    components:{
-      Tab,Sticky,TabItem
+    components: {
+      XHeader, Cell, Group, XButton
     },
     data () {
       return {
@@ -25,10 +38,4 @@
       }
     }
   }
-  /*创造构造器的老版本的写法，编译的时候会报错，执行没有问题。
-  var MyComponent = Vue.extend{
-      components: {
-          Divider,FlexboxItem,Flexbox
-      },
-  }*/
 </script>

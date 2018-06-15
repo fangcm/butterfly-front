@@ -11,66 +11,53 @@ import about from '@/views/setting/about'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  mode: 'history',
   routes: [{
     path: '/',
     redirect: '/login'
-  }, {
+  }, { // 登录
     path: '/login',
-    name: 'login',
-    component: login,
-    meta: {
-      title: '登录'
-    }
-  }, {
+    component: login
+  }, { // 首页
     path: '/home',
-    name: 'home',
-    component: home,
-    meta: {
-      title: '首页'
-    }
-  }, {
+    component: home
+  }, { // 设置
     path: '/setting',
-    name: 'setting',
     component: setting,
-    meta: {
-      title: '设置'
-    },
-    children: [{
+    children: [{ // 我的资料
+      path: '/',
+      component: myInfo
+    }, { // 我的资料
       path: 'myInfo',
-      name: 'myInfo',
-      component: myInfo,
-      meta: {
-        title: '我的资料'
-      }
-    }, {
+      component: myInfo
+    }, { // 修改资料
       path: 'changeInfo',
-      name: 'changeInfo',
-      component: changeInfo,
-      meta: {
-        title: '修改资料'
-      }
-    }, {
+      component: changeInfo
+    }, { // 修改手机
       path: 'changePhone',
-      name: 'changePhone',
-      component: changePhone,
-      meta: {
-        title: '修改手机'
-      }
-    }, {
+      component: changePhone
+    }, { // 更改密码
       path: 'changePassword',
-      name: 'changePassword',
-      component: changePassword,
-      meta: {
-        title: '更改密码'
-      }
-    }, {
+      component: changePassword
+    }, { // 关于
       path: 'about',
-      name: 'about',
-      component: about,
-      meta: {
-        title: '关于'
-      }
+      component: about
     }]
   }]
-})
+});
+
+//路由守卫
+router.beforeEach((to, from, next) => {
+  if (!localStorage.userToken) {
+    if (to.path === "/login" || to.path === "/register") {
+      next();
+    } else {
+      next("/login");
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;
