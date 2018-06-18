@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <back-header @back="$router.replace('/movie')">
+    <back-header @back="$router.replace('/user')">
       <img class="image" src="./logo.png" width="70" style="vertical-align: middle">
     </back-header>
     <div class="content">
@@ -32,13 +32,12 @@
 import BackHeader from 'components/back-header/back-header'
 import Confirm from 'components/confirm/confirm'
 import {userLogin} from 'api/user'
-import {ERR_OK} from 'api/config'
 import {mapMutations} from 'vuex'
 
 export default {
   data () {
     return {
-      username: '',
+      mobile: '',
       password: '',
       confirmText: '',
       errMsg: ''
@@ -59,10 +58,10 @@ export default {
       this.email = ''
     },
     goToLogin () {
-      this.$router.replace('/login/signin')
+      this.$router.replace('/login')
     },
     check () {
-      if (!this.username) {
+      if (!this.mobile) {
         this.errMsg = '用户名不能为空'
         return
       }
@@ -75,7 +74,7 @@ export default {
     _login () {
       const {email, password} = this
       userLogin({email, password}).then(res => {
-        if (res.code === ERR_OK) {
+        if (res.success) {
           this.setUserInfo(res.data.user)
           this.$router.replace({
             name: 'user'
