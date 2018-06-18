@@ -1,12 +1,13 @@
 <template>
-  <div class="user" v-if="userInfo.username">
+  <div class="user" v-if="userInfo.mobile">
     <div class="userinfo-wrapper">
       <div class="avatar">
         <img v-lazy="avatarImg" width="100%">
       </div>
       <div class="info">
+        <span class="text">{{userInfo.nickName}}</span>
         <span class="text">{{userInfo.email}}</span>
-        <span class="text">{{userInfo.username}}</span>
+        <span class="text">{{userInfo.mobile}}</span>
       </div>
       <i class="icon icon-left" @click="$router.go(-1)"></i>
     </div>
@@ -32,9 +33,9 @@
 </template>
 
 <script>
-import { getUserInfo, logout } from 'api/user'
-import { ERR_OK } from 'api/config'
-import { mapMutations } from 'vuex'
+import {getUserInfo} from 'api/user'
+import {mapMutations} from 'vuex'
+
 export default {
   beforeRouteEnter (to, from, next) {
     next(vm => {
@@ -48,36 +49,31 @@ export default {
   },
   computed: {
     avatarImg () {
-      const prefix = `http://admin.movie.kyriel.cn/`
       if (this.userInfo.headImg) {
-        return prefix + this.userInfo.headImg
+        return this.userInfo.headImg
       }
       return false
     }
   },
   methods: {
     _getInfo () {
-      const { userInfo } = this.$store.getters
-      if (userInfo.username) {
+      const {userInfo} = this.$store.getters
+      if (userInfo.mobile) {
         this.userInfo = userInfo
         return
       }
       getUserInfo().then(res => {
-        if (res.code === ERR_OK) {
+        if (res.success) {
           this.setUserInfo(res.data.user)
           this.userInfo = res.data.user
         } else {
-          this.$router.replace('/login/signin')
+          this.$router.replace('/login')
         }
       })
     },
     logout () {
-      logout().then(res => {
-        if (res.code === ERR_OK) {
-          this.setUserInfo({})
-          this.$router.push({name: 'movie'})
-        }
-      })
+      this.setUserInfo({})
+      this.$router.push({name: '/login'})
     },
     ...mapMutations({
       'setUserInfo': 'SET_USERINFO'
@@ -106,7 +102,7 @@ export default {
         background #eee
         border-radius 50%
         img
-         border-radius 50%
+          border-radius 50%
       .info
         display flex
         flex-direction column

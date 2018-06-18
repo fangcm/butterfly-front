@@ -1,8 +1,8 @@
 {
-  "name": "movie-trailer",
+  "name": "butterfly-front",
   "version": "1.0.0",
-  "description": "基于vue开发电影预告网站前端",
-  "author": "cqze <lihaozecq@gmail.com>",
+  "description": "butterfly front",
+  "author": "fangcm <fangcm2008@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
