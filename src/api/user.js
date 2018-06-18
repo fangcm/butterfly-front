@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from './config'
 
 export const userLogin = (data) => {
   return axios(`/core/user/login`, {
@@ -16,4 +16,3 @@ export const getUserInfo = () => {
       return response.data
     })
 }
-

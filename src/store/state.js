@@ -1,7 +1,7 @@
-//import {getSearch} from '@/common/js/cache'
+// import {getSearch} from '@/common/js/cache'
 
 const state = {
-  //searchHistory: getSearch(),
+  // searchHistory: getSearch(),
   user: {}
 }
 

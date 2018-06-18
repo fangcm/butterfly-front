@@ -63,6 +63,7 @@ export default {
         return
       }
       getUserInfo().then(res => {
+        console.log(res.status)
         if (res.success) {
           this.setUserInfo(res.data.user)
           this.userInfo = res.data.user
