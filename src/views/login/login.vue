@@ -29,71 +29,71 @@
 </template>
 
 <script>
-  import BackHeader from 'components/back-header/back-header'
-  import Confirm from 'components/confirm/confirm'
-  import {userLogin, userRegister} from 'api/user'
-  import {ERR_OK} from 'api/config'
-  import {mapMutations} from 'vuex'
+import BackHeader from 'components/back-header/back-header'
+import Confirm from 'components/confirm/confirm'
+import {userLogin} from 'api/user'
+import {ERR_OK} from 'api/config'
+import {mapMutations} from 'vuex'
 
-  export default {
-    data () {
-      return {
-        username: '',
-        password: '',
-        confirmText: '',
-        errMsg: ''
+export default {
+  data () {
+    return {
+      username: '',
+      password: '',
+      confirmText: '',
+      errMsg: ''
+    }
+  },
+  watch: {
+    errMsg () {
+      if (this.timer) {
+        clearTimeout(this.timer)
       }
+      this.timer = setTimeout(() => {
+        this.errMsg = ''
+      }, 1000)
+    }
+  },
+  methods: {
+    clear () {
+      this.email = ''
     },
-    watch: {
-      errMsg () {
-        if (this.timer) {
-          clearTimeout(this.timer)
-        }
-        this.timer = setTimeout(() => {
-          this.errMsg = ''
-        }, 1000)
+    goToLogin () {
+      this.$router.replace('/login/signin')
+    },
+    check () {
+      if (!this.username) {
+        this.errMsg = '用户名不能为空'
+        return
       }
+      if (!this.password || this.password.length < 6) {
+        this.errMsg = '密码不能为空且不小于6位'
+        return
+      }
+      this._login()
     },
-    methods: {
-      clear () {
-        this.email = ''
-      },
-      goToLogin () {
-        this.$router.replace('/login/signin')
-      },
-      check () {
-        if (!this.username) {
-          this.errMsg = '用户名不能为空'
-          return
+    _login () {
+      const {email, password} = this
+      userLogin({email, password}).then(res => {
+        if (res.code === ERR_OK) {
+          this.setUserInfo(res.data.user)
+          this.$router.replace({
+            name: 'user'
+          })
+        } else {
+          this.errMsg = res.errmsg
         }
-        if (!this.password || this.password.length < 6) {
-          this.errMsg = '密码不能为空且不小于6位'
-          return
-        }
-        this._login()
-      },
-      _login () {
-        const {email, password} = this
-        userLogin({email, password}).then(res => {
-          if (res.code === ERR_OK) {
-            this.setUserInfo(res.data.user)
-            this.$router.replace({
-              name: 'user'
-            })
-          } else {
-            this.errMsg = res.errmsg
-          }
-        })
-      },
-      ...mapMutations({
-        'setUserInfo': 'SET_USERINFO'
       })
     },
-    components: {
-      BackHeader,
-      Confirm
-    }
+    ...mapMutations({
+      'setUserInfo': 'SET_USERINFO'
+    })
+  },
+  components: {
+    BackHeader,
+    Confirm
   }
+}
 </script>
 
 <style lang="stylus" scoped>
