@@ -72,8 +72,7 @@ export default {
       this._login()
     },
     _login () {
-      const {mobile, password} = this
-      userLogin({mobile, password}).then(res => {
+      userLogin({'username': this.mobile, 'password': this.password}).then(res => {
         if (res.success) {
           this.setUserInfo(res.data.user)
           this.$router.replace({

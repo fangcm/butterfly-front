@@ -5,7 +5,7 @@ import router from '../router'
 axios.defaults.baseURL = 'http://localhost:8080'
 axios.defaults.timeout = 5000
 // axios.defaults.withCredentials = true
-axios.defaults.headers['Content-Type'] = 'application/json'
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 
 // http request 拦截器
 axios.interceptors.request.use(
