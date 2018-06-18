@@ -2,28 +2,20 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import FastClick from 'fastclick'
-import router from './router'
-import axios from 'axios'
 import store from './store'
+import router from './router'
+import FastClick from 'fastclick'
+import VueLazyload from 'vue-lazyload'
+import infiniteScroll from 'vue-infinite-scroll'
+import '@/assets/style/common.styl'
 
 FastClick.attach(document.body)
+Vue.use(infiniteScroll)
+Vue.use(VueLazyload, {
+  error: require('./assets/image/loading.png'),
+  loading: require('./assets/image/loading.png')
+})
 Vue.config.productionTip = false
-
-axios.defaults.baseURL = 'http://localhost:8080'
-axios.interceptors.request.use(
-  config => {
-    const token = localStorage.getItem('userToken');
-    if (token) {
-      // Bearer是JWT的认证头部信息
-      config.headers.common['Authorization'] = 'Bearer ' + token;
-    }
-    return config;
-  },
-  error => {
-    return Promise.reject(error);
-  }
-);
 
 /* eslint-disable no-new */
 new Vue({

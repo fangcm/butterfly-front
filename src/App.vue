@@ -1,32 +1,30 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <app-footer></app-footer>
+    <Header></Header>
+    <div class="content">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </div>
   </div>
 </template>
 
 <script>
-  import AppFooter from '@/views/common/footer'
+  import Header from '@/components/header/header'
 
   export default {
-    name: 'app',
     components: {
-      AppFooter
+      Header
     }
   }
 </script>
 
-<style lang="less">
-  @import '~vux/src/styles/reset.less';
-  @import './assets/style/variables.less';
-  @import './assets/style/common.less';
-
-  html, body, #app {
-    height: 100%;
-  }
-
-  body {
-    background-color: @bg-color;
-    height: 100%;
-  }
+<style lang="stylus">
+  .content
+    position absolute
+    top 56px
+    bottom 0
+    width 100%
+    overflow scroll
+    background #fff
 </style>
