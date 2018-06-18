@@ -2,6 +2,7 @@
 
 const state = {
   // searchHistory: getSearch(),
+  token: '',
   user: {}
 }
 

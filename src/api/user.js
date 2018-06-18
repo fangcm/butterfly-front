@@ -1,18 +1,5 @@
 import axios from './config'
 
-export const userLogin = (data) => {
-  return axios(`/core/user/login`, {
-    method: 'POST',
-    data
-  })
-    .then((response) => {
-      return response.data
-    })
-}
+export let userLogin = (data) => axios.post('/core/user/login', {data})
 
-export const getUserInfo = () => {
-  return axios(`/core/user/currentInfo`)
-    .then((response) => {
-      return response.data
-    })
-}
+export let getUserInfo = () => axios.get('/core/user/currentInfo')

@@ -8,8 +8,8 @@
         <section class="form-box">
           <div class="item">
             <i class="icon icon-email"></i>
-            <input type="text" placeholder="登录邮箱" v-model="email" ref="email">
-            <img class="image" src="./del.png" v-show="email" @click="clear">
+            <input type="text" placeholder="手机号" v-model="mobile" ref="mobile">
+            <img class="image" src="./del.png" v-show="mobile" @click="clear">
           </div>
           <div class="item">
             <i class="icon icon-lock"></i>
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     clear () {
-      this.email = ''
+      this.mobile = ''
     },
     goToLogin () {
       this.$router.replace('/login')
@@ -72,8 +72,8 @@ export default {
       this._login()
     },
     _login () {
-      const {email, password} = this
-      userLogin({email, password}).then(res => {
+      const {mobile, password} = this
+      userLogin({mobile, password}).then(res => {
         if (res.success) {
           this.setUserInfo(res.data.user)
           this.$router.replace({

@@ -1,15 +1,16 @@
 import axios from 'axios'
+import store from '../store'
+import router from '../router'
 
 axios.defaults.baseURL = 'http://localhost:8080'
 axios.defaults.timeout = 5000
-axios.defaults.withCredentials = true
-axios.defaults.headers.post['Content-Type'] = 'application/json'
+// axios.defaults.withCredentials = true
+axios.defaults.headers['Content-Type'] = 'application/json'
 
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
-    // 不加这个显示不出请求，post需要用到，不能少，不然报错
-    config.headers = {}
+    config.headers.Authorization = store.state.token
     return config
   },
   error => {
@@ -19,11 +20,20 @@ axios.interceptors.request.use(
 
 // http response 拦截器
 axios.interceptors.response.use(
-  response => {
-    return response
+  res => {
+    return Promise.resolve(res.data)
   },
-  error => {
-    return Promise.reject(error.response.data)
+  err => {
+    if (err.response) {
+      if (err.response.status === 401) {
+        store.state.token = ''
+        router.replace({
+          path: 'login',
+          query: {redirect: router.currentRoute.fullPath}
+        })
+      }
+    }
+    return Promise.reject(err)
   }
 )
 
