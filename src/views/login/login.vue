@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import BackHeader from 'components/back-header/back-header'
-import Confirm from 'components/confirm/confirm'
-import {userLogin} from 'api/user'
+import BackHeader from '../../components/back-header/back-header'
+import Confirm from '../../components/confirm/confirm'
+import {userLogin} from '../../api/user'
 import {mapMutations} from 'vuex'
 
 export default {

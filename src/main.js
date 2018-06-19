@@ -5,9 +5,12 @@ import router from './router'
 import fastClick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
 import infiniteScroll from 'vue-infinite-scroll'
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
 import '@/common/style/common.styl'
 
 fastClick.attach(document.body)
+Vue.use(MuseUI)
 Vue.use(infiniteScroll)
 Vue.use(VueLazyload, {
   error: require('./common/image/loading.png'),
