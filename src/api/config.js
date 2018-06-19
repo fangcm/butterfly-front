@@ -1,39 +1,47 @@
 import axios from 'axios'
 import store from '../store'
+import * as types from '../store/mutation-types'
 import router from '../router'
 
-axios.defaults.baseURL = 'http://localhost:8080'
 axios.defaults.timeout = 5000
-// axios.defaults.withCredentials = true
-axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+axios.defaults.baseURL = 'http://localhost:8080'
 
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
-    config.headers.Authorization = store.state.token
+    if (store.state.token) {
+      config.headers.Authorization = store.state.token
+    }
     return config
   },
-  error => {
-    return Promise.reject(error)
+  err => {
+    return Promise.reject(err)
   }
 )
 
 // http response 拦截器
 axios.interceptors.response.use(
-  res => {
-    return Promise.resolve(res.data)
+  response => {
+    return response
   },
   err => {
     if (err.response) {
-      if (err.response.status === 401) {
-        store.state.token = ''
-        router.replace({
-          path: 'login',
-          query: {redirect: router.currentRoute.fullPath}
-        })
+      switch (error.response.status) {
+        case 401:
+          // 401 清除token信息并跳转到登录页面
+          store.commit(types.LOGOUT)
+
+          // 只有在当前路由不是登录页面才跳转
+          router.currentRoute.path !== 'login' &&
+          router.replace({
+            path: 'login',
+            query: {redirect: router.currentRoute.path},
+          })
       }
     }
-    return Promise.reject(err)
+    // console.log(JSON.stringify(error));
+    // console : Error: Request failed with status code 402
+    return Promise.reject(err.response.data)
   }
 )
 

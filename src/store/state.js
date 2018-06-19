@@ -1,9 +1,8 @@
-// import {getSearch} from '@/common/js/cache'
-
 const state = {
-  // searchHistory: getSearch(),
-  token: '',
-  user: {}
+  user: {},
+  token: null,
+  title: ''
+
 }
 
 export default () => state
