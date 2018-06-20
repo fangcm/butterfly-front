@@ -1,26 +1,26 @@
 <template>
   <div>
-    <mu-appbar title="登录">
-      <mu-icon-button icon="arrow_back" slot="left" @click="back"/>
-    </mu-appbar>
+    <mu-appbar title="登录"/>
     <mu-container>
       <mu-flex justify-content="center" align-items="center">
-        <mu-alert color="warning" @delete="logining = false">
-          <mu-icon left value="warning"/>
-          this is warning alert
-        </mu-alert>
-      </mu-flex>
-      <mu-flex justify-content="center" align-items="center">
-        <mu-text-field v-model="mobile" label="手机号" label-float help-text="手机号为11长度的数字" icon="account_circle"/>
+        <mu-text-field v-model="mobile" label="手机号" label-float help-text="手机号为11长度的数字"
+                       icon="account_circle"/>
         <br/>
       </mu-flex>
       <mu-flex justify-content="center" align-items="center">
-        <mu-text-field v-model="password" type="password" label="密码" label-float error-text="请输入密码" icon="locked"/>
+        <mu-text-field v-model="password" type="password" label="密码" label-float error-text="请输入密码"
+                       icon="locked"/>
         <br/>
       </mu-flex>
       <mu-flex justify-content="center" align-items="center">
         <mu-button @click="login" color="primary">登录</mu-button>
       </mu-flex>
+      <mu-dialog :open.sync="logining">
+        <div class="logining">
+          <loading class="logining-loading"></loading>
+          <p class="logining-text">正在登陆</p>
+        </div>
+      </mu-dialog>
     </mu-container>
   </div>
 </template>
@@ -31,7 +31,7 @@ import {userLogin} from '@/api/user'
 import Loading from '@/components/loading/loading'
 
 const REG = {
-  isMobile: /^1(3|4|5|6|7|8)\d{9}$/,
+  isMobile: /^1[345678]d{9}$/,
   isPassword: /^.{1,16}$/
 }
 
@@ -77,7 +77,7 @@ export default {
     // 检查输入的登录信息
     _loginCheck () {
       if (!REG.isMobile.test(this.username)) {
-        this.setPopup('不是合法的用户名/手机号')
+        this.setPopup('不是合法的手机号')
         return false
       } else if (!REG.isPassword.test(this.password)) {
         this.setPopup('密码长度应为1-16位')

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const User = () => import('@/views/user/user')
 const Login = () => import('@/views/login/login')
+const Home = () => import('@/views/home')
 
 Vue.use(Router)
 
@@ -13,6 +14,11 @@ const router = new Router({
       path: '/',
       redirect: '/login',
       alias: '/index.html'
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
     },
     { // 登录
       path: '/login',
