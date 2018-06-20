@@ -1,4 +1,2 @@
-export const SET_USERINFO = 'SET_USERINFO'
-export const LOGIN = 'login';
-export const LOGOUT = 'logout';
-export const TITLE = 'title'
+export const SET_TOKEN = 'SET_TOKEN'
+export const SET_USER_INFO = 'SET_USER_INFO'

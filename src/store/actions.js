@@ -1,17 +1,12 @@
-// import * as types from './mutation-types'
-// import {saveSearch, deleteSearch, clearSearch} from '@/common/js/cache'
+import * as types from './mutation-types'
+import {saveToken, saveUserInfo} from '@/assets/js/cache'
 
-/*
-export const saveSearchHistory = function ({commit}, query) {
-  commit(types.SET_SEARCHHISTORY, saveSearch(query))
+export function setToken ({commit}, token) {
+  commit(types.SET_TOKEN, token)
+  saveToken(token)
 }
 
-export const deleteSearchHistory = function ({ commit }, query) {
-  commit(types.SET_SEARCHHISTORY, deleteSearch(query))
+export function setUserInfo ({commit}, userInfo) {
+  commit(types.SET_USER_INFO, userInfo)
+  saveUserInfo(userInfo)
 }
-
-export const clearSearchHistory = function ({ commit }, query) {
-  commit(types.SET_SEARCHHISTORY, clearSearch(query))
-}
-
-*/
