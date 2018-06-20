@@ -7,6 +7,12 @@ const mutations = {
   },
   [types.SET_USER_INFO] (state, info) {
     state.userInfo = info
+  },
+  [types.SET_POPUP_VISIBLE] (state, visible) {
+    state.popupVisible = Boolean(state.popupContent && visible)
+  },
+  [types.SET_POPUP_CONTENT] (state, content) {
+    state.popupContent = content
   }
 }
 

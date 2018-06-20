@@ -5,6 +5,7 @@ window.storage = storage
 const TOKEN_KEY = '__token__'
 const USER_INFO_KEY = '__user_info__'
 
+/*
 function insertArray (arr, val, compare, maxLen) {
   const index = arr.findIndex(compare)
   if (index === 0) {
@@ -25,6 +26,7 @@ function deleteFromArray (arr, compare) {
     arr.splice(index, 1)
   }
 }
+*/
 
 // 检测用户上次登陆是否超过7天
 export function loadToken () {

@@ -1,30 +1,20 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <div class="content">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
-    </div>
+    <mu-appbar style="width: 100%;" color="primary">
+      <mu-button icon slot="left"/>
+      像蝴蝶一样飞呀飞
+    </mu-appbar>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import Header from '@/components/header/header'
-
 export default {
-  components: {
-    Header
-  }
+  name: 'App'
 }
 </script>
 
-<style lang="stylus">
-  .content
-    position absolute
-    top 56px
-    bottom 0
-    width 100%
-    overflow scroll
-    background #fff
+<style scoped>
 </style>

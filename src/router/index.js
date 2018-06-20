@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const User = () => import('../views/user/user')
-const Login = () => import('../views/login/login')
+const User = () => import('@/views/user/user')
+const Login = () => import('@/views/login/login')
 
 Vue.use(Router)
 
@@ -11,7 +11,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/user'
+      redirect: '/login',
+      alias: '/index.html'
     },
     { // 登录
       path: '/login',
