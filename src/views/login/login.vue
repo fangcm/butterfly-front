@@ -53,7 +53,7 @@ export default {
         try {
           // 请求登录
           const res = await userLogin({
-            username: this.username,
+            mobile: this.mobile,
             password: this.password
           })
           // 登陆成功
@@ -76,7 +76,7 @@ export default {
     },
     // 检查输入的登录信息
     _loginCheck () {
-      if (!REG.isMobile.test(this.username)) {
+      if (!REG.isMobile.test(this.mobile)) {
         this.setPopup('不是合法的手机号')
         return false
       } else if (!REG.isPassword.test(this.password)) {
