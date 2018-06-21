@@ -1,4 +1,4 @@
-import axios from './config'
+import axios from './http'
 
 export let userLogin = (data) => axios.post('/core/user/login', data)
 
