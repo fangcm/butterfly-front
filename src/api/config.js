@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '../store'
+import * as types from '../store/mutation-types'
 import router from '../router'
 
 axios.defaults.timeout = 10000
@@ -28,7 +29,7 @@ axios.interceptors.response.use(
       switch (error.response.status) {
         case 401:
           // 401 清除token信息并跳转到登录页面
-          // store.commit(types.LOGOUT)
+          store.commit(types.SET_TOKEN, '')
 
           // 只有在当前路由不是登录页面才跳转
           router.currentRoute.path !== 'login' &&

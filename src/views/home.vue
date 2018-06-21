@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import MyHeader from '@/components/header/header'
 import MyFooter from '@/components/footer/footer'
 
@@ -19,6 +20,14 @@ export default {
       password: '',
       logining: true
     }
+  },
+  created () {
+    if (!this.token) {
+      this.$router.push({name: 'login'})
+    }
+  },
+  computed: {
+    ...mapGetters(['token'])
   },
   components: {
     MyHeader,

@@ -7,7 +7,7 @@
                        icon="account_circle"/>
       </mu-flex>
       <mu-flex justify-content="center" align-items="center">
-        <mu-text-field v-model="password" type="password" label="密码" label-float error-text="请输入4到16位密码"
+        <mu-text-field v-model="password" type="password" label="密码" label-float help-text="请输入4到16位密码"
                        icon="locked"/>
       </mu-flex>
       <mu-flex justify-content="center" align-items="center">
