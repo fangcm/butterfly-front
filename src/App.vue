@@ -1,24 +1,23 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <mu-dialog title="信息" width="400" max-width="80%" :open.sync="popupVisible">
-      {{popupContent}}
-      <mu-button slot="actions" flat color="primary" @click="closePopupDialog()">关闭</mu-button>
-    </mu-dialog>
+    <mu-snackbar position="top" :color="popupContent.type" :open.sync="popupVisible">
+      {{popupContent.msg}}
+      <mu-button flat slot="action" color="white" @click="hidePopup">关闭</mu-button>
+    </mu-snackbar>
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
+  name: 'app',
   computed: {
     ...mapGetters(['popupVisible', 'popupContent'])
   },
   methods: {
-    closePopupDialog () {
-      this.popupVisible = false
-    }
+    ...mapActions(['hidePopup'])
   }
 }
 </script>

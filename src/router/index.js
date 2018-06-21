@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const User = () => import('@/views/user/user')
-const Login = () => import('@/views/login/login')
+const Login = () => import('@/views/login')
 const Home = () => import('@/views/home')
 
 Vue.use(Router)
@@ -12,7 +12,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/login',
+      redirect: '/home',
       alias: '/index.html'
     },
     {

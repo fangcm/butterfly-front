@@ -12,11 +12,16 @@ export function setUserInfo ({commit}, userInfo) {
   saveUserInfo(userInfo)
 }
 
-export function setPopup ({commit}, content) {
-  commit(types.SET_POPUP_CONTENT, content)
+export function hidePopup ({commit}) {
+  commit(types.SET_POPUP_CONTENT, {})
+  commit(types.SET_POPUP_VISIBLE, false)
+}
+
+export function showPopup ({commit}, msg, type = 'error') {
+  commit(types.SET_POPUP_CONTENT, {msg: msg, type: type})
   commit(types.SET_POPUP_VISIBLE, true)
   setTimeout(() => {
-    commit(types.SET_POPUP_CONTENT, '')
+    commit(types.SET_POPUP_CONTENT, {})
     commit(types.SET_POPUP_VISIBLE, false)
   }, popupDelay)
 }

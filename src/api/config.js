@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '../store'
 import router from '../router'
 
-axios.defaults.timeout = 5000
+axios.defaults.timeout = 10000
 axios.defaults.baseURL = 'http://localhost:8080'
 
 // http request 拦截器
@@ -21,7 +21,7 @@ axios.interceptors.request.use(
 // http response 拦截器
 axios.interceptors.response.use(
   response => {
-    return Promise.resolve(response.data)
+    return response.data
   },
   error => {
     if (error.response) {
