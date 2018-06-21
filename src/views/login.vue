@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mu-appbar title="登录"/>
+    <mu-appbar title="登录" color="primary"/>
     <mu-container>
       <mu-flex justify-content="center" align-items="center">
         <mu-text-field v-model="mobile" label="手机号" label-float help-text="手机号为11长度的数字"
