@@ -3,18 +3,20 @@
     <mu-appbar title="登录" color="primary"/>
     <mu-container>
       <mu-flex justify-content="center" align-items="center">
-        <mu-text-field v-model="mobile" label="手机号" label-float help-text="手机号为11长度的数字"
-                       icon="account_circle"/>
+        <mu-text-field v-model="mobile" placeholder="手机号" help-text="手机号为11长度的数字"
+                       icon="phone"/>
       </mu-flex>
       <mu-flex justify-content="center" align-items="center">
-        <mu-text-field v-model="password" type="password" label="密码" label-float help-text="请输入4到16位密码"
-                       icon="locked"/>
+        <mu-text-field v-model="password" placeholder="密码" help-text="请输入4到16位密码"
+                       :action-icon="isShowPassword ? 'visibility_off' : 'visibility'"
+                       :action-click="() => (isShowPassword = !isShowPassword)"
+                       :type="isShowPassword ? 'text' : 'password'" icon="locked"/>
       </mu-flex>
       <mu-flex justify-content="center" align-items="center">
         <mu-button @click="login" color="primary">登录</mu-button>
       </mu-flex>
-      <mu-snackbar position="top" color="info" :open.sync="logining">
-        正在登陆中...
+      <mu-snackbar color="info" :open.sync="isLoading">
+        正在加载...
       </mu-snackbar>
     </mu-container>
   </div>
@@ -34,13 +36,14 @@ export default {
     return {
       mobile: '',
       password: '',
-      logining: false
+      isShowPassword: false,
+      isLoading: false
     }
   },
   methods: {
     async login () {
       if (this._loginCheck()) {
-        this.logining = true
+        this.isLoading = true
         try {
           // 请求登录
           const data = await userLogin({
@@ -59,7 +62,7 @@ export default {
           console.log(err)
           this.showPopup('登录失败')
         } finally {
-          this.logining = false
+          this.isLoading = false
         }
       }
     },
