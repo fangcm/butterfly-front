@@ -2,9 +2,9 @@
   <div>
     <div class="fixed-bar">
       <mu-tabs :value="activeTab" @change="handleTabChange" class="view-tabs">
-        <mu-tab value="user" title="用户"/>
-        <mu-tab value="role" title="角色"/>
-        <mu-tab value="menu" title="菜单"/>
+        <mu-tab value="user">用户</mu-tab>
+        <mu-tab value="role">角色</mu-tab>
+        <mu-tab value="menu">菜单</mu-tab>
       </mu-tabs>
     </div>
     <div class="default-view">
