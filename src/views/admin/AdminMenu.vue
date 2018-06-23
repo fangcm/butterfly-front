@@ -1,25 +1,17 @@
-<template>
+<template xmlns:padding="http://www.w3.org/1999/xhtml">
   <div>
-    <mu-paper :z-depth="1">
-      <mu-data-table stripe selectable :columns="columns" :data="list" no-data-text="没有数据">
-        <template slot-scope="scope">
-          <td>{{scope.row.rootLevel===0 ? "子":"父"}}</td>
-          <td>{{scope.row.name}}</td>
-          <td>
-            <mu-icon small :value="scope.row.icon"/>
-            {{scope.row.icon}}
-          </td>
-          <td>{{scope.row.path}}</td>
-          <td>{{scope.row.parentId}}</td>
-          <td>{{scope.row.sort}}</td>
-          <td class="is-center">
-            <mu-button small icon v-if="scope.row.status===0" title="启用">
-              <mu-icon value="grade"/>
-            </mu-button>
-          </td>
-        </template>
-      </mu-data-table>
-    </mu-paper>
+    <div v-for="item in list" :key="item.id">
+      <mu-card>
+        <mu-card-header :title="item.name" :subTitle="item.path">
+          <mu-icon :value="item.icon"></mu-icon>
+        </mu-card-header>
+      </mu-card>
+      <mu-card v-for="child in item.children" :key="child.id">
+        <mu-card-header :title="child.name" :subTitle="child.path">
+          <mu-icon :value="child.icon"></mu-icon>
+        </mu-card-header>
+      </mu-card>
+    </div>
   </div>
 </template>
 
