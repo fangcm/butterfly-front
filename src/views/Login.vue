@@ -23,7 +23,7 @@
 
 <script>
 import {mapActions} from 'vuex'
-import {userLogin} from '@/api/user'
+// import {userLogin} from '@/api/user'
 
 const REG = {
   isMobile: /^1[345678]\d{9}$/,
@@ -44,6 +44,7 @@ export default {
       if (this._loginCheck()) {
         this.isLoading = true
         try {
+          /*
           // 请求登录
           const data = await userLogin({
             mobile: this.mobile,
@@ -57,6 +58,9 @@ export default {
           } else {
             this.showPopup('用户名或密码错误')
           }
+          */
+          this.setToken('1234')
+          this.$router.replace('/')
         } catch (err) {
           console.log(err)
           this.showPopup('登录失败')
