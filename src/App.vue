@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <router-view name="header"/>
+    <router-view name="body"/>
+    <router-view name="footer"/>
     <mu-snackbar position="top" :color="popupContent.type" :open.sync="popupVisible">
       {{popupContent.msg}}
       <mu-button flat slot="action" color="white" @click="hidePopup">关闭</mu-button>

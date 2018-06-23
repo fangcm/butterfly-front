@@ -1,26 +1,30 @@
 <template>
   <div id="header">
-    <mu-appbar color="primary">
-      <mu-button icon slot="left" @click="toggleDrawerBar">
+    <mu-appbar>
+      <mu-button icon slot="left" @click="clickMenu">
         <mu-icon value="menu"></mu-icon>
       </mu-button>
-      {{topTitle}}
+      {{title}}
     </mu-appbar>
+    <!-- 侧边栏 -->
+    <drawer-bar ref="drawerBar"/>
   </div>
 </template>
 
 <script>
+import DrawerBar from '@/components/DrawerBar'
+
 export default {
-  props: ['title'],
+  props: {
+    title: String
+  },
   methods: {
-    toggleDrawerBar () {
-      this.$emit('toggleDrawerBar')
+    clickMenu () {
+      this.$refs.drawerBar.toggle()
     }
   },
-  computed: {
-    topTitle () {
-      return this.title
-    }
+  components: {
+    DrawerBar
   }
 }
 </script>
