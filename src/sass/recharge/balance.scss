@@ -1,0 +1,73 @@
+
+.balance-container{
+  position: relative;
+  background-color: #F5F5F5;
+  height:100%;
+  .b-t{
+    overflow: hidden;
+    img{
+      display: block;
+      margin:104px auto;
+      width:234px;
+      height:239px;
+    }
+    p{
+      padding-top: 66px;
+      text-align: center;
+      font-size: 36px;
+      color: #3B3943;
+      line-height: 50px;
+    }
+    em{
+      display: block;
+      text-align: center;
+      font-size: 90px;
+      color: #001B00;
+      line-height: 126px;
+      span{
+        position: relative;
+      }
+    }
+    em span:after{
+      content: '';
+      width:76px;
+      height:76px;
+      background-size: 100% 100%;
+      position: absolute;
+      left:-45px;top:12px;
+      background-image: url("../images/recharge/icon-7.png");
+    }
+    .button-type{
+      margin:0 auto;
+      width:606px;
+      height:90px;
+      line-height: 90px;
+      border-radius: 100px;
+      font-size: 36px;
+      text-align: center;
+    }
+    .button-type1{
+      margin-top: 62px;
+      background-color: #FF602C;
+      color: #FFFFFF;
+    }
+    .button-type2{
+      margin-top: 40px;
+      border: 1px solid #CCCCCC;
+      background-color: #FAFAFA;
+      color: #65646B;
+    }
+    i{
+      position: absolute;bottom: 30px;
+      left: 0;
+      width:100%;
+      display: block;
+      padding-top:50px;
+      font-style: normal;
+      font-size: 30px;
+      color: #3B3942;
+      text-align: center;
+    }
+  }
+
+}

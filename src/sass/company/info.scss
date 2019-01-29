@@ -1,0 +1,112 @@
+/*created by szatpig on 2018/1/25*/
+.company-info-container{
+  height: 100%;
+  background-color: #f1f1f1;
+  .info-form{
+    .ry-input{
+      height: 96px;
+      width: 100%;
+      overflow: hidden;
+      line-height: 96px;
+      padding: 0 30px;
+      background-color: #fff;
+      position: relative;
+      &:before{
+        content: '';
+        height: 2px;
+        width: 100%;
+        background-color: #f7f7f7;
+        position: absolute;
+        bottom:0;
+        left: 0;
+        right: 0;
+      }
+      label{
+        max-width: 150px;
+        height:100%;
+        text-align: left;
+        font-size: 28px;
+        color: #333333;
+        em{
+          color: $color-main;
+          font-size: 40px;
+          margin-right: 15px;
+        }
+      }
+      input{
+        height: 100%;
+        max-width: 530px;
+        float: right;
+        border: none;
+        text-align: right;
+        font-size: 28px;
+        color: #3f3f3f;
+      }
+    }
+    .ry-tips{
+      height: 90px;
+      line-height: 90px;
+      text-align: center;
+      color: #999;
+      font-size: 28px;
+      em{
+        margin: 0 5px;
+        color: $color-main;
+      }
+    }
+    .ry-button{
+      padding: 72px;
+      button{
+        @extend .common-button;
+        margin-top: 0;
+        background-color: $color-main;
+        border-radius: 90px;
+        font-size: 36px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+  .select{
+    position: relative;
+    .v-picker{
+      display: inline-block;
+      float: right;
+      margin-top: 28px;
+      z-index: 1;
+      input{
+        padding-right: 45px;
+      }
+    }
+    &:after{
+      content: '\e612';
+      @extend .icon-common;
+      position: absolute;
+      right: 20px;
+      top:0px;
+      font-size: 40px;
+      color: #d5d5d5;
+      font-weight: normal;
+    }
+  }
+  .area{
+    height: 235px !important;
+    &:before{
+      bottom:auto;
+      top:90px;
+      background-color: #fefefe !important;
+    }
+    label{
+      display: block;
+      width: 100%;
+      height: 95px !important;
+      text-align: left;
+    }
+    textarea{
+      height: 140px;
+      padding: 10px 0;
+      line-height: 45px;
+      width: 100%;
+      border: none;
+    }
+  }
+}
