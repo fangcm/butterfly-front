@@ -1,25 +1,23 @@
 <template>
   <div id="app">
-    <router-view name="header"/>
-    <router-view name="body"/>
-    <router-view name="footer"/>
-    <mu-snackbar position="top" :color="popupContent.type" :open.sync="popupVisible">
-      {{popupContent.msg}}
-      <mu-button flat slot="action" color="white" @click="hidePopup">关闭</mu-button>
-    </mu-snackbar>
+    <img src="./assets/logo.png">
+    <router-view/>
   </div>
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
-
 export default {
-  name: 'app',
-  computed: {
-    ...mapGetters(['popupVisible', 'popupContent'])
-  },
-  methods: {
-    ...mapActions(['hidePopup'])
-  }
+  name: 'App'
 }
 </script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

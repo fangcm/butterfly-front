@@ -1,6 +1,6 @@
 # butterfly-front
 
-> butterfly front
+> A Vue.js project
 
 ## Build Setup
 
