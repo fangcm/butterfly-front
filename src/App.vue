@@ -5,7 +5,7 @@
     <router-view name="footer"/>
     <mu-snackbar position="top" :color="popupContent.type" :open.sync="popupVisible">
       {{popupContent.msg}}
-      <mu-button flat slot="action" color="white" @click="hidePopup">å…³é—­</mu-button>
+      <mu-button flat slot="action" color="white" @click="hidePopup">¹Ø±Õ</mu-button>
     </mu-snackbar>
   </div>
 </template>
@@ -14,7 +14,7 @@
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
-  name: 'app',
+  name: 'App',
   computed: {
     ...mapGetters(['popupVisible', 'popupContent'])
   },
