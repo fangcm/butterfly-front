@@ -1,7 +1,7 @@
-import axios from './http'
+import {fetch} from '@/util/api'
+import api from './api-config'
 
-// export let userLogin = (data) => axios.post('/core/user/login', data)
-
-// export let getUserInfo = () => axios.get('/core/user/currentInfo')
-
-export let userLogin = (data) => axios.get('/core/user/login.json')
+//用户登录
+export const userLogin = (data) => fetch(api.baseUrl + 'core/user/login', {
+  data
+});

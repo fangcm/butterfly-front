@@ -43,43 +43,43 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
-import dataMenu from '@/api/data-menu'
+  import {mapGetters, mapActions} from 'vuex'
+  import dataMenu from '@/api/data-menu'
 
-export default {
-  data: function () {
-    return {
-      open: false,
-      menuDownOpen: '',
-      menuList: dataMenu
+  export default {
+    data: function () {
+      return {
+        open: false,
+        menuDownOpen: '',
+        menuList: dataMenu
+      }
+    },
+    created() {
+      if (!this.userToken) {
+        this.$router.push({path: '/login'})
+      }
+    },
+    methods: {
+      toggle() {
+        this.open = !this.open
+      },
+      toPage(path) {
+        this.$router.push(path)
+        this.toggle()
+      },
+      logout() {
+        this.loginOut();
+        this.$router.push({path: '/login'})
+        this.toggle()
+      },
+      ...mapActions(['loginOut'])
+    },
+    computed: {
+      isLogin() {
+        return !(this.userToken === null || this.userToken === undefined || this.userToken === '')
+      },
+      ...mapGetters(['userToken'])
     }
-  },
-  created () {
-    if (!this.token) {
-      this.$router.push({path: '/login'})
-    }
-  },
-  methods: {
-    toggle () {
-      this.open = !this.open
-    },
-    toPage (path) {
-      this.$router.push(path)
-      this.toggle()
-    },
-    logout () {
-      this.setToken('')
-      this.$router.push({path: '/login'})
-      this.toggle()
-    },
-    ...mapActions(['setToken'])
-  },
-  computed: {
-    isLogin () {
-      return !(this.token === null || this.token === undefined || this.token === '')
-    },
-    ...mapGetters(['token'])
+
   }
-
-}
 </script>
