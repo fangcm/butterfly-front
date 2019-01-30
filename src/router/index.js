@@ -12,7 +12,7 @@ childrenRouter = childrenRouter.concat(AdminRouter)
 // childrenRouter = childrenRouter.concat(FoodRouter)
 
 var routersConfigure = [
-  // 澧炲姞鍐呭椤典富椤甸潰
+  // 增加内容页主页面
   {
     path: '/',
     alias: '/index.html',
@@ -24,7 +24,7 @@ var routersConfigure = [
     children: childrenRouter
   }
 ]
-// 澧炲姞鍏朵粬椤甸潰
+// 增加其他页面
 routersConfigure = routersConfigure.concat(LayoutRouter)
 
 Vue.use(Router)
