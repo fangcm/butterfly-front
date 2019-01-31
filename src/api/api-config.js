@@ -2,7 +2,6 @@
  * Created by fangcm on 2019/01/30.
  */
 
-import {GetQueryString} from '@/util/util'
 
 console.log('当前环境：' + process.env.NODE_ENV);
 
@@ -14,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
   }
 } else {
   api_config = {
-    baseUrl: '/'
+    baseUrl: 'http://localhost:3335/'
   };
 }
 

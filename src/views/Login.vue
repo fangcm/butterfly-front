@@ -22,8 +22,9 @@
 </template>
 
 <script>
+  import Toast from 'muse-ui-toast'
   import {mapActions} from 'vuex'
-  // import {userLogin} from '@/api/user'
+  import {userLogin} from '@/api/user-api'
 
   const REG = {
     isMobile: /^1[3456789]\d{9}$/,
@@ -39,43 +40,40 @@
         isLoading: false
       }
     },
+    components: {},
     methods: {
-      async login() {
+      ...mapActions([
+        'setUserInfo',
+        'setUserToken'
+      ]),
+      login() {
         if (this._loginCheck()) {
           this.isLoading = true
-          try {
-            /*
-            // 请求登录
-            const data = await userLogin({
-              mobile: this.mobile,
-              password: this.password
-            })
-            // 登陆成功
-            if (data.success) {
-              // 保存登录状态和信息
-              this.setUserToken(data.result)
-              this.$router.replace('/')
-            } else {
-              this.showPopup('用户名或密码错误')
-            }
-            */
-            this.setUserToken('1234')
+
+          let _data = {
+            mobile: this.mobile,
+            password: this.password
+          };
+          // 请求登录
+          userLogin(_data).then((data) => {
+            console.log("oooooooooooooooooooooooooooo")
+            // 保存登录状态和信息
+            this.setUserInfo(data.data);
+            this.setUserToken(data.data.token);
             this.$router.replace('/')
-          } catch (err) {
-            console.log(err)
-            this.showPopup('登录失败')
-          } finally {
-            this.isLoading = false
-          }
+          });
+
+          this.isLoading = false
+
         }
       },
       // 检查输入的登录信息
       _loginCheck() {
         if (!REG.isMobile.test(this.mobile)) {
-          this.showPopup('不是合法的手机号')
+          Toast.message('不是合法的手机号')
           return false
         } else if (!REG.isPassword.test(this.password)) {
-          this.showPopup('密码长度应为4-16位')
+          Toast.message('密码长度应为4-16位')
           return false
         }
         return true
@@ -83,7 +81,11 @@
       back() {
         this.$router.back()
       },
-      ...mapActions(['setUserToken', 'showPopup'])
+      created() {
+        this.setUserInfo({});
+        this.setUserToken(null);
+        sessionStorage.clear();
+      }
     }
   }
 </script>
