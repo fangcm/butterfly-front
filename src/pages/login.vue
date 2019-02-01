@@ -31,6 +31,7 @@
   };
 
   export default {
+    name: 'login',
     data() {
       return {
         isShowPassword: false,
@@ -73,16 +74,12 @@
             }
           }
         });
-
-      },
-      back() {
-        this.$router.back()
-      },
-      created() {
-        this.setUserInfo({});
-        this.setUserToken(null);
-        sessionStorage.clear();
       }
+    },
+    created() {
+      this.setUserInfo({});
+      this.setUserToken(null);
+      sessionStorage.clear();
     }
   }
 </script>
