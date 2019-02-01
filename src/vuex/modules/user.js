@@ -1,10 +1,8 @@
 import {USER_INFO, USER_TOKEN, USER_LOGIN_OUT} from '../types';
 
 const state = {
-  userInfo: JSON.parse(sessionStorage.getItem('userInfo')) || {},
-  userToken: sessionStorage.getItem('userToken') || null,
-  userId: sessionStorage.getItem('userId') || '',
-  userOrgId: sessionStorage.getItem('userOrgId') || '',
+  userInfo: sessionStorage.getItem('userInfo') || {},
+  userToken: sessionStorage.getItem('userToken') || null
 };
 
 const getters = {
@@ -15,8 +13,6 @@ const getters = {
 const mutations = {
   [USER_INFO](state, res) {
     state.userInfo = res;
-    state.userId = res.id;
-    state.userOrgId = userOrgId;
   },
   [USER_TOKEN](state, token) {
     state.userToken = token;
@@ -24,15 +20,14 @@ const mutations = {
   [USER_LOGIN_OUT](state) {
     state.userToken = null;
     state.userInfo = [];
-    state.userId = '';
   }
 };
 
 const actions = {
   //保存用户信息
-  setUserInfo({commit}, res) {
-    sessionStorage.setItem('userInfo', JSON.stringify(res));
-    commit(USER_INFO, res);
+  setUserInfo({commit}, user) {
+    sessionStorage.setItem('userInfo', user);
+    commit(USER_INFO, user);
   },
 
   //保存用户token

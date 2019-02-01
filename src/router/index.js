@@ -1,37 +1,66 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Header from '@/components/Header'
-import Body from '@/components/Body'
-import Footer from '@/components/Footer'
-import LayoutRouter from '@/router/layout-router'
-import AdminRouter from '@/router/router-admin'
-// import FoodRouter from '@/router/router-food'
+import store from '../vuex/store'
 
-var childrenRouter = []
-childrenRouter = childrenRouter.concat(AdminRouter)
-// childrenRouter = childrenRouter.concat(FoodRouter)
+const Home = () => import(/* webpackChunkName: "group-home" */ '@/pages/home');
+const Login = () => import(/* webpackChunkName: "group-login" */ '@/pages/login');
+const Index = () => import(/* webpackChunkName: "group-index" */ '@/pages/index');
 
-var routersConfigure = [
-  // Ôö¼ÓÄÚÈÝÒ³Ö÷Ò³Ãæ
-  {
-    path: '/',
-    alias: '/index.html',
-    components: {
-      header: Header,
-      body: Body,
-      footer: Footer
-    },
-    children: childrenRouter
+
+Vue.use(Router);
+
+const routes = [{
+  path: '/home',
+  name: 'Home',
+  meta: {
+    requireAuth: true,  // æ·»åŠ è¯¥å­—æ®µï¼Œè¡¨ç¤ºè¿›å…¥è¿™ä¸ªè·¯ç”±æ˜¯éœ€è¦ç™»å½•çš„
+  },
+  component: Home,
+  children: [
+    {
+      path: 'index',
+      component: Index,
+      name: 'Index',
+      meta: {
+        title: {},  // æ·»åŠ è¯¥å­—æ®µï¼Œå¯¼èˆªé¢åŒ…å±‘åç§°
+      }
+    }
+  ]
+}, {
+  path: '*',
+  component: () => {
+    router.push({
+      path: '/login'
+    })
   }
-]
-// Ôö¼ÓÆäËûÒ³Ãæ
-routersConfigure = routersConfigure.concat(LayoutRouter)
-
-Vue.use(Router)
+}, {
+  path: '/',
+  component: Login
+}, {
+  path: '/login',
+  name: 'Login',
+  component: Login
+}];
 
 const router = new Router({
   mode: 'history',
-  routes: routersConfigure
-})
+  routes
+});
+
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(r => r.meta.requireAuth)) {
+    if (store.state.user.userToken) {
+      next();
+    } else {
+      next({
+        path: 'login',
+        query: {redirect: to.fullPath}
+      });
+    }
+  } else {
+    next();
+  }
+});
 
 export default router

@@ -79,6 +79,7 @@ export function fetch(url, options) {
       //设置超时时间
       timeout: opt.timeout || 30000
     }).then(response => {
+      console.log(response.data);
       if (response.data.code === 0) {
         resolve(response.data)
       } else {
