@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mu-flex direction="column" v-for="menu in menuList">
+    <mu-flex direction="column" v-for="menu in menuList" :key="menu.id">
       <mu-divider></mu-divider>
       <mu-sub-header>{{menu.name}}</mu-sub-header>
       <mu-flex class="flex-wrapper" align-items="center" wrap="wrap">

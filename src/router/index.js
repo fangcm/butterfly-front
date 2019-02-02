@@ -21,9 +21,6 @@ const routes = [{
       path: 'index',
       component: Index,
       name: 'Index',
-      meta: {
-        title: {},  // 添加该字段，导航面包屑名称
-      }
     }
   ]
 }, {

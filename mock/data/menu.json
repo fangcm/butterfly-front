@@ -87,7 +87,7 @@
             "sort": 5
           },
           {
-            "id": 14,
+            "id": 119,
             "name": "菜品",
             "rootLevel": 0,
             "icon": "restaurant_menu",
@@ -96,7 +96,7 @@
             "sort": 1
           },
           {
-            "id": 15,
+            "id": 120,
             "name": "意见吐槽",
             "rootLevel": 0,
             "icon": "phone",
@@ -105,7 +105,7 @@
             "sort": 2
           },
           {
-            "id": 16,
+            "id": 121,
             "name": "好吃的菜",
             "rootLevel": 0,
             "icon": "home",
@@ -114,7 +114,7 @@
             "sort": 3
           },
           {
-            "id": 17,
+            "id": 122,
             "name": "排队领号",
             "rootLevel": 0,
             "icon": "build",
@@ -123,7 +123,7 @@
             "sort": 4
           },
           {
-            "id": 18,
+            "id": 123,
             "name": "预定",
             "rootLevel": 0,
             "icon": "local_shipping",

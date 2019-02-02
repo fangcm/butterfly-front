@@ -24,8 +24,7 @@
         this.$refs.menuComponent.toggle()
       },
       clickHome() {
-        this.$router.push("/home");
-        this.toggle();
+        this.$router.push({path: '/home/index'});
       }
     },
     components: {

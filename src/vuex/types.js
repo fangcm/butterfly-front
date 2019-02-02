@@ -1,5 +1,4 @@
-export const SHOW_POPUP_VISIBLE = 'SHOW_POPUP_VISIBLE';
-export const SHOW_POPUP_CONTENT = 'SHOW_POPUP_CONTENT';
+export const APP_TITLE = 'APP_TITLE';
 
 //用户信息
 export const USER_LOGIN_OUT = 'USER_LOGIN_OUT';
