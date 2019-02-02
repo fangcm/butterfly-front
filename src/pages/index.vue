@@ -1,14 +1,15 @@
 <template>
-  <div class="lanmuWrapper">
-    <mu-flex class="flex-wrapper" align-items="center" v-for="menu in menuList">
-      <mu-flex class="flex-wrapper" justify-content="center" fill>
-        <mu-sub-header> {{menu.name}}</mu-sub-header>
-      </mu-flex>
-      <mu-flex class="flex-child" justify-content="center" v-for="child in menu.children" :key="child.id" fill>
-        <router-link to="/MeiShi">
-          <span class="new-icon-circle iconfont dianying" style="background: #ff6767"></span>
-          <span class="icon-desc">{{child.name}}</span>
-        </router-link>
+  <div style="width: 100%;">
+    <mu-flex direction="column" v-for="menu in menuList">
+      <mu-divider></mu-divider>
+      <mu-sub-header>{{menu.name}}</mu-sub-header>
+      <mu-flex class="flex-wrapper" align-items="center" wrap="wrap">
+        <mu-flex class="flex-child" justify-content="center" v-for="child in menu.children" :key="child.id">
+          <router-link class="item" :to="child.path">
+            <mu-icon class="icon" :value="child.icon"></mu-icon>
+            <span class="icon-desc">{{child.name}}</span>
+          </router-link>
+        </mu-flex>
       </mu-flex>
     </mu-flex>
   </div>
@@ -45,51 +46,28 @@
 </script>
 
 <style scoped>
-  .lanmuWrapper {
-    background-color: #ffffff;
-    border-top: 1px solid #DDD8CE;
-    width: 100%;
-    height: auto;
-    margin-top: 4px;
-  }
-
   .flex-wrapper {
-    width: 100%;
-    height: auto;
+    margin-left: 20px;
+    padding: 5px 5px;
   }
 
   .flex-child {
-    width: 25%;
-    display: inline-block;
-    box-sizing: border-box;
+    width: 60px;
     text-align: center;
   }
 
-  .flex-child:first-child {
-    margin-left: 0;
-  }
-
-  .flex-wrapper .flex-child > a {
+  .item {
     display: block;
-    padding: 10px 0px;
     width: 100%;
     height: auto;
   }
 
-  .flex-wrapper .flex-child .new-icon-circle {
+  .item .icon {
     display: block;
-    margin: auto;
-    margin-bottom: 7px;
-    width: 40px;
-    height: 40px;
-    border-radius: 500px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 25px;
-    color: #fff;
+    color: orange;
   }
 
-  .flex-wrapper .flex-child .icon-desc {
+  .item .icon-desc {
     text-align: center;
     font-size: 12px;
     color: #666;

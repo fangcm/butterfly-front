@@ -54,16 +54,16 @@
             "id": 15,
             "name": "意见吐槽",
             "rootLevel": 0,
-            "icon": "",
+            "icon": "phone",
             "path": "/",
             "parentId": "13",
             "sort": 2
           },
           {
             "id": 16,
-            "name": "评选好吃的菜",
+            "name": "好吃的菜",
             "rootLevel": 0,
-            "icon": "",
+            "icon": "home",
             "path": "/",
             "parentId": "13",
             "sort": 3
@@ -72,7 +72,52 @@
             "id": 17,
             "name": "排队领号",
             "rootLevel": 0,
-            "icon": "",
+            "icon": "build",
+            "path": "/",
+            "parentId": "13",
+            "sort": 4
+          },
+          {
+            "id": 18,
+            "name": "预定",
+            "rootLevel": 0,
+            "icon": "local_shipping",
+            "path": "/",
+            "parentId": "13",
+            "sort": 5
+          },
+          {
+            "id": 14,
+            "name": "菜品",
+            "rootLevel": 0,
+            "icon": "restaurant_menu",
+            "path": "/",
+            "parentId": "13",
+            "sort": 1
+          },
+          {
+            "id": 15,
+            "name": "意见吐槽",
+            "rootLevel": 0,
+            "icon": "phone",
+            "path": "/",
+            "parentId": "13",
+            "sort": 2
+          },
+          {
+            "id": 16,
+            "name": "好吃的菜",
+            "rootLevel": 0,
+            "icon": "home",
+            "path": "/",
+            "parentId": "13",
+            "sort": 3
+          },
+          {
+            "id": 17,
+            "name": "排队领号",
+            "rootLevel": 0,
+            "icon": "build",
             "path": "/",
             "parentId": "13",
             "sort": 4
@@ -101,7 +146,7 @@
             "id": 20,
             "name": "游戏",
             "rootLevel": 0,
-            "icon": "",
+            "icon": "thumb_up",
             "path": "/",
             "parentId": "19",
             "sort": 1
@@ -119,7 +164,7 @@
             "id": 22,
             "name": "送东西",
             "rootLevel": 0,
-            "icon": "",
+            "icon": "grade",
             "path": "/",
             "parentId": "19",
             "sort": 3
