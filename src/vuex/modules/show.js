@@ -1,37 +1,23 @@
-import {popupDelay} from '@/assets/js/config'
-import {SHOW_POPUP_VISIBLE, SHOW_POPUP_CONTENT, USER_TOKEN} from '../types';
+import {APP_TITLE} from '../types';
 
 const state = {
-  showPopupVisible: false,
-  showPopupContent: {}
+  title: "业务演示"
 };
 
 const getters = {
-  showPopupVisible: state => state.showPopupVisible,
-  showPopupContent: state => state.showPopupContent
+  title: state => state.title
 };
 
 const mutations = {
-  [SHOW_POPUP_VISIBLE](state, visible) {
-    state.showPopupVisible = Boolean(state.popupContent && visible);
-  },
-  [SHOW_POPUP_CONTENT](state, content) {
-    state.showPopupContent = content
+  [APP_TITLE](state, content) {
+    state.title = content;
   }
 };
 
 const actions = {
-  hidePopup({commit}) {
-    commit(SHOW_POPUP_VISIBLE, false)
-  },
-  showPopup({commit}, msg, type = 'error') {
-    commit(SHOW_POPUP_CONTENT, {msg: msg, type: type})
-    commit(SHOW_POPUP_VISIBLE, true)
-    setTimeout(() => {
-      commit(SHOW_POPUP_CONTENT, {})
-      commit(SHOW_POPUP_VISIBLE, false)
-    }, popupDelay)
-  },
+  setTitle({commit}, content) {
+    commit(APP_TITLE, content)
+  }
 };
 
 export default {
