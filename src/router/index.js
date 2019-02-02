@@ -6,6 +6,9 @@ const Home = () => import(/* webpackChunkName: "group-home" */ '@/pages/home');
 const Login = () => import(/* webpackChunkName: "group-login" */ '@/pages/login');
 const Index = () => import(/* webpackChunkName: "group-index" */ '@/pages/index');
 
+const AdminUser = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminUser');
+const AdminRole = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminRole');
+const AdminMenu = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminMenu');
 
 Vue.use(Router);
 
@@ -16,13 +19,23 @@ const routes = [{
     requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
   },
   component: Home,
-  children: [
-    {
-      path: 'index',
-      component: Index,
-      name: 'Index',
-    }
-  ]
+  children: [{
+    path: 'index',
+    component: Index,
+    name: 'Index',
+  }, {
+    path: 'adminUser',
+    component: AdminUser,
+    name: 'AdminUser',
+  }, {
+    path: 'adminRole',
+    component: AdminRole,
+    name: 'AdminRole',
+  }, {
+    path: 'adminMenu',
+    component: AdminMenu,
+    name: 'AdminMenu',
+  }]
 }, {
   path: '*',
   component: () => {

@@ -1,23 +1,63 @@
 {
-  "compilerOptions": {
-    "code":1,
-    "message":"执行成功",
-    "data": [{
-      "roleName":"超级管理员",
-      "roleSN":"dfgsdfgsdfgsdfg",
-      "status":1,
-      "statusStr":"激活",
-      "createTimeStr":"2017-10-09 13:00:00",
-      "updateTimeStr":"2017-10-09 13:00:00",
-      "organization":{
-        "name":"苏州瑞翼",
-        "admin":"asdfasdf1234",
-        "mobile":"153********",
-        "email":"****@163.com",
-        "status":1,
-        "statusStr":"激活"
-      }
-    }]
+  "adminRoleList": {
+    "code": 0,
+    "message": "success",
+    "data": {
+      "content": [
+        {
+          "id": "10",
+          "roleCode": "admin",
+          "name": "系统管理员"
+        },
+        {
+          "id": "11",
+          "roleCode": "manager",
+          "name": "部门经理"
+        },
+        {
+          "id": "12",
+          "roleCode": "test",
+          "name": "财务人员"
+        },
+        {
+          "id": "13",
+          "roleCode": "",
+          "name": "生产人员"
+        },
+        {
+          "id": "14",
+          "roleCode": "",
+          "name": "采购人员"
+        },
+        {
+          "id": "15",
+          "roleCode": "",
+          "name": "库管人员"
+        }
+      ],
+      "pageable": {
+        "sort": {
+          "sorted": false,
+          "unsorted": true
+        },
+        "offset": 0,
+        "pageSize": 10,
+        "pageNumber": 0,
+        "unpaged": false,
+        "paged": true
+      },
+      "totalElements": 1,
+      "totalPages": 1,
+      "last": true,
+      "number": 0,
+      "size": 10,
+      "sort": {
+        "sorted": false,
+        "unsorted": true
+      },
+      "numberOfElements": 1,
+      "first": true
+    }
   },
   "exclude": [
     "node_modules"

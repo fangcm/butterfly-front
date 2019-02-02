@@ -130,12 +130,21 @@
             "path": "/",
             "parentId": "13",
             "sort": 5
+          },
+          {
+            "id": 23,
+            "name": "其他",
+            "rootLevel": 0,
+            "icon": "extension",
+            "path": "/admin/user",
+            "parentId": "19",
+            "sort": 4
           }
         ]
       },
       {
         "id": 19,
-        "name": "其他",
+        "name": "系统管理",
         "rootLevel": 1,
         "icon": "wb_sunny",
         "path": "/",
@@ -144,39 +153,30 @@
         "children": [
           {
             "id": 20,
-            "name": "游戏",
+            "name": "用户管理",
             "rootLevel": 0,
-            "icon": "thumb_up",
-            "path": "/",
+            "icon": "person",
+            "path": "/home/adminUser",
             "parentId": "19",
             "sort": 1
           },
           {
             "id": 21,
-            "name": "发礼品",
+            "name": "角色管理",
             "rootLevel": 0,
-            "icon": "phone_android",
-            "path": "/",
+            "icon": "accessibility",
+            "path": "/home/adminRole",
             "parentId": "19",
             "sort": 2
           },
           {
             "id": 22,
-            "name": "送东西",
+            "name": "菜单管理",
             "rootLevel": 0,
-            "icon": "grade",
-            "path": "/",
+            "icon": "list",
+            "path": "/home/adminMenu",
             "parentId": "19",
             "sort": 3
-          },
-          {
-            "id": 23,
-            "name": "系统管理",
-            "rootLevel": 0,
-            "icon": "extension",
-            "path": "/admin/user",
-            "parentId": "19",
-            "sort": 4
           }
         ]
       }
