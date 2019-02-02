@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
   }
 } else {
   api_config = {
-    baseUrl: 'http://localhost:3335/'
+    baseUrl: '/api/'
   };
 }
 
