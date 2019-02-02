@@ -4,13 +4,11 @@
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
-    <footer-component></footer-component>
   </div>
 </template>
 
 <script>
   import headerComponent from './common/header.vue';
-  import footerComponent from './common/footer.vue';
 
   export default {
     name: 'home',
@@ -18,7 +16,7 @@
       return {}
     },
     components: {
-      headerComponent, footerComponent
+      headerComponent
     },
   }
 </script>

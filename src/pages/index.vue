@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%;">
+  <div>
     <mu-flex direction="column" v-for="menu in menuList">
       <mu-divider></mu-divider>
       <mu-sub-header>{{menu.name}}</mu-sub-header>
@@ -17,8 +17,6 @@
 
 <script>
   import {userMenu} from '@/api/user-api'
-  import {mapActions} from 'vuex'
-  import dataMenu from '@/api/data-menu'
 
   export default {
     name: "index",
@@ -35,12 +33,6 @@
         // 保存登录状态和信息
         this.menuList = data.data;
       });
-    },
-    methods: {
-      ...mapActions([
-        'setUserInfo',
-        'setUserToken'
-      ])
     }
   }
 </script>
