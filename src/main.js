@@ -10,7 +10,7 @@ import 'muse-ui/dist/muse-ui.css'
 
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {
-    FastClick.attach(document.body)
+    fastClick.attach(document.body)
   }, false)
 }
 
