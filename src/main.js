@@ -7,6 +7,8 @@ import router from './router'
 import fastClick from 'fastclick'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {
@@ -15,6 +17,7 @@ if ('addEventListener' in document) {
 }
 
 Vue.use(MuseUI);
+Vue.use(Vuetify)
 
 Vue.config.productionTip = false;
 

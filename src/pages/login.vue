@@ -1,26 +1,26 @@
 <template>
-  <div>
-    <mu-container>
-      <mu-flex class="flex-wrapper" justify-content="center" align-items="center">
-        <mu-form ref="form" :model="form" class="mu-demo-form">
-          <mu-form-item prop="mobile" :rules="mobileRules">
-            <mu-text-field v-model="form.mobile" placeholder="手机号" autocomplete='mobile'/>
-          </mu-form-item>
-          <mu-form-item prop="password" :rules="passwordRules">
-            <mu-text-field v-model="form.password" placeholder="密码"
-                           :action-icon="isShowPassword ? 'visibility_off' : 'visibility'"
-                           :action-click="() => (isShowPassword = !isShowPassword)"
-                           :type="isShowPassword ? 'text' : 'password'" autocomplete='current-password'/>
-          </mu-form-item>
-          <mu-form-item>
-            <mu-button @click="login" color="primary">登录</mu-button>
-          </mu-form-item>
-        </mu-form>
-      </mu-flex>
-    </mu-container>
-  </div>
-</template>
+  <v-container fluid>
+    <v-layout align-center justify-center>
+      <v-flex xs12 sm6>
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <v-text-field prepend-icon="phone" label="手机号"
+                        v-model="mobile" :rules="mobileRules" required></v-text-field>
+          <v-text-field prepend-icon="lock" label="密码" type="password"
+                        v-model="password" :rules="passwordRules" required
+                        @click:append="showPassword = !showPassword"
+                        :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+                        :type="showPassword ? 'text' : 'password'"></v-text-field>
 
+          <v-layout justify-space-around wrap>
+            <v-flex d-flex>
+              <v-btn color="primary" @click="submit">登录</v-btn>
+            </v-flex>
+          </v-layout>
+        </v-form>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</template>
 <script>
   import {mapActions} from 'vuex'
   import {userLogin} from '@/api/core-api'
@@ -34,20 +34,18 @@
     name: 'login',
     data() {
       return {
-        isShowPassword: false,
+        valid: true,
+        showPassword: false,
+        mobile: '',
         mobileRules: [
-          {validate: (val) => !!val, message: '必须填写手机号'},
-          {validate: (val) => REG.isMobile.test(val), message: '不是合法的手机号'}
+          v => !!v || '必须填写手机号',
+          v => REG.isMobile.test(v) || '不是合法的手机号'
         ],
+        password: '',
         passwordRules: [
-          {validate: (val) => !!val, message: '必须填写密码'},
-          {validate: (val) => REG.isPassword.test(val), message: '密码长度应为4-16位'}
-        ],
-        form: {
-          mobile: '',
-          password: '',
-          isAgree: false
-        }
+          v => !!v || '必须填写密码',
+          v => REG.isPassword.test(v) || '密码长度应为4-16位'
+        ]
       }
     },
     components: {},
@@ -56,24 +54,26 @@
         'setUserInfo',
         'setUserToken'
       ]),
-      login() {
-        let _data = {
-          mobile: this.form.mobile,
-          password: this.form.password
-        };
-        // 请求登录
-        userLogin(_data).then((data) => {
-          // 保存登录状态和信息
-          this.setUserInfo(data.data.user);
-          this.setUserToken(data.data.token);
-          if (data.code === 0) {
-            if (this.$route.query.redirect && !this.$route.query.redirect.startsWith('/login')) {
-              this.$router.push({path: this.$route.query.redirect});
-            } else {
-              this.$router.push({path: 'home/index'});
+      submit() {
+        if (this.$refs.form.validate()) {
+          let _data = {
+            mobile: this.mobile,
+            password: this.password
+          };
+          // 请求登录
+          userLogin(_data).then((data) => {
+            // 保存登录状态和信息
+            this.setUserInfo(data.data.user);
+            this.setUserToken(data.data.token);
+            if (data.code === 0) {
+              if (this.$route.query.redirect && !this.$route.query.redirect.startsWith('/login')) {
+                this.$router.push({path: this.$route.query.redirect});
+              } else {
+                this.$router.push({path: 'home/index'});
+              }
             }
-          }
-        });
+          });
+        }
       }
     },
     created() {
@@ -83,10 +83,3 @@
     }
   }
 </script>
-<style scoped>
-  .mu-demo-form {
-    width: 100%;
-    max-width: 420px;
-    align-self: center;
-  }
-</style>
