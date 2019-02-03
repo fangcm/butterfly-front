@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import {userMenu} from '@/api/user-api'
+  import {userMenu} from '@/api/core-api'
 
   export default {
     name: "index",

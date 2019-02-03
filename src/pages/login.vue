@@ -23,7 +23,7 @@
 
 <script>
   import {mapActions} from 'vuex'
-  import {userLogin} from '@/api/user-api'
+  import {userLogin} from '@/api/core-api'
 
   const REG = {
     isMobile: /^1[3456789]\d{9}$/,

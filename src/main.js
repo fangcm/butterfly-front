@@ -6,8 +6,13 @@ import store from './vuex/store'
 import router from './router'
 import fastClick from 'fastclick'
 import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
 
-fastClick.attach(document.body);
+if ('addEventListener' in document) {
+  document.addEventListener('DOMContentLoaded', function () {
+    FastClick.attach(document.body)
+  }, false)
+}
 
 Vue.use(MuseUI);
 

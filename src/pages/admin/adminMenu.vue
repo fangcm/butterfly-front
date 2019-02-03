@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import {adminMenuList} from '@/api/user-api'
+  import {adminMenuList} from '@/api/core-api'
 
 
   export default {

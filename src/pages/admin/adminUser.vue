@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import {adminUserList} from '@/api/user-api'
+  import {adminUserList} from '@/api/core-api'
 
   export default {
     data() {

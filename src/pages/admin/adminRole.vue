@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import {adminRoleList} from '@/api/user-api'
+  import {adminRoleList} from '@/api/core-api'
 
 
   export default {
