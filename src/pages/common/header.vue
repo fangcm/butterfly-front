@@ -42,7 +42,6 @@
         <v-icon>apps</v-icon>
       </v-btn>
     </v-toolbar>
-
   </div>
 </template>
 

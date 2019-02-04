@@ -6,7 +6,7 @@
         <v-divider></v-divider>
         <v-container fluid grid-list-sm>
           <v-layout row wrap>
-            <v-flex v-for="child in menu.children" :key="child.id" xs3>
+            <v-flex v-for="child in menu.children" :key="child.id" xs4>
               <router-link :to="child.path">
                 <v-btn flat :color="child.color">
                   <v-icon>{{child.icon}}</v-icon>

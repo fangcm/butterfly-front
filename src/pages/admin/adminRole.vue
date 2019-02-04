@@ -1,25 +1,39 @@
 <template>
-  <div>
-    <mu-paper :z-depth="1">
-      <mu-data-table stripe selectable :columns="columns" :data="list" no-data-text="没有数据">
-        <template slot-scope="scope">
-          <td>{{scope.row.name}}</td>
-          <td>{{scope.row.roleCode}}</td>
-          <td class="is-center">
-            <mu-button small icon title="编辑">
-              <mu-icon value="edit"></mu-icon>
-            </mu-button>
-            <mu-button small icon title="删除">
-              <mu-icon value="delete"></mu-icon>
-            </mu-button>
-            <mu-button small icon title="其他">
-              <mu-icon value="flag"></mu-icon>
-            </mu-button>
-          </td>
+  <v-layout row>
+    <v-flex xs12 sm6 offset-sm3>
+      <v-list two-line>
+        <template v-for="item in list">
+          <v-list-tile @click="" avatar>
+            <v-list-tile-avatar>
+              <v-icon>accessibility</v-icon>
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                {{item.name}}
+              </v-list-tile-title>
+              <v-list-tile-sub-title v-if="item.roleCode">
+                编码 &mdash; {{ item.roleCode }}
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-layout row wrap>
+                <v-btn icon>
+                  <v-icon color="pink">edit</v-icon>
+                </v-btn>
+                <v-btn icon ripple>
+                  <v-icon color="pink">delete</v-icon>
+                </v-btn>
+                <v-btn icon ripple>
+                  <v-icon color="grey lighten-1">flag</v-icon>
+                </v-btn>
+              </v-layout>
+            </v-list-tile-action>
+          </v-list-tile>
+          <v-divider/>
         </template>
-      </mu-data-table>
-    </mu-paper>
-  </div>
+      </v-list>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -29,15 +43,9 @@
   export default {
     data() {
       return {
-        columns: [
-          {title: '角色', name: 'name', width: 300},
-          {title: '编码', name: 'roleCode', width: 150},
-          {title: '操作', name: '', width: 160, align: 'center'}
-        ],
         list: []
       }
     },
-    computed: {},
     methods: {},
     created() {
       let _data = {};

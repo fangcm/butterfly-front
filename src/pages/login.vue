@@ -3,6 +3,7 @@
     <v-layout align-center justify-center>
       <v-flex xs12 sm6>
         <v-form ref="form" v-model="valid" lazy-validation>
+          <v-img src="../../static/logo.png"/>
           <v-text-field prepend-icon="phone" label="手机号"
                         v-model="mobile" :rules="mobileRules" required></v-text-field>
           <v-text-field prepend-icon="lock" label="密码" type="password"

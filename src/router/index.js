@@ -23,18 +23,30 @@ const routes = [{
     path: 'index',
     component: Index,
     name: 'Index',
+    meta: {
+      title: ''
+    }
   }, {
     path: 'adminUser',
     component: AdminUser,
     name: 'AdminUser',
+    meta: {
+      title: '用户管理'
+    }
   }, {
     path: 'adminRole',
     component: AdminRole,
     name: 'AdminRole',
+    meta: {
+      title: '角色管理'
+    }
   }, {
     path: 'adminMenu',
     component: AdminMenu,
     name: 'AdminMenu',
+    meta: {
+      title: '菜单管理'
+    }
   }]
 }, {
   path: '*',
