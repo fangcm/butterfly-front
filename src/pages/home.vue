@@ -1,16 +1,9 @@
 <template>
   <div>
     <header-component></header-component>
-    <v-content>
-      <v-breadcrumbs>
-        <v-icon slot="divider">forward</v-icon>
-        <v-breadcrumbs-item>
-          <router-link to="/home/index" exact>首页</router-link>
-        </v-breadcrumbs-item>
-        <v-breadcrumbs-item v-if="breadcrumbs">{{ breadcrumbs }}</v-breadcrumbs-item>
-      </v-breadcrumbs>
+    <keep-alive>
       <router-view></router-view>
-    </v-content>
+    </keep-alive>
   </div>
 </template>
 
@@ -19,17 +12,8 @@
 
   export default {
     name: 'home',
-    data() {
-      return {}
-    },
     components: {
       headerComponent
-    },
-    methods: {},
-    computed: {
-      breadcrumbs() {
-        return this.$route.meta.title;
-      }
     }
   }
 </script>

@@ -24,7 +24,7 @@ const routes = [{
     component: Index,
     name: 'Index',
     meta: {
-      title: ''
+      title: '首页'
     }
   }, {
     path: 'adminUser',

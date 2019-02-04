@@ -1,13 +1,12 @@
 <template>
   <div>
     <!-- 侧边栏 -->
-    <v-navigation-drawer v-model="drawer" absolute temporary app>
+    <v-navigation-drawer v-model="drawer" fixed temporary app>
       <v-list class="pa-1">
         <v-list-tile avatar>
           <v-list-tile-avatar>
             <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="">
           </v-list-tile-avatar>
-
           <v-list-tile-content>
             <v-list-tile-title>John Leider</v-list-tile-title>
           </v-list-tile-content>
@@ -36,7 +35,11 @@
     </v-navigation-drawer>
     <v-toolbar dense fixed clipped-left app dark color="primary">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{title}}</v-toolbar-title>
+      <v-toolbar-title>
+        {{title}}
+        <v-icon slot="divider" v-if="breadcrumbs">chevron_right</v-icon>
+        {{ breadcrumbs }}
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon @click="clickHome">
         <v-icon>apps</v-icon>
@@ -85,6 +88,9 @@
       ]),
       isLogin() {
         return !(this.userToken === null || this.userToken === undefined || this.userToken === '')
+      },
+      breadcrumbs() {
+        return this.$route.meta.title
       }
     }
   }
