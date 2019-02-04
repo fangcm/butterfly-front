@@ -1,30 +1,39 @@
 <template>
-  <div>
-    <mu-list textline="three-line">
-      <template v-for="item in list">
-        <mu-sub-header>
-          {{item.name}}
-        </mu-sub-header>
-        <template v-for="child in item.children">
-          <mu-list-item avatar :ripple="false" button>
-            <mu-list-item-action>
-              <mu-avatar>
-                <mu-icon :value="child.icon"></mu-icon>
-              </mu-avatar>
-            </mu-list-item-action>
-            <mu-list-item-content>
-              <mu-list-item-title>{{child.name}}</mu-list-item-title>
-              <mu-list-item-sub-title>
-                <span style="color: rgba(0, 0, 196, .87)">跳转路径 -</span>{{child.path}}<br/>
-                <span style="color: rgba(0, 0, 196, .87)">排序 -</span>{{child.sort}}
-              </mu-list-item-sub-title>
-            </mu-list-item-content>
-          </mu-list-item>
-          <mu-divider></mu-divider>
+  <v-layout row>
+    <v-flex xs12 sm6 offset-sm3>
+      <v-list two-line>
+        <template v-for="item in list">
+          <v-subheader> {{item.name}}</v-subheader>
+          <template v-for="child in item.children">
+            <v-list-tile @click="">
+              <v-list-tile-action>
+                <v-icon>{{child.icon}}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  {{child.name}}
+                </v-list-tile-title>
+                <v-list-tile-sub-title>
+                  <span style="color: rgba(0, 0, 196, .87)">链接 -</span>{{child.path}}
+                  <span style="color: rgba(0, 0, 196, .87)">排序 -</span>{{child.sort}}
+                </v-list-tile-sub-title>
+              </v-list-tile-content>
+              <v-btn icon small>
+                <v-icon color="pink">edit</v-icon>
+              </v-btn>
+              <v-btn icon small>
+                <v-icon color="pink">delete</v-icon>
+              </v-btn>
+              <v-btn icon small>
+                <v-icon color="grey lighten-1">flag</v-icon>
+              </v-btn>
+            </v-list-tile>
+            <v-divider/>
+          </template>
         </template>
-      </template>
-    </mu-list>
-  </div>
+      </v-list>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>

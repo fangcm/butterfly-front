@@ -1,9 +1,9 @@
 <template>
   <div>
     <header-component></header-component>
-    <keep-alive>
+    <v-content>
       <router-view></router-view>
-    </keep-alive>
+    </v-content>
   </div>
 </template>
 
