@@ -1,15 +1,7 @@
 <template>
   <div>
-    <v-toolbar fixed dark clipped-left color="primary">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{title}}</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon @click="clickHome">
-        <v-icon>apps</v-icon>
-      </v-btn>
-    </v-toolbar>
     <!-- 侧边栏 -->
-    <v-navigation-drawer v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-model="drawer" absolute temporary app>
       <v-list class="pa-1">
         <v-list-tile avatar>
           <v-list-tile-avatar>
@@ -42,6 +34,15 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
+    <v-toolbar dense fixed clipped-left app dark color="primary">
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title>{{title}}</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="clickHome">
+        <v-icon>apps</v-icon>
+      </v-btn>
+    </v-toolbar>
+
   </div>
 </template>
 

@@ -16,6 +16,7 @@
           "name": "表格",
           "rootLevel": 0,
           "icon": "assignment",
+          "color":"blue darken-2",
           "path": "/",
           "parentId": "10",
           "sort": 1
@@ -45,6 +46,7 @@
           "name": "菜品",
           "rootLevel": 0,
           "icon": "restaurant_menu",
+          "color":"orange darken-2",
           "path": "/",
           "parentId": "13",
           "sort": 1
@@ -164,6 +166,7 @@
           "name": "角色管理",
           "rootLevel": 0,
           "icon": "accessibility",
+          "color":"green darken-2",
           "path": "/home/adminRole",
           "parentId": "19",
           "sort": 2
