@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="inspire">
     <header-component></header-component>
     <v-content>
       <v-container fluid fill-height>
