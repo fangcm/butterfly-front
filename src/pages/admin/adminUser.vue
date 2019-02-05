@@ -1,31 +1,60 @@
 <template>
-  <div>
-    <mu-paper :z-depth="1">
-      <mu-data-table stripe selectable :columns="columns" :data="list" no-data-text="没有数据">
-        <template slot-scope="scope">
-          <td>{{scope.row.mobile}}</td>
-          <td>{{scope.row.nickName}}</td>
-          <td style="color: red">{{scope.row.status===0 ? "":"禁用"}}</td>
-          <td>{{scope.row.email}}</td>
-          <td>{{scope.row.remarks}}</td>
-          <td class="is-center">
-            <mu-button small icon title="编辑">
-              <mu-icon value="edit"></mu-icon>
-            </mu-button>
-            <mu-button small icon title="删除">
-              <mu-icon value="delete"></mu-icon>
-            </mu-button>
-            <mu-button small icon v-if="scope.row.status===0" title="禁用">
-              <mu-icon value="report"></mu-icon>
-            </mu-button>
-            <mu-button small icon v-if="scope.row.status===1" title="启用">
-              <mu-icon value="flag"></mu-icon>
-            </mu-button>
-          </td>
-        </template>
-      </mu-data-table>
-    </mu-paper>
-  </div>
+  <v-container fluid grid-list-xl>
+    <v-toolbar>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>print</v-icon>
+      </v-btn>
+
+      <v-btn icon @click=add_good>
+        <v-icon>add</v-icon>
+      </v-btn>
+
+    </v-toolbar>
+
+    <v-layout column>
+
+      <v-flex v-for="item in list" :key="item.id">
+        <v-card color="white" flat>
+          <v-card-title>
+            <v-icon left> edit</v-icon>
+            <span class="title blue-grey--text text--darken-3">手机:{{item.mobile}}</span>
+            <span class="title red--text text--darken-3" v-if="item.status===1">(禁用)</span>
+          </v-card-title>
+          <v-card-text class="font-weight-light">
+            <span class="title blue-grey--text text--darken-3" v-if="item.nickName">昵称:{{item.nickName}}</span>
+            {{item.email}},
+            {{item.remarks}},
+
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn icon>
+              <v-icon color="blue-grey darken-3" title="编辑">edit</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon color="blue-grey darken-3" title="删除">delete</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon color="blue-grey darken-3" title="增加">add</v-icon>
+            </v-btn>
+            <v-btn icon v-if="item.status===0">
+              <v-icon color="blue-grey darken-3" title="禁用">report</v-icon>
+            </v-btn>
+            <v-btn icon v-if="item.status===1">
+              <v-icon color="blue-grey darken-3" title="启用">flag</v-icon>
+            </v-btn>
+          </v-card-actions>
+
+        </v-card>
+
+      </v-flex>
+
+    </v-layout>
+
+  </v-container>
+
 </template>
 
 <script>
@@ -34,18 +63,9 @@
   export default {
     data() {
       return {
-        columns: [
-          {title: '手机号', name: 'mobile', width: 140},
-          {title: '昵称', name: 'nickName', width: 110},
-          {title: '状态', name: 'status', width: 80},
-          {title: '电子邮件', name: 'email', width: 250},
-          {title: '备注', name: 'remarks', width: 200},
-          {title: '操作', name: '', width: 160, align: 'center'}
-        ],
         list: []
       }
     },
-    computed: {},
     methods: {},
     created() {
       let _data = {};

@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/vuex/store'
 import router from '@/router/index'
 import {stringify} from 'qs'
-import Toast from 'muse-ui-toast'
+import {VAlert} from 'vuetify'
 
 // axios 配置
 axios.defaults.timeout = 10000;
@@ -47,14 +47,14 @@ axios.interceptors.response.use(
           break;
         case 500:
           //store.dispatch(types.AJAX_ERROR,500);
-          Toast.message('网络超时，请刷新重试');
+          VAlert.message('网络超时，请刷新重试');
           break;
         case 404:
           //store.dispatch(types.AJAX_ERROR,404);
-          Toast.message('网页丢失，请刷新重试');
+          VAlert.message('网页丢失，请刷新重试');
           break;
         default:
-          Toast.message('程序员罢工了,哄哄Ta去');
+          VAlert.message('程序员罢工了,哄哄Ta去');
       }
     }
     //console.log(JSON.stringify(error));/
@@ -85,7 +85,7 @@ export function fetch(url, options) {
       } else {
         switch (response.data.code) {
           case -2401:
-            Toast.warning('登录无效');
+            VAlert.warning('登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -93,7 +93,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -2408:
-            Toast.message(response.data.msg || '登录无效');
+            VAlert.message(response.data.msg || '登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -101,7 +101,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -2418:
-            Toast.message(response.data.msg || '登录无效');
+            VAlert.message(response.data.msg || '登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -119,7 +119,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case 0:
-            Toast.message(response.data.msg || '身份过期,请重新登入');
+            VAlert.message(response.data.msg || '身份过期,请重新登入');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -127,15 +127,15 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -1:
-            Toast.message(response.data.msg);
+            VAlert.message(response.data.msg);
             reject(response.data);
             break;
           case 9999:
-            Toast.message(response.data.msg || '什么都没有留下');
+            VAlert.message(response.data.msg || '什么都没有留下');
             reject(response.data);
             break;
           default:
-            Toast.warning(response.data.msg || '程序员罢工了,哄哄她去');
+            VAlert.warning(response.data.msg || '程序员罢工了,哄哄她去');
             reject(response.data);
         }
         //store.commit('SET_LOADING', false)

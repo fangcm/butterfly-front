@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- 侧边栏 -->
-    <v-navigation-drawer v-model="drawer" fixed temporary app>
-      <v-list class="pa-1">
+    <v-navigation-drawer v-model="drawer" fixed clipped app>
+      <v-list dense class="pa-1">
         <v-list-tile avatar>
           <v-list-tile-avatar>
             <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="">
@@ -13,7 +13,7 @@
         </v-list-tile>
       </v-list>
 
-      <v-list class="pt-0" dense>
+      <v-list dense class="pt-0" dense>
         <v-divider></v-divider>
         <v-list-tile @click="toPage('/login')">
           <v-list-tile-action>
@@ -41,7 +41,7 @@
         {{ breadcrumbs }}
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click="clickHome">
+      <v-btn icon @click="toPage('/home/index')">
         <v-icon>apps</v-icon>
       </v-btn>
     </v-toolbar>
@@ -68,9 +68,6 @@
       ]),
       clickMenu() {
         this.$refs.menuComponent.toggle()
-      },
-      clickHome() {
-        this.$router.push({path: '/home/index'});
       },
       toPage(path) {
         this.$router.push(path)

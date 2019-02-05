@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <v-app>
     <header-component></header-component>
     <v-content>
-      <router-view></router-view>
+      <v-container fluid fill-height>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </v-container>
     </v-content>
-  </div>
+  </v-app>
 </template>
 
 <script>

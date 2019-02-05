@@ -1,5 +1,5 @@
 <template>
-  <v-layout row>
+  <v-layout align-center>
     <v-flex xs12 sm6 offset-sm3>
       <template v-for="menu in menuList">
         <v-subheader>{{menu.name}}</v-subheader>
@@ -42,7 +42,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

@@ -5,7 +5,7 @@
         <template v-for="item in list">
           <v-subheader> {{item.name}}</v-subheader>
           <template v-for="child in item.children">
-            <v-list-tile @click="">
+            <v-card @click="">
               <v-list-tile-action>
                 <v-icon>{{child.icon}}</v-icon>
               </v-list-tile-action>
@@ -18,6 +18,8 @@
                   <span style="color: rgba(0, 0, 196, .87)">排序 -</span>{{child.sort}}
                 </v-list-tile-sub-title>
               </v-list-tile-content>
+              <v-card-actions>
+                <v-spacer></v-spacer>
               <v-btn icon small>
                 <v-icon color="pink">edit</v-icon>
               </v-btn>
@@ -27,7 +29,8 @@
               <v-btn icon small>
                 <v-icon color="grey lighten-1">flag</v-icon>
               </v-btn>
-            </v-list-tile>
+              </v-card-actions>
+              </v-card>
             <v-divider/>
           </template>
         </template>
