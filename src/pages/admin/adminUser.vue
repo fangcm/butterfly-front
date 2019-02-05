@@ -1,21 +1,20 @@
 <template>
   <v-container fluid grid-list-xl>
     <v-toolbar>
+      <v-toolbar-title color="purple lighten-2">食材订购单()</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>print</v-icon>
       </v-btn>
-
-      <v-btn icon @click=add_good>
-        <v-icon>add</v-icon>
+      <v-btn icon to="orders/order">
+        <v-icon>add_circle_outline</v-icon>
       </v-btn>
 
     </v-toolbar>
 
     <v-layout column>
-
       <v-flex v-for="item in list" :key="item.id">
-        <v-card color="white" flat>
+        <v-card color="white">
           <v-card-title>
             <v-icon left> edit</v-icon>
             <span class="title blue-grey--text text--darken-3">手机:{{item.mobile}}</span>
@@ -50,9 +49,8 @@
         </v-card>
 
       </v-flex>
-
+      <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0"/>
     </v-layout>
-
   </v-container>
 
 </template>
@@ -63,16 +61,44 @@
   export default {
     data() {
       return {
+        page: 1, // 默认载入第一页
+        atThisPage: true, // 在使用了keep-alive包裹显示组件的情况下，需要判断当前激活的组件是不是此组件，是的话才加载数据
         list: []
       }
     },
-    methods: {},
+    methods: {
+      loadMore: function () {
+        if (this.atThisPage) {
+          let _data = {};
+          adminUserList(_data).then((data) => {
+            // 保存登录状态和信息
+            this.list.concat(data.data.content);
+          });
+          this.page++
+        }
+      },
+      filterData: function (startDate, endDate, mealType) {
+        if (this.atThisPage) {
+          let _data = {};
+          adminUserList(_data).then((data) => {
+            // 保存登录状态和信息
+            this.list = data.data.content;
+          });
+        }
+      }
+    },
     created() {
       let _data = {};
       adminUserList(_data).then((data) => {
         // 保存登录状态和信息
         this.list = data.data.content;
       });
+    },
+    activated() {
+      this.atThisPage = true
+    },
+    deactivated() {
+      this.atThisPage = false
     }
   }
 </script>

@@ -5,6 +5,7 @@ import router from './router'
 import fastClick from 'fastclick'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import infiniteScroll from 'vue-infinite-scroll'
 
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {
@@ -13,6 +14,7 @@ if ('addEventListener' in document) {
 }
 
 Vue.use(Vuetify);
+Vue.use(infiniteScroll)
 
 Vue.config.productionTip = false;
 
