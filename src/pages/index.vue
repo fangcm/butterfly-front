@@ -7,12 +7,10 @@
         <v-container fluid grid-list-sm>
           <v-layout row wrap>
             <v-flex v-for="child in menu.children" :key="child.id" xs4>
-              <router-link :to="child.path">
-                <v-btn flat :color="child.color">
-                  <v-icon>{{child.icon}}</v-icon>
-                  <span>{{child.name}}</span>
-                </v-btn>
-              </router-link>
+              <v-btn flat :color="child.color" :to="child.path">
+                <v-icon>{{child.icon}}</v-icon>
+                <span>{{child.name}}</span>
+              </v-btn>
             </v-flex>
           </v-layout>
         </v-container>
