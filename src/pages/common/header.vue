@@ -13,7 +13,7 @@
         </v-list-tile>
       </v-list>
 
-      <v-list dense class="pt-0" dense>
+      <v-list dense class="pt-0">
         <v-divider></v-divider>
         <v-list-tile @click="toPage('/login')">
           <v-list-tile-action>

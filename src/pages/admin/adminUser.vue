@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid grid-list-xl>
-    <v-toolbar>
+  <v-container fluid>
+    <v-toolbar dense>
       <v-toolbar-title color="purple lighten-2">食材订购单()</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
@@ -9,11 +9,10 @@
       <v-btn icon to="orders/order">
         <v-icon>add_circle_outline</v-icon>
       </v-btn>
-
     </v-toolbar>
 
     <v-layout column>
-      <v-flex v-for="item in list" :key="item.id">
+      <v-flex v-for="item in list" :key="item.id" pa-0 ma-1>
         <v-card color="white">
           <v-card-title>
             <v-icon left> edit</v-icon>
