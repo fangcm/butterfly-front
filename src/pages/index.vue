@@ -1,5 +1,5 @@
 <template>
-  <v-layout align-center>
+  <v-layout fluid pa-1 ma-0>
     <v-flex xs12 sm12 md12>
       <template v-for="menu in menuList">
         <v-subheader>{{menu.name}}</v-subheader>
