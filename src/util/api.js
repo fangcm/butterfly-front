@@ -46,14 +46,14 @@ axios.interceptors.response.use(
           break;
         case 500:
           //store.dispatch(types.AJAX_ERROR,500);
-          this.$toast.error('网络超时，请刷新重试');
+          this.$toast.fail('网络超时，请刷新重试');
           break;
         case 404:
           //store.dispatch(types.AJAX_ERROR,404);
-          this.$toast.error('网页丢失，请刷新重试');
+          this.$toast.fail('网页丢失，请刷新重试');
           break;
         default:
-          this.$toast.error('程序员罢工了,哄哄Ta去');
+          this.$toast.fail('程序员罢工了,哄哄Ta去');
       }
     }
     //console.log(JSON.stringify(error));/
@@ -84,7 +84,7 @@ export function fetch(url, options) {
       } else {
         switch (response.data.code) {
           case -2401:
-            this.$toast.error('登录无效');
+            this.$toast.fail('登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -92,7 +92,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -2408:
-            VAlert.message(response.data.msg || '登录无效');
+            this.$toast.fail(response.data.msg || '登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -100,7 +100,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -2418:
-            VAlert.message(response.data.msg || '登录无效');
+            this.$toast.fail(response.data.msg || '登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -118,7 +118,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case 0:
-            VAlert.message(response.data.msg || '身份过期,请重新登入');
+            this.$toast.fail(response.data.msg || '身份过期,请重新登入');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -126,15 +126,15 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -1:
-            VAlert.message(response.data.msg);
+            this.$toast.fail(response.data.msg);
             reject(response.data);
             break;
           case 9999:
-            VAlert.message(response.data.msg || '什么都没有留下');
+            this.$toast.fail(response.data.msg || '什么都没有留下');
             reject(response.data);
             break;
           default:
-            this.$toast.error(response.data.msg || '程序员罢工了,哄哄她去');
+            this.$toast.fail(response.data.msg || '程序员罢工了,哄哄她去');
             reject(response.data);
         }
         //store.commit('SET_LOADING', false)

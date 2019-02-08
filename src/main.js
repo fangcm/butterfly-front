@@ -3,10 +3,30 @@ import App from './App'
 import store from './vuex/store'
 import router from './router'
 import fastClick from 'fastclick'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
 import infiniteScroll from 'vue-infinite-scroll'
-import toast from "@/components/toast"
+
+import 'vuetify/dist/vuetify.min.css'
+import VApp from 'vuetify/es5/components/VApp'
+import VBtn from 'vuetify/es5/components/VBtn'
+import VCard from 'vuetify/es5/components/VCard'
+import VDivider from 'vuetify/es5/components/VDivider'
+import VDialog from 'vuetify/es5/components/VDialog'
+import VForm from 'vuetify/es5/components/VForm'
+import VGrid from 'vuetify/es5/components/VGrid'
+import VIcon from 'vuetify/es5/components/VIcon'
+import VImg from 'vuetify/es5/components/VImg'
+import VList from 'vuetify/es5/components/VList'
+import VNavigationDrawer from 'vuetify/es5/components/VNavigationDrawer'
+import VSubheader from 'vuetify/es5/components/VSubheader'
+import VTextarea from 'vuetify/es5/components/VTextarea'
+import VTextField from 'vuetify/es5/components/VTextField'
+import VToolbar from 'vuetify/es5/components/VToolbar'
+import VTooltip from 'vuetify/es5/components/VTooltip'
+import VSwitch from 'vuetify/es5/components/VSwitch'
+import Vuetify from 'vuetify/es5/components/Vuetify'
+
+import Toast from 'vant/lib/toast';
+import 'vant/lib/toast/style';
 
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {
@@ -14,23 +34,43 @@ if ('addEventListener' in document) {
   }, false)
 }
 
-Vue.use(Vuetify);
-Vue.use(infiniteScroll)
-Vue.use(toast, {
-  x: 'center', y: 'top',
-  color: 'info', icon: 'info',
-  timeout: 5000,
-  dismissable: true,
-  autoHeight: false,
-  multiLine: false,
-  vertical: false,
-  shorts: {
-    custom: {
-      color: 'purple'
-    }
+Vue.use(Vuetify, {
+  // iconfont: 'mdi',
+  components: {
+    VDialog,
+    VForm,
+    VTextarea,
+    VImg,
+    VTextField,
+    VSubheader,
+    VDivider,
+    VApp,
+    VCard,
+    VNavigationDrawer,
+    VList,
+    VBtn,
+    VIcon,
+    VGrid,
+    VToolbar,
+    VTooltip,
+    VSwitch
   },
-  property: '$toast' // default
-})
+  theme: {
+    "primary": "#2DC6C1",
+    "secondary": "#424242",
+    "accent": "#82B1FF",
+    "error": "#FF5252",
+    "info": "#2196F3",
+    "success": "#13C56B",
+    "warning": "#FFC107",
+    "tabscolor": "#7F7F7F"
+  }
+});
+
+Vue.use(infiniteScroll);
+Vue.use(Toast);
+
+Vue.prototype.$toast = Toast;
 
 Vue.config.productionTip = false;
 
