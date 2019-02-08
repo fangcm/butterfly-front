@@ -39,8 +39,6 @@
         <v-icon>home</v-icon>
       </v-btn>
       <v-toolbar-title>
-        {{title}}
-        <v-icon slot="divider" v-if="breadcrumbs">chevron_right</v-icon>
         {{ breadcrumbs }}
       </v-toolbar-title>
     </v-toolbar>
@@ -79,7 +77,6 @@
     components: {},
     computed: {
       ...mapGetters([
-        'title',
         'userToken'
       ]),
       isLogin() {
