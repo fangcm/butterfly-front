@@ -1,35 +1,81 @@
 <template>
-  <v-layout row>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-list two-line>
-        <template v-for="item in list">
-          <v-list-tile @click="">
-            <v-list-tile-action>
-              <v-icon>accessibility</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>
-                {{item.name}}
-              </v-list-tile-title>
-              <v-list-tile-sub-title v-if="item.roleCode">
-                代码 &mdash; {{ item.roleCode }}
-              </v-list-tile-sub-title>
-            </v-list-tile-content>
-            <v-btn icon small>
-              <v-icon color="pink">edit</v-icon>
+  <v-container fluid pa-1 ma-0>
+    <v-layout column>
+      <v-flex v-for="item in list" :key="item.id" pa-0 ma-1>
+        <v-card color="white">
+          <v-flex xs12>
+            <v-card-text class="font-weight-light">
+              <v-layout row wrap>
+                <v-flex shrink pa-2>
+                  <v-icon>accessibility</v-icon>
+                  <span class="subheading mr-2"> {{item.name}}</span>
+                </v-flex>
+              </v-layout>
+              <v-layout row wrap>
+                <v-flex shrink pa-2>
+                  <span class=" mr-2" v-if="item.roleCode">代码 {{item.roleCode}}</span>
+                </v-flex>
+              </v-layout>
+            </v-card-text>
+          </v-flex>
+
+          <v-card-actions class="pa-0">
+            <v-spacer></v-spacer>
+            <v-btn icon>
+              <v-icon color="blue-grey darken-3" title="编辑">edit</v-icon>
             </v-btn>
-            <v-btn icon small>
-              <v-icon color="pink">delete</v-icon>
+            <v-btn icon>
+              <v-icon color="blue-grey darken-3" title="删除">delete</v-icon>
             </v-btn>
-            <v-btn icon small>
-              <v-icon color="grey lighten-1">flag</v-icon>
-            </v-btn>
-          </v-list-tile>
-          <v-divider/>
-        </template>
-      </v-list>
-    </v-flex>
-  </v-layout>
+          </v-card-actions>
+
+        </v-card>
+
+      </v-flex>
+      <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0"/>
+    </v-layout>
+
+    <v-speed-dial bottom right fixed>
+      <v-btn slot="activator" color="blue darken-2" dark fab>
+        <v-icon>account_circle</v-icon>
+        <v-icon>close</v-icon>
+      </v-btn>
+
+      <v-tooltip left>
+        <v-btn fab dark small color="indigo" slot="activator" @click="dialog=!dialog">
+          <v-icon>edit</v-icon>
+        </v-btn>
+        <span>Add Note</span>
+      </v-tooltip>
+      <v-tooltip left>
+        <v-btn fab dark small color="yellow" slot="activator" @click="dialog=!dialog">
+          <v-icon>edit</v-icon>
+        </v-btn>
+        <span>Add Log Entry</span>
+      </v-tooltip>
+      <v-tooltip left>
+        <v-btn fab dark small color="green" slot="activator" @click="dialog=!dialog">
+          <v-icon>add</v-icon>
+        </v-btn>
+        <span>Add and Activate New Task</span>
+      </v-tooltip>
+      <v-tooltip left>
+        <v-btn fab dark small color="gray" slot="activator" @click="dialog=!dialog">
+          <v-icon>add</v-icon>
+        </v-btn>
+        <span>Add New Inactive Task</span>
+      </v-tooltip>
+      <v-tooltip left>
+        <v-btn fab dark small color="red" slot="activator">
+          <v-icon>delete</v-icon>
+        </v-btn>
+        <span>Delete Task</span>
+      </v-tooltip>
+
+    </v-speed-dial>
+
+  </v-container>
+
 </template>
 
 <script>

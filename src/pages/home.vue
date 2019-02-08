@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <header-component></header-component>
     <v-content>
-      <v-container fluid fill-height>
+      <v-container fluid fill-height pa-1 ma-0>
         <keep-alive>
           <router-view></router-view>
         </keep-alive>

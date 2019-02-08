@@ -1,6 +1,6 @@
 <template>
   <v-layout align-center>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex xs12 sm12 md12>
       <template v-for="menu in menuList">
         <v-subheader>{{menu.name}}</v-subheader>
         <v-divider></v-divider>

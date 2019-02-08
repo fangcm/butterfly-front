@@ -5,7 +5,7 @@
       <v-list dense class="pa-1">
         <v-list-tile avatar>
           <v-list-tile-avatar>
-            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="">
+            <v-img class="elevation-6" :src="require('@/assets/image/head.jpg')"/>
           </v-list-tile-avatar>
           <v-list-tile-content>
             <v-list-tile-title>John Leider</v-list-tile-title>
@@ -35,15 +35,14 @@
     </v-navigation-drawer>
     <v-toolbar dense fixed clipped-left app dark color="primary">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-btn icon @click="toPage('/home/index')">
+        <v-icon>home</v-icon>
+      </v-btn>
       <v-toolbar-title>
         {{title}}
         <v-icon slot="divider" v-if="breadcrumbs">chevron_right</v-icon>
         {{ breadcrumbs }}
       </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon @click="toPage('/home/index')">
-        <v-icon>apps</v-icon>
-      </v-btn>
     </v-toolbar>
   </div>
 </template>

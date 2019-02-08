@@ -2,7 +2,6 @@ import axios from 'axios'
 import store from '@/vuex/store'
 import router from '@/router/index'
 import {stringify} from 'qs'
-import {VAlert} from 'vuetify'
 
 // axios 配置
 axios.defaults.timeout = 10000;
@@ -47,14 +46,14 @@ axios.interceptors.response.use(
           break;
         case 500:
           //store.dispatch(types.AJAX_ERROR,500);
-          VAlert.message('网络超时，请刷新重试');
+          this.$toast.error('网络超时，请刷新重试');
           break;
         case 404:
           //store.dispatch(types.AJAX_ERROR,404);
-          VAlert.message('网页丢失，请刷新重试');
+          this.$toast.error('网页丢失，请刷新重试');
           break;
         default:
-          VAlert.message('程序员罢工了,哄哄Ta去');
+          this.$toast.error('程序员罢工了,哄哄Ta去');
       }
     }
     //console.log(JSON.stringify(error));/
@@ -85,7 +84,7 @@ export function fetch(url, options) {
       } else {
         switch (response.data.code) {
           case -2401:
-            VAlert.warning('登录无效');
+            this.$toast.error('登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -135,7 +134,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           default:
-            VAlert.warning(response.data.msg || '程序员罢工了,哄哄她去');
+            this.$toast.error(response.data.msg || '程序员罢工了,哄哄她去');
             reject(response.data);
         }
         //store.commit('SET_LOADING', false)
