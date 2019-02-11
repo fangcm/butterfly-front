@@ -23,9 +23,10 @@ import VTextField from 'vuetify/es5/components/VTextField'
 import VToolbar from 'vuetify/es5/components/VToolbar'
 import VTooltip from 'vuetify/es5/components/VTooltip'
 import VSwitch from 'vuetify/es5/components/VSwitch'
+import VSpeedDial from 'vuetify/es5/components/VSpeedDial'
 import Vuetify from 'vuetify/es5/components/Vuetify'
 
-import Toast from 'vant/lib/toast';
+import VantToast from 'vant/lib/toast';
 import 'vant/lib/toast/style';
 
 if ('addEventListener' in document) {
@@ -53,7 +54,8 @@ Vue.use(Vuetify, {
     VGrid,
     VToolbar,
     VTooltip,
-    VSwitch
+    VSwitch,
+    VSpeedDial
   },
   theme: {
     "primary": "#2DC6C1",
@@ -68,9 +70,9 @@ Vue.use(Vuetify, {
 });
 
 Vue.use(infiniteScroll);
-Vue.use(Toast);
+Vue.use(VantToast);
 
-Vue.prototype.$toast = Toast;
+Vue.prototype.$toast = VantToast;
 
 Vue.config.productionTip = false;
 

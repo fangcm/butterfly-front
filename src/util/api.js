@@ -2,6 +2,8 @@ import axios from 'axios'
 import store from '@/vuex/store'
 import router from '@/router/index'
 import {stringify} from 'qs'
+import VantToast from 'vant/lib/toast';
+
 
 // axios 配置
 axios.defaults.timeout = 10000;
@@ -32,8 +34,6 @@ axios.interceptors.response.use(
       //console.log(error.response);
       switch (error.response.status) {
         case 401:
-          // 401 清除token信息并跳转到登录页面
-          //store.commit(types.LOGOUT);
           router.currentRoute.path !== '/login' &&
           router.replace({
             path: '/login',
@@ -45,19 +45,15 @@ axios.interceptors.response.use(
         case 504:
           break;
         case 500:
-          //store.dispatch(types.AJAX_ERROR,500);
-          this.$toast.fail('网络超时，请刷新重试');
+          VantToast.fail('网络超时，请刷新重试');
           break;
         case 404:
-          //store.dispatch(types.AJAX_ERROR,404);
-          this.$toast.fail('网页丢失，请刷新重试');
+          VantToast.fail('网页丢失，请刷新重试');
           break;
         default:
-          this.$toast.fail('程序员罢工了,哄哄Ta去');
+          VantToast.fail('程序员罢工了,哄哄Ta去');
       }
     }
-    //console.log(JSON.stringify(error));/
-    //console : Error: Request failed with status code 402
     return Promise.reject(error.response.data)
   });
 
@@ -84,7 +80,7 @@ export function fetch(url, options) {
       } else {
         switch (response.data.code) {
           case -2401:
-            this.$toast.fail('登录无效');
+            VantToast.fail('登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -92,7 +88,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -2408:
-            this.$toast.fail(response.data.msg || '登录无效');
+            VantToast.fail(response.data.msg || '登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -100,7 +96,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -2418:
-            this.$toast.fail(response.data.msg || '登录无效');
+            VantToast.fail(response.data.msg || '登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -118,7 +114,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case 0:
-            this.$toast.fail(response.data.msg || '身份过期,请重新登入');
+            VantToast.fail(response.data.msg || '身份过期,请重新登入');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -126,22 +122,20 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -1:
-            this.$toast.fail(response.data.msg);
+            VantToast.fail(response.data.msg);
             reject(response.data);
             break;
           case 9999:
-            this.$toast.fail(response.data.msg || '什么都没有留下');
+            VantToast.fail(response.data.msg || '什么都没有留下');
             reject(response.data);
             break;
           default:
-            this.$toast.fail(response.data.msg || '程序员罢工了,哄哄她去');
+            VantToast.fail(response.data.msg || '程序员罢工了,哄哄她去');
             reject(response.data);
         }
-        //store.commit('SET_LOADING', false)
       }
     }).catch(error => {
       reject(error)
-      //store.commit('SET_LOADING', false)
     })
   })
 }

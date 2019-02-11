@@ -13,11 +13,11 @@
       "children": [
         {
           "id": 11,
-          "name": "表格",
+          "name": "打包机",
           "rootLevel": 0,
           "icon": "assignment",
           "color":"blue darken-2",
-          "path": "/",
+          "path": "/home/packagingMachinery",
           "parentId": "10",
           "sort": 1
         },

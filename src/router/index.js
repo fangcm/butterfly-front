@@ -6,6 +6,8 @@ const Home = () => import(/* webpackChunkName: "group-home" */ '@/pages/home');
 const Login = () => import(/* webpackChunkName: "group-login" */ '@/pages/login');
 const Index = () => import(/* webpackChunkName: "group-index" */ '@/pages/index');
 
+const PackagingMachinery = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/packaging');
+
 const AdminUser = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminUser');
 const AdminRole = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminRole');
 const AdminMenu = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminMenu');
@@ -25,6 +27,13 @@ const routes = [{
     name: 'Index',
     meta: {
       title: '业务演示'
+    }
+  }, {
+    path: 'packagingMachinery',
+    component: PackagingMachinery,
+    name: 'PackagingMachinery',
+    meta: {
+      title: '打包机'
     }
   }, {
     path: 'adminUser',
