@@ -38,10 +38,10 @@
 
           <v-card-actions class="pa-0">
             <v-spacer></v-spacer>
-            <v-btn icon>
+            <v-btn icon @click.native="edit">
               <v-icon color="blue darken-2" title="编辑">edit</v-icon>
             </v-btn>
-            <v-btn icon>
+            <v-btn icon @click.native="remove">
               <v-icon color="orange darken-2" title="删除">delete</v-icon>
             </v-btn>
           </v-card-actions>
@@ -49,22 +49,51 @@
         </v-card>
 
       </v-flex>
-      <div v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10"/>
+      <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0"/>
     </v-layout>
-
+    <search-panel :rightDrawer="searchDrawer" @cancelSearch="cancelSearch" @searchData="searchData">
+      <v-layout row>
+        <v-flex xs11 offset-xs1>
+          <v-text-field name="productName" label="Product" light v-model="searchVm.contains.productName"></v-text-field>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs11 offset-xs1>
+          <label class="heading text-sm-central" light>Price Range</label>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs8 offset-xs1>
+          <v-slider class="text-xs-central" label="Price 1" light v-bind:max="100"
+                    v-model="searchVm.between.unitPrice.former"></v-slider>
+        </v-flex>
+        <v-flex xs3>
+          <v-text-field type="number" light v-model="searchVm.between.unitPrice.former"></v-text-field>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs8 offset-xs1>
+          <v-slider class="text-xs-central" label="Price 2" light v-bind:max="999"
+                    v-model="searchVm.between.unitPrice.latter"></v-slider>
+        </v-flex>
+        <v-flex xs3>
+          <v-text-field type="number" light v-model="searchVm.between.unitPrice.latter"></v-text-field>
+        </v-flex>
+      </v-layout>
+    </search-panel>
     <v-speed-dial top right fixed direction="bottom">
       <v-btn slot="activator" color="green" dark fab>
         <v-icon>more_vert</v-icon>
       </v-btn>
 
       <v-tooltip left>
-        <v-btn fab dark small color="indigo" slot="activator" @click="dialog=!dialog">
+        <v-btn fab dark small color="indigo" slot="activator" @click.native.stop="searchDrawer = !searchDrawer">
           <v-icon>search</v-icon>
         </v-btn>
         <span>条件查询</span>
       </v-tooltip>
       <v-tooltip left>
-        <v-btn fab dark small color="red" slot="activator" @click="dialog=!dialog">
+        <v-btn fab dark small color="red" slot="activator" @click.native="add">
           <v-icon>add</v-icon>
         </v-btn>
         <span>新增</span>
@@ -90,8 +119,12 @@
 
 <script>
   import {packagingMachineryList} from '@/api/machinery-api'
+  import SearchPanel from "@/components/SearchPanel.vue";
 
   export default {
+    components: {
+      SearchPanel
+    },
     data() {
       return {
         pageNumber: 0,
@@ -102,7 +135,22 @@
         machineryTypeList: {"1": "打包机", "2": "运输货车"},
 
         atThisPage: true, // 在使用了keep-alive包裹显示组件的情况下，需要判断当前激活的组件是不是此组件，是的话才加载数据
-        dialog: false
+        dialog: false,
+        searchDrawer: false,
+        right: true,
+        search: "",
+        searchVm: {
+          contains: {
+            productName: "",
+            category: ""
+          },
+          between: {
+            unitPrice: {
+              former: 0,
+              latter: 0
+            }
+          }
+        }
       }
     },
     methods: {
@@ -114,10 +162,10 @@
         }
       },
       fetchData() {
-        console.log("fetchData ...");
-        this.isLoading = true;
+        console.log("fetchData ..." + this.isLoading);
         if (this.atThisPage) {
-          let _data = {'pageSize': this.pageSize};
+          this.isLoading = true;
+          let _data = {'pageSize': this.pageSize, 'pageNumber': this.pageNumber};
           packagingMachineryList(_data).then(
             data => {
               this.isLoading = false;
@@ -125,15 +173,33 @@
               this.dataList = data.data.content;
               this.isLoadAll = data.data.last;
               this.pageNumber = data.data.number;
-            },
-            err => {
-              console.log(err);
-              this.isLoading = false
+              console.log("isLoading1 :" + this.isLoading)
             }
-          );
+          ).catch((e) => {
+            this.isLoading = false;
+            console.log("isLoading2 :" + this.isLoading)
+          });
         }
-        console.log(this.isLoading)
-      }
+      },
+      add() {
+        this.$router.push("NewProduct");
+      },
+      edit(item) {
+        this.$router.push({
+          name: "Product",
+          params: {id: item.id}
+        });
+      },
+      remove(item) {
+        this.productId = item.id;
+        this.dialog = true;
+      },
+      searchData() {
+        this.searchDrawer = !this.searchDrawer;
+      },
+      cancelSearch() {
+        this.searchDrawer = false;
+      },
     },
     created() {
       this.isLoadAll = false;

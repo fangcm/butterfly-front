@@ -24,6 +24,7 @@ import VToolbar from 'vuetify/es5/components/VToolbar'
 import VTooltip from 'vuetify/es5/components/VTooltip'
 import VSwitch from 'vuetify/es5/components/VSwitch'
 import VSpeedDial from 'vuetify/es5/components/VSpeedDial'
+import VSlider from 'vuetify/es5/components/VSlider'
 import Vuetify from 'vuetify/es5/components/Vuetify'
 
 import VantToast from 'vant/lib/toast';
@@ -55,6 +56,7 @@ Vue.use(Vuetify, {
     VToolbar,
     VTooltip,
     VSwitch,
+    VSlider,
     VSpeedDial
   },
   theme: {
@@ -70,8 +72,8 @@ Vue.use(Vuetify, {
 });
 
 Vue.use(infiniteScroll);
-Vue.use(VantToast);
 
+Vue.use(VantToast);
 Vue.prototype.$toast = VantToast;
 
 Vue.config.productionTip = false;
