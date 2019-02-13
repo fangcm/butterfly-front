@@ -9,11 +9,11 @@ let api_config = {};
 
 if (process.env.NODE_ENV === 'production') {
   api_config = {
-    baseUrl: '/demo/static/data/'
+    baseUrl: '/demo/data/'
   }
 } else {
   api_config = {
-    baseUrl: '/static/data/'
+    baseUrl: '/data/'
   };
 }
 
