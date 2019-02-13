@@ -2,7 +2,6 @@ import axios from 'axios'
 import store from '@/vuex/store'
 import router from '@/router/index'
 import {stringify} from 'qs'
-import VantToast from 'vant/lib/toast';
 
 
 // axios 配置
