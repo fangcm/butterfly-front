@@ -10,6 +10,9 @@ npm list --depth=0 -g
 +-- npm-check-updates@2.15.0
 `-- vue-cli@2.9.6
 
+上传代码到远程分支：
+git push --set-upstream origin master
+首次上传新分支输入以上命令，不是的话只要输入git push就可以了。
 
 干净的回退到上次提交之后的东西：
 我查了下有两个相关的命令：
@@ -24,3 +27,4 @@ npm list --depth=0 -g
 那么 
 git reset --hard 
 git clean -xdf 
+
