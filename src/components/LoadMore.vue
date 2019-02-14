@@ -16,10 +16,6 @@
         pageNumber: 1
       };
     },
-    mounted: function () {
-      this.$nextTick(function () {
-      })
-    },
     created() {
     },
     methods: {
