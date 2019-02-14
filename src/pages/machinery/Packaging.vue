@@ -1,58 +1,55 @@
 <template>
   <v-container fluid pa-1 ma-0>
-    <cube-scroll ref="scroll" :data="dataList" :options="options"
-                 @pulling-down="onPullingDown" @pulling-up="onPullingUp">
     <v-layout column>
-        <v-flex v-for="data in dataList" :key="data.id" pa-0 ma-1>
-          <v-card color="white">
-            <v-flex xs12>
-              <v-card-text class="font-weight-light">
-                <v-layout align-center row wrap>
-                  <v-flex shrink pa-2>
-                    <span class="subheading" v-if="data.model">{{data.model}}</span>
-                  </v-flex>
-                </v-layout>
-                <v-layout align-center row wrap>
-                  <v-flex shrink pa-2>
-                    <span>编号:</span>
-                    <span>{{data.code}}</span>
-                  </v-flex>
-                  <v-flex shrink pa-2>
-                    <span>类型:</span>
-                    <span>{{machineryTypeList[data.type.toString()]}}</span>
-                  </v-flex>
-                  <v-flex shrink pa-2>
-                    <span>工作负载:</span>
-                    <span>{{data.workload}}</span>
-                    <span>{{data.unit}}</span>
-                  </v-flex>
-                  <v-flex shrink pa-2>
-                    <span>归属:</span>
-                    <span>{{data.belongTo === 1 ? '公司所有': '个人私有'}}</span>
-                  </v-flex>
-                  <v-flex shrink pa-2>
-                    <span>使用管理人:</span>
-                    <span>{{data.personInCharge}}</span>
-                  </v-flex>
-                </v-layout>
-              </v-card-text>
-            </v-flex>
+      <v-flex v-for="data in dataList" :key="data.id" pa-0 ma-1>
+        <v-card color="white">
+          <v-flex xs12>
+            <v-card-text class="font-weight-light">
+              <v-layout align-center row wrap>
+                <v-flex shrink pa-2>
+                  <span class="subheading" v-if="data.model">{{data.model}}</span>
+                </v-flex>
+              </v-layout>
+              <v-layout align-center row wrap>
+                <v-flex shrink pa-2>
+                  <span>编号:</span>
+                  <span>{{data.code}}</span>
+                </v-flex>
+                <v-flex shrink pa-2>
+                  <span>类型:</span>
+                  <span>{{machineryTypeList[data.type.toString()]}}</span>
+                </v-flex>
+                <v-flex shrink pa-2>
+                  <span>工作负载:</span>
+                  <span>{{data.workload}}</span>
+                  <span>{{data.unit}}</span>
+                </v-flex>
+                <v-flex shrink pa-2>
+                  <span>归属:</span>
+                  <span>{{data.belongTo === 1 ? '公司所有': '个人私有'}}</span>
+                </v-flex>
+                <v-flex shrink pa-2>
+                  <span>使用管理人:</span>
+                  <span>{{data.personInCharge}}</span>
+                </v-flex>
+              </v-layout>
+            </v-card-text>
+          </v-flex>
 
-            <v-card-actions class="pa-0">
-              <v-spacer></v-spacer>
-              <v-btn icon @click.native="edit(data.id)">
-                <v-icon color="blue darken-2" title="编辑">edit</v-icon>
-              </v-btn>
-              <v-btn icon @click.native="remove(data.id)">
-                <v-icon color="orange darken-2" title="删除">delete</v-icon>
-              </v-btn>
-            </v-card-actions>
+          <v-card-actions class="pa-0">
+            <v-spacer></v-spacer>
+            <v-btn icon @click.native="edit(data.id)">
+              <v-icon color="blue darken-2" title="编辑">edit</v-icon>
+            </v-btn>
+            <v-btn icon @click.native="remove(data.id)">
+              <v-icon color="orange darken-2" title="删除">delete</v-icon>
+            </v-btn>
+          </v-card-actions>
 
-          </v-card>
-
-        </v-flex>
+        </v-card>
+      </v-flex>
+      <load-more :isPage='totalPages' @next="fetchNextPageData" v-if="isShowLoadMore"/>
     </v-layout>
-    </cube-scroll>
     <search-panel :rightDrawer="searchDrawer" @cancelSearch="cancelSearch" @searchData="searchData">
       <v-layout row>
         <v-flex xs11 offset-xs1>
@@ -121,36 +118,23 @@
 
 <script>
   import {packagingMachineryList} from '@/api/machinery-api'
-  import SearchPanel from "@/components/SearchPanel.vue";
+  import SearchPanel from "@/components/SearchPanel"
+  import LoadMore from '@/components/LoadMore'
 
   export default {
     components: {
-      SearchPanel
+      SearchPanel, LoadMore
     },
     data() {
       return {
+        isShowLoadMore: false,
         pageNumber: 0,
+        totalPages: 1,
         dataList: [],
 
-        options: {
-          scrollbar: true,
-          pullDownRefresh: {
-            threshold: 90,
-            stop: 40,
-            txt: '刷新成功'
-          },
-          pullUpLoad: {
-            threshold: 0,
-            txt: {
-              more: '上拉加载更多',
-              noMore: '没有更多数据'
-            }
-          }
-        },
 
         machineryTypeList: {"1": "打包机", "2": "运输货车"},
 
-        atThisPage: true, // 在使用了keep-alive包裹显示组件的情况下，需要判断当前激活的组件是不是此组件，是的话才加载数据
         dialog: false,
         searchDrawer: false,
         right: true,
@@ -170,35 +154,26 @@
       }
     },
     methods: {
-      onPullingDown() {
-        console.log("onPullingDown ...");
-        this.pageNumber = 0;
-        this.dataList = [];
-        this.fetchData();
-      },
-      onPullingUp() {
-        console.log("onPullingUp ...");
+      fetchNextPageData() {
+        console.log("fetchNextPageData ...");
         this.pageNumber = this.pageNumber + 1;
         this.fetchData();
       },
       fetchData() {
-        if (this.atThisPage) {
-          console.log("fetchData ...");
-          let _data = {'pageNumber': this.pageNumber};
-          packagingMachineryList(_data).then(
-            data => {
-              // 保存登录状态和信息
-              this.dataList = this.dataList.concat(data.data.content);
-              console.log(this.dataList)
-              this.pageNumber = data.data.number;
-              let isLoadAll = data.data.last;
-              console.log("pageNumber :" + this.pageNumber)
-              console.log("isLoadAll :" + isLoadAll)
-            }
-          ).catch((e) => {
-            this.$refs.scroll.forceUpdate();
-          });
-        }
+        console.log("fetchData ...");
+        let _data = {'pageNumber': this.pageNumber};
+        packagingMachineryList(_data).then(
+          data => {
+            // 保存登录状态和信息
+            this.dataList = this.dataList.concat(data.data.content);
+            this.pageNumber = data.data.number;
+            this.totalPages = data.data.totalPages;
+            this.isShowLoadMore = !data.data.last;
+            console.log("pageNumber :" + this.pageNumber)
+            console.log("this.isShowLoadMore :" + this.isShowLoadMore)
+          }
+        ).catch((e) => {
+        });
       },
       add() {
         this.$router.push("NewProduct");
@@ -221,13 +196,7 @@
       },
     },
     created() {
-      this.onPullingDown();
-    },
-    activated() {
-      this.atThisPage = true
-    },
-    deactivated() {
-      this.atThisPage = false
+      this.fetchData();
     }
   }
 </script>

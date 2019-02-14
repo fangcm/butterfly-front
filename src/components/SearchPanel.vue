@@ -25,7 +25,7 @@
 
 <script>
   export default {
-    name: 'search-panel',
+    name: 'SearchPanel',
     props: {
       rightDrawer: ''
     },
