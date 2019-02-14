@@ -17,7 +17,7 @@
           "rootLevel": 0,
           "icon": "assignment",
           "color":"blue darken-2",
-          "path": "/packagingMachinery",
+          "path": "/app/packagingMachinery",
           "parentId": "10",
           "sort": 1
         },
@@ -157,7 +157,7 @@
           "name": "用户管理",
           "rootLevel": 0,
           "icon": "person",
-          "path": "/adminUser",
+          "path": "/app/adminUser",
           "parentId": "19",
           "sort": 1
         },
@@ -167,7 +167,7 @@
           "rootLevel": 0,
           "icon": "accessibility",
           "color":"green darken-2",
-          "path": "/adminRole",
+          "path": "/app/adminRole",
           "parentId": "19",
           "sort": 2
         },
@@ -176,7 +176,7 @@
           "name": "菜单管理",
           "rootLevel": 0,
           "icon": "list",
-          "path": "/adminMenu",
+          "path": "/app/adminMenu",
           "parentId": "19",
           "sort": 3
         }

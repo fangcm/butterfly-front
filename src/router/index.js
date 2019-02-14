@@ -15,7 +15,7 @@ const AdminMenu = () => import(/* webpackChunkName: "group-admin" */ '@/pages/ad
 Vue.use(Router);
 
 const routes = [{
-  path: '/',
+  path: '/app',
   name: 'Home',
   meta: {
     requireAuth: true
@@ -64,6 +64,9 @@ const routes = [{
       path: '/login'
     })
   }
+}, {
+  path: '/',
+  component: Login
 }, {
   path: '/login',
   name: 'Login',

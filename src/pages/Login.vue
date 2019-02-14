@@ -78,7 +78,7 @@
               if (this.$route.query.redirect && !this.$route.query.redirect.startsWith('/login')) {
                 this.$router.push({path: this.$route.query.redirect});
               } else {
-                this.$router.push({path: 'index'});
+                this.$router.push({path: 'app/index'});
               }
             }
           });

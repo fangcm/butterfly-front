@@ -35,7 +35,7 @@
     </v-navigation-drawer>
     <v-toolbar dense fixed clipped-left app dark color="primary">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn icon @click="toPage('/index')">
+      <v-btn icon @click="toPage('/app/index')">
         <v-icon>home</v-icon>
       </v-btn>
       <v-toolbar-title>
