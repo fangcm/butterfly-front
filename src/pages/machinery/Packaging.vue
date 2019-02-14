@@ -48,7 +48,7 @@
 
         </v-card>
       </v-flex>
-      <load-more :isPage='totalPages' @next="fetchNextPageData" v-if="isShowLoadMore"/>
+      <load-more :totalPages='totalPages' @nextPage="fetchNextPageData" v-if="isShowLoadMore"/>
     </v-layout>
     <search-panel :rightDrawer="searchDrawer" @cancelSearch="cancelSearch" @searchData="searchData">
       <v-layout row>
