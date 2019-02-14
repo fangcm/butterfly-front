@@ -15,10 +15,10 @@ const AdminMenu = () => import(/* webpackChunkName: "group-admin" */ '@/pages/ad
 Vue.use(Router);
 
 const routes = [{
-  path: '/home',
+  path: '/',
   name: 'Home',
   meta: {
-    requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+    requireAuth: true
   },
   component: Home,
   children: [{
@@ -65,9 +65,6 @@ const routes = [{
     })
   }
 }, {
-  path: '/',
-  component: Login
-}, {
   path: '/login',
   name: 'Login',
   component: Login
@@ -75,6 +72,7 @@ const routes = [{
 
 const router = new Router({
   mode: 'history',
+  base: process.env.BASE_URL,
   routes
 });
 
