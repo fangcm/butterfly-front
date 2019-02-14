@@ -39,18 +39,14 @@ axios.interceptors.response.use(
             query: {redirect: router.currentRoute.path}
           });
           break;
-        case 403:
-          break;
-        case 504:
-          break;
         case 500:
-          VantToast.fail('网络超时，请刷新重试');
+          this.showToast('网络超时，请刷新重试');
           break;
         case 404:
-          VantToast.fail('网页丢失，请刷新重试');
+          this.showToast('网页丢失，请刷新重试');
           break;
         default:
-          VantToast.fail('程序员罢工了,哄哄Ta去');
+          this.showToast('程序员罢工了,哄哄Ta去');
       }
     }
     return Promise.reject(error.response.data)
@@ -79,7 +75,7 @@ export function fetch(url, options) {
       } else {
         switch (response.data.code) {
           case -2401:
-            VantToast.fail('登录无效');
+            this.showToast('登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -87,7 +83,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -2408:
-            VantToast.fail(response.data.msg || '登录无效');
+            this.showToast(response.data.msg || '登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -95,7 +91,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -2418:
-            VantToast.fail(response.data.msg || '登录无效');
+            this.showToast(response.data.msg || '登录无效');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -113,7 +109,7 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case 0:
-            VantToast.fail(response.data.msg || '身份过期,请重新登入');
+            this.showToast(response.data.msg || '身份过期,请重新登入');
             router.replace({
               path: '/login',
               query: {redirect: router.currentRoute.path}
@@ -121,15 +117,15 @@ export function fetch(url, options) {
             reject(response.data);
             break;
           case -1:
-            VantToast.fail(response.data.msg);
+            this.showToast(response.data.msg);
             reject(response.data);
             break;
           case 9999:
-            VantToast.fail(response.data.msg || '什么都没有留下');
+            this.showToast(response.data.msg || '什么都没有留下');
             reject(response.data);
             break;
           default:
-            VantToast.fail(response.data.msg || '程序员罢工了,哄哄她去');
+            this.showToast(response.data.msg || '程序员罢工了,哄哄她去');
             reject(response.data);
         }
       }

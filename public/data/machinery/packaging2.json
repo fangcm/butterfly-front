@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "content": [
+      {
+        "id": "201",
+        "code": "2171001",
+        "model": "2x型打包机",
+        "type": 1,
+        "workload": 30,
+        "unit": "包",
+        "belongTo": 1,
+        "personInCharge": "张三"
+      },
+      {
+        "id": "202",
+        "code": "2171002",
+        "model": "2xx公司y型打包机",
+        "type": 1,
+        "workload": 50,
+        "unit": "包",
+        "belongTo": 1,
+        "personInCharge": "张三"
+      },
+      {
+        "id": "203",
+        "code": "2171003",
+        "model": "2zz公司m型打包机",
+        "type": 1,
+        "workload": 200,
+        "unit": "包",
+        "belongTo": 1,
+        "personInCharge": "张三"
+      },
+      {
+        "id": "204",
+        "code": "2171004",
+        "model": "2简易n型打包机",
+        "type": 1,
+        "workload": 20,
+        "unit": "包",
+        "belongTo": 1,
+        "personInCharge": "张三"
+      }
+    ],
+    "pageable": {
+      "sort": {
+        "sorted": false,
+        "unsorted": true
+      },
+      "offset": 0,
+      "pageSize": 10,
+      "pageNumber": 0,
+      "unpaged": false,
+      "paged": true
+    },
+    "totalElements": 1,
+    "totalPages": 1,
+    "last": true,
+    "number": 2,
+    "size": 10,
+    "sort": {
+      "sorted": false,
+      "unsorted": true
+    },
+    "numberOfElements": 1,
+    "first": false
+  }
+}

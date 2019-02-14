@@ -84,3 +84,14 @@ Vue.use(Swipe)
 Vue.use(Sticky)
 Vue.use(ScrollNav)
 Vue.use(ScrollNavBar)
+
+
+Vue.prototype.showToast = function (txt, type) {
+  const toast = this.$createToast({
+    txt: txt,
+    mask: true,
+    type: 'warn' | type,
+    maskClosable: false,
+    time: 3000,
+  }).show();
+};

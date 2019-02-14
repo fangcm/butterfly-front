@@ -2,15 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../vuex/store'
 
-const Home = () => import(/* webpackChunkName: "group-home" */ '@/pages/home');
-const Login = () => import(/* webpackChunkName: "group-login" */ '@/pages/login');
-const Index = () => import(/* webpackChunkName: "group-index" */ '@/pages/index');
+const Home = () => import(/* webpackChunkName: "group-home" */ '@/pages/Home');
+const Login = () => import(/* webpackChunkName: "group-login" */ '@/pages/Login');
+const Index = () => import(/* webpackChunkName: "group-index" */ '@/pages/Index');
 
-const PackagingMachinery = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/packaging');
+const PackagingMachinery = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/Packaging');
 
-const AdminUser = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminUser');
-const AdminRole = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminRole');
-const AdminMenu = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/adminMenu');
+const AdminUser = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminUser');
+const AdminRole = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminRole');
+const AdminMenu = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminMenu');
 
 Vue.use(Router);
 

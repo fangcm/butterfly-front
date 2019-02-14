@@ -1,56 +1,58 @@
 <template>
   <v-container fluid pa-1 ma-0>
+    <cube-scroll ref="scroll" :data="dataList" :options="options"
+                 @pulling-down="onPullingDown" @pulling-up="onPullingUp">
     <v-layout column>
-      <v-flex v-for="data in dataList" :key="data.id" pa-0 ma-1>
-        <v-card color="white">
-          <v-flex xs12>
-            <v-card-text class="font-weight-light">
-              <v-layout align-center row wrap>
-                <v-flex shrink pa-2>
-                  <span class="subheading" v-if="data.model">{{data.model}}</span>
-                </v-flex>
-              </v-layout>
-              <v-layout align-center row wrap>
-                <v-flex shrink pa-2>
-                  <span>编号:</span>
-                  <span>{{data.code}}</span>
-                </v-flex>
-                <v-flex shrink pa-2>
-                  <span>类型:</span>
-                  <span>{{machineryTypeList[data.type.toString()]}}</span>
-                </v-flex>
-                <v-flex shrink pa-2>
-                  <span>工作负载:</span>
-                  <span>{{data.workload}}</span>
-                  <span>{{data.unit}}</span>
-                </v-flex>
-                <v-flex shrink pa-2>
-                  <span>归属:</span>
-                  <span>{{data.belongTo === 1 ? '公司所有': '个人私有'}}</span>
-                </v-flex>
-                <v-flex shrink pa-2>
-                  <span>使用管理人:</span>
-                  <span>{{data.personInCharge}}</span>
-                </v-flex>
-              </v-layout>
-            </v-card-text>
-          </v-flex>
+        <v-flex v-for="data in dataList" :key="data.id" pa-0 ma-1>
+          <v-card color="white">
+            <v-flex xs12>
+              <v-card-text class="font-weight-light">
+                <v-layout align-center row wrap>
+                  <v-flex shrink pa-2>
+                    <span class="subheading" v-if="data.model">{{data.model}}</span>
+                  </v-flex>
+                </v-layout>
+                <v-layout align-center row wrap>
+                  <v-flex shrink pa-2>
+                    <span>编号:</span>
+                    <span>{{data.code}}</span>
+                  </v-flex>
+                  <v-flex shrink pa-2>
+                    <span>类型:</span>
+                    <span>{{machineryTypeList[data.type.toString()]}}</span>
+                  </v-flex>
+                  <v-flex shrink pa-2>
+                    <span>工作负载:</span>
+                    <span>{{data.workload}}</span>
+                    <span>{{data.unit}}</span>
+                  </v-flex>
+                  <v-flex shrink pa-2>
+                    <span>归属:</span>
+                    <span>{{data.belongTo === 1 ? '公司所有': '个人私有'}}</span>
+                  </v-flex>
+                  <v-flex shrink pa-2>
+                    <span>使用管理人:</span>
+                    <span>{{data.personInCharge}}</span>
+                  </v-flex>
+                </v-layout>
+              </v-card-text>
+            </v-flex>
 
-          <v-card-actions class="pa-0">
-            <v-spacer></v-spacer>
-            <v-btn icon @click.native="edit">
-              <v-icon color="blue darken-2" title="编辑">edit</v-icon>
-            </v-btn>
-            <v-btn icon @click.native="remove">
-              <v-icon color="orange darken-2" title="删除">delete</v-icon>
-            </v-btn>
-          </v-card-actions>
+            <v-card-actions class="pa-0">
+              <v-spacer></v-spacer>
+              <v-btn icon @click.native="edit(data.id)">
+                <v-icon color="blue darken-2" title="编辑">edit</v-icon>
+              </v-btn>
+              <v-btn icon @click.native="remove(data.id)">
+                <v-icon color="orange darken-2" title="删除">delete</v-icon>
+              </v-btn>
+            </v-card-actions>
 
-        </v-card>
+          </v-card>
 
-      </v-flex>
-      <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0"/>
+        </v-flex>
     </v-layout>
+    </cube-scroll>
     <search-panel :rightDrawer="searchDrawer" @cancelSearch="cancelSearch" @searchData="searchData">
       <v-layout row>
         <v-flex xs11 offset-xs1>
@@ -128,10 +130,24 @@
     data() {
       return {
         pageNumber: 0,
-        pageSize: 10,
-        isLoading: false,
-        isLoadAll: false,
         dataList: [],
+
+        options: {
+          scrollbar: true,
+          pullDownRefresh: {
+            threshold: 90,
+            stop: 40,
+            txt: '刷新成功'
+          },
+          pullUpLoad: {
+            threshold: 0,
+            txt: {
+              more: '上拉加载更多',
+              noMore: '没有更多数据'
+            }
+          }
+        },
+
         machineryTypeList: {"1": "打包机", "2": "运输货车"},
 
         atThisPage: true, // 在使用了keep-alive包裹显示组件的情况下，需要判断当前激活的组件是不是此组件，是的话才加载数据
@@ -154,30 +170,33 @@
       }
     },
     methods: {
-      async loadMore() {
-        console.log("load data ...")
-        if (!this.isLoading && !this.isLoadAll) {
-          await this.fetchData();
-          this.pageNumber++
-        }
+      onPullingDown() {
+        console.log("onPullingDown ...");
+        this.pageNumber = 0;
+        this.dataList = [];
+        this.fetchData();
+      },
+      onPullingUp() {
+        console.log("onPullingUp ...");
+        this.pageNumber = this.pageNumber + 1;
+        this.fetchData();
       },
       fetchData() {
-        console.log("fetchData ..." + this.isLoading);
         if (this.atThisPage) {
-          this.isLoading = true;
-          let _data = {'pageSize': this.pageSize, 'pageNumber': this.pageNumber};
+          console.log("fetchData ...");
+          let _data = {'pageNumber': this.pageNumber};
           packagingMachineryList(_data).then(
             data => {
-              this.isLoading = false;
               // 保存登录状态和信息
-              this.dataList = data.data.content;
-              this.isLoadAll = data.data.last;
+              this.dataList = this.dataList.concat(data.data.content);
+              console.log(this.dataList)
               this.pageNumber = data.data.number;
-              console.log("isLoading1 :" + this.isLoading)
+              let isLoadAll = data.data.last;
+              console.log("pageNumber :" + this.pageNumber)
+              console.log("isLoadAll :" + isLoadAll)
             }
           ).catch((e) => {
-            this.isLoading = false;
-            console.log("isLoading2 :" + this.isLoading)
+            this.$refs.scroll.forceUpdate();
           });
         }
       },
@@ -202,9 +221,7 @@
       },
     },
     created() {
-      this.isLoadAll = false;
-      this.pageNumber = 0;
-      this.loadMore();
+      this.onPullingDown();
     },
     activated() {
       this.atThisPage = true

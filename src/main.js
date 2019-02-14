@@ -1,9 +1,8 @@
 import Vue from 'vue'
-import './plugins/cube-ui'
-import './plugins/vuetify'
+import './plugins'
 import App from './App'
-import store from './vuex/store'
 import router from './router'
+import store from './vuex/store'
 
 Vue.config.productionTip = false;
 
