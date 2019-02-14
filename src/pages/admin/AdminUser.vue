@@ -1,90 +1,69 @@
 <template>
   <v-container fluid pa-1 ma-0>
     <v-layout column>
-      <cube-scroll ref="contentScroll" :data="content" :options="options"
-                   @pulling-down="onPullingDown" @pulling-up="onPullingUp">
-        <v-flex v-for="item in list" :key="item.id" pa-0 ma-1>
-          <v-card color="white">
-            <v-flex xs12>
-              <v-card-text class="font-weight-light">
-                <v-layout align-center row wrap>
-                  <v-flex shrink pa-1>
-                    <v-avatar slot="activator" size="36px">
-                      <v-img class="elevation-6" :src="require('@/assets/image/head.jpg')"/>
-                    </v-avatar>
-                  </v-flex>
-                  <v-flex shrink pa-2>
-                    <span class="subheading" v-if="item.nickName">{{item.nickName}}</span>
-                  </v-flex>
-                  <v-flex shrink pa-2>
-                    <v-icon small>phone</v-icon>
-                    <span>{{item.mobile}}</span>
-                  </v-flex>
-                </v-layout>
-                <v-layout align-center row wrap>
-                  <v-flex shrink pa-1>
-                    <v-chip outline color="blue">
-                      <v-icon left small>accessibility</v-icon>
-                      经纪人
-                    </v-chip>
-                    <v-chip outline color="blue" v-if="item.status===1">
-                      <v-icon left small>accessibility</v-icon>
-                      系统管理员
-                    </v-chip>
-                  </v-flex>
-                  <v-flex shrink pa-2>
-                    <v-icon small>email</v-icon>
-                    <span>{{item.email}}</span>
-                  </v-flex>
-                </v-layout>
-              </v-card-text>
+      <v-flex v-for="data in dataList" :key="data.id" pa-0 ma-1>
+        <v-card color="white">
+          <v-flex xs12>
+            <v-card-text class="font-weight-light">
+              <v-layout align-center row wrap>
+                <v-flex shrink pa-1>
+                  <v-avatar slot="activator" size="36px">
+                    <v-img class="elevation-6" :src="require('@/assets/image/head.jpg')"/>
+                  </v-avatar>
+                </v-flex>
+                <v-flex shrink pa-2>
+                  <span class="subheading" v-if="data.nickName">{{data.nickName}}</span>
+                </v-flex>
+                <v-flex shrink pa-2>
+                  <v-icon small>phone</v-icon>
+                  <span>{{data.mobile}}</span>
+                </v-flex>
+              </v-layout>
+              <v-layout align-center row wrap>
+                <v-flex shrink pa-1>
+                  <v-chip outline color="blue">
+                    <v-icon left small>accessibility</v-icon>
+                    经纪人
+                  </v-chip>
+                  <v-chip outline color="blue" v-if="data.status===1">
+                    <v-icon left small>accessibility</v-icon>
+                    系统管理员
+                  </v-chip>
+                </v-flex>
+                <v-flex shrink pa-2>
+                  <v-icon small>email</v-icon>
+                  <span>{{data.email}}</span>
+                </v-flex>
+              </v-layout>
+            </v-card-text>
+          </v-flex>
+
+          <v-card-actions class="pa-0">
+            <v-flex shrink>
+              <span class="red--text subheading ml-3" v-if="data.status===1">已禁用</span>
             </v-flex>
+            <v-spacer></v-spacer>
+            <v-btn icon>
+              <v-icon color="blue darken-2" title="编辑">edit</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon color="orange darken-2" title="删除">delete</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon color="blue darken-1" title="设置角色">accessibility</v-icon>
+            </v-btn>
+            <v-btn icon v-if="data.status===0">
+              <v-icon color="red darken-2" title="禁用">block</v-icon>
+            </v-btn>
+            <v-btn icon v-if="data.status===1">
+              <v-icon color="green darken-3" title="启用">check_circle</v-icon>
+            </v-btn>
+          </v-card-actions>
 
-            <v-card-actions class="pa-0">
-              <v-flex shrink>
-                <span class="red--text subheading ml-3" v-if="item.status===1">已禁用</span>
-              </v-flex>
-              <v-spacer></v-spacer>
-              <v-btn icon>
-                <v-icon color="blue darken-2" title="编辑">edit</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon color="orange darken-2" title="删除">delete</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon color="blue darken-1" title="设置角色">accessibility</v-icon>
-              </v-btn>
-              <v-btn icon v-if="item.status===0">
-                <v-icon color="red darken-2" title="禁用">block</v-icon>
-              </v-btn>
-              <v-btn icon v-if="item.status===1">
-                <v-icon color="green darken-3" title="启用">check_circle</v-icon>
-              </v-btn>
-            </v-card-actions>
+        </v-card>
 
-          </v-card>
-
-        </v-flex>
-        <template slot="pulldown" slot-scope="props">
-          <div v-if="props.pullDownRefresh"
-               class="cube-pulldown-wrapper"
-               :style="props.pullDownStyle">
-            <div v-if="props.beforePullDown"
-                 class="before-trigger"
-                 :style="{paddingTop: props.bubbleY + 'px'}">
-              <span :class="{rotate: props.bubbleY > options.pullDownRefresh.threshold - 60}">↓</span>
-            </div>
-            <div class="after-trigger" v-else>
-              <div v-show="props.isPullingDown" class="loading">
-                <cube-loading></cube-loading>
-              </div>
-              <transition name="success">
-                <div v-show="!props.isPullingDown" class="text-wrapper"><span class="refresh-text">今日头条推荐引擎有x条更新</span></div>
-              </transition>
-            </div>
-          </div>
-        </template>
-      </cube-scroll>
+      </v-flex>
+      <load-more :totalPages='totalPages' @nextPage="fetchNextPageData" v-if="isShowLoadMore"/>
     </v-layout>
 
     <v-speed-dial top right fixed direction="bottom">
@@ -125,49 +104,48 @@
 
 <script>
   import {adminUserList} from '@/api/core-api'
+  import SearchPanel from "@/components/SearchPanel"
+  import LoadMore from '@/components/LoadMore'
 
   export default {
+    components: {
+      SearchPanel, LoadMore
+    },
     data() {
       return {
-        page: 1, // 默认载入第一页
-        atThisPage: true, // 在使用了keep-alive包裹显示组件的情况下，需要判断当前激活的组件是不是此组件，是的话才加载数据
-        list: [],
+        isShowLoadMore: false,
+        pageNumber: 0,
+        totalPages: 1,
+        dataList: [],
+
         dialog: false
       }
     },
     methods: {
-      onPullingUp: function () {
-        if (this.atThisPage) {
-          let _data = {};
-          adminUserList(_data).then((data) => {
-            // 保存登录状态和信息
-            this.list.concat(data.data.content);
-          });
-          this.page++
-        }
+      fetchNextPageData() {
+        console.log("fetchNextPageData ...");
+        this.pageNumber = this.pageNumber + 1;
+        this.fetchData();
       },
-      filterData: function (startDate, endDate, mealType) {
-        if (this.atThisPage) {
-          let _data = {};
-          adminUserList(_data).then((data) => {
+      fetchData() {
+        console.log("fetchData ...");
+        let _data = {'pageNumber': this.pageNumber};
+        adminUserList(_data).then(
+          data => {
             // 保存登录状态和信息
-            this.list = data.data.content;
-          });
-        }
-      }
+            this.dataList = this.dataList.concat(data.data.content);
+            this.pageNumber = data.data.number;
+            this.totalPages = data.data.totalPages;
+            this.isShowLoadMore = !data.data.last;
+            console.log("pageNumber :" + this.pageNumber)
+            console.log("this.isShowLoadMore :" + this.isShowLoadMore)
+          }
+        ).catch((e) => {
+        });
+      },
     },
     created() {
-      let _data = {};
-      adminUserList(_data).then((data) => {
-        // 保存登录状态和信息
-        this.list = data.data.content;
-      });
-    },
-    activated() {
-      this.atThisPage = true
-    },
-    deactivated() {
-      this.atThisPage = false
+      this.fetchData();
     }
   }
 </script>
