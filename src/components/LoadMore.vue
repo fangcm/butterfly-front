@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div class="click_more" @click="nextPage">
-      {{bottomText}}
-    </div>
-  </div>
+  <v-btn block flat large @click.native="nextPage">
+    {{bottomText}}
+  </v-btn>
 </template>
 
 <script>
@@ -30,19 +28,3 @@
     }
   };
 </script>
-
-<style scoped lang="less">
-  .click_more {
-    width: 100%;
-    height: 40px;
-    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0);
-    border-radius: 4px;
-    margin-bottom: 50px;
-    color: #415967;
-    font-size: 14px;
-    line-height: 40px;
-    text-align: center;
-    cursor: pointer;
-  }
-</style>
-
