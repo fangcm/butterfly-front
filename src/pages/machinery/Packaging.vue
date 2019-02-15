@@ -1,55 +1,56 @@
 <template>
-  <base-list-page :dataList="dataList" :pageNumber="pageNumber" :totalPages="totalPages"
-                  :addNewPath="/addNew"
-                  @refreshData="refreshData" @searchData="fetchData">
-    <template slot="row" slot-scope="{ data }">
-    <v-card color="white" >
-      <v-flex xs12>
-        <v-card-text class="font-weight-light">
-          <v-layout align-center row wrap>
-            <v-flex shrink pa-2>
-              <span class="subheading" v-if="data.model">{{data.model}}</span>
-            </v-flex>
-          </v-layout>
-          <v-layout align-center row wrap>
-            <v-flex shrink pa-2>
-              <span>编号:</span>
-              <span>{{data.code}}</span>
-            </v-flex>
-            <v-flex shrink pa-2>
-              <span>类型:</span>
-              <span>{{machineryTypeList[data.type.toString()]}}</span>
-            </v-flex>
-            <v-flex shrink pa-2>
-              <span>工作负载:</span>
-              <span>{{data.workload}}</span>
-              <span>{{data.unit}}</span>
-            </v-flex>
-            <v-flex shrink pa-2>
-              <span>归属:</span>
-              <span>{{data.belongTo === 1 ? '公司所有': '个人私有'}}</span>
-            </v-flex>
-            <v-flex shrink pa-2>
-              <span>使用管理人:</span>
-              <span>{{data.personInCharge}}</span>
-            </v-flex>
-          </v-layout>
-        </v-card-text>
-      </v-flex>
-      <v-card-actions class="pa-0">
-        <v-spacer></v-spacer>
-        <v-btn icon @click.native="edit(data.id)">
-          <v-icon color="blue darken-2" title="编辑">edit</v-icon>
-        </v-btn>
-        <v-btn icon @click.native="remove(data.id)">
-          <v-icon color="orange darken-2" title="删除">delete</v-icon>
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+  <base-list-page :dataList="dataList" :pageNumber="pageNumber" :totalPages="totalPages" addNewPath="/addNew"
+                  @fetchNextPageData="fetchNextPageData" @refreshData="refreshData" @searchData="fetchData">
+    <template slot="row" slot-scope="props">
+      <v-card color="white">
+        <v-flex xs12>
+          <v-card-text class="font-weight-light">
+            <v-layout align-center row wrap>
+              <v-flex shrink pa-2>
+                <span class="subheading" v-if="props.row.model">{{props.row.model}}</span>
+              </v-flex>
+            </v-layout>
+            <v-layout align-center row wrap>
+              <v-flex shrink pa-2>
+                <span>编号:</span>
+                <span>{{props.row.code}}</span>
+              </v-flex>
+              <v-flex shrink pa-2>
+                <span>类型:</span>
+                <span>{{machineryTypeList[props.row.type.toString()]}}</span>
+              </v-flex>
+              <v-flex shrink pa-2>
+                <span>工作负载:</span>
+                <span>{{props.row.workload}}</span>
+                <span>{{props.row.unit}}</span>
+              </v-flex>
+              <v-flex shrink pa-2>
+                <span>归属:</span>
+                <span>{{props.row.belongTo === 1 ? '公司所有': '个人私有'}}</span>
+              </v-flex>
+              <v-flex shrink pa-2>
+                <span>使用管理人:</span>
+                <span>{{props.row.personInCharge}}</span>
+              </v-flex>
+            </v-layout>
+          </v-card-text>
+        </v-flex>
+        <v-card-actions class="pa-0">
+          <v-spacer></v-spacer>
+          <v-btn icon @click.native="edit(props.row.id)">
+            <v-icon color="blue darken-2" title="编辑">edit</v-icon>
+          </v-btn>
+          <v-btn icon @click.native="remove(props.row.id)">
+            <v-icon color="orange darken-2" title="删除">delete</v-icon>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </template>
     <template slot="search">
       <v-layout row>
         <v-flex xs11 offset-xs1>
-          <v-text-field name="productName" label="Product" light v-model="searchVm.contains.productName"></v-text-field>
+          <v-text-field name="productName" label="Product" light
+                        v-model="searchVm.contains.productName"></v-text-field>
         </v-flex>
       </v-layout>
       <v-layout row>
@@ -89,7 +90,6 @@
     },
     data() {
       return {
-        isShowLoadMore: false,
         pageNumber: 0,
         totalPages: 1,
         dataList: [],
@@ -131,9 +131,8 @@
             this.dataList = this.dataList.concat(data.data.content);
             this.pageNumber = data.data.number;
             this.totalPages = data.data.totalPages;
-            this.isShowLoadMore = !data.data.last;
             console.log("pageNumber :" + this.pageNumber)
-            console.log("this.isShowLoadMore :" + this.isShowLoadMore)
+            console.log("totalPages :" + this.totalPages)
           }
         ).catch((e) => {
         });

@@ -62,7 +62,7 @@
       // 数据列表
       dataList: {type: Array, required: true},
       // 当前页面
-      pageNumber: {type: Number, default: 0},
+      pageNumber: {type: Number, default: 1},
       // 总页数
       totalPages: {type: Number, default: 0},
       // 显示搜索按钮
@@ -76,10 +76,15 @@
     },
     data() {
       return {
-        // 是否显示加载更多按钮
-        showLoadMore: false,
+        // 显示搜索框
         showSearchDrawer: false,
       };
+    },
+    computed: {
+      // 显示加载更多按钮
+      showLoadMore() {
+        return this.pageNumber < this.totalPages - 1;
+      }
     },
     methods: {
       addNew() {
@@ -91,7 +96,10 @@
       searchData() {
         this.showSearchDrawer = !this.showSearchDrawer;
         this.$emit('searchData');
-      }
+      },
+      fetchNextPageData() {
+        this.$emit('fetchNextPageData');
+      },
     }
   };
 </script>
