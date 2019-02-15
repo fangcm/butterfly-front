@@ -62,9 +62,9 @@
       // 数据列表
       dataList: {type: Array, required: true},
       // 当前页面
-      pageNumber: {type: Number, default: 1},
+      pageNumber: {type: Number, default: 0},
       // 总页数
-      totalPages: {type: Number, default: 0},
+      totalPages: {type: Number, default: 1},
       // 显示搜索按钮
       showSearchBtn: {type: Boolean, default: true},
       // 显示新增按钮
