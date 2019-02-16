@@ -37,10 +37,10 @@
         </v-flex>
         <v-card-actions class="pa-0">
           <v-spacer></v-spacer>
-          <v-btn icon @click.native="edit(props.row.id)">
+          <v-btn icon @click.native="editData(props.row)">
             <v-icon color="blue darken-2" title="编辑">edit</v-icon>
           </v-btn>
-          <v-btn icon @click.native="remove(props.row.id)">
+          <v-btn icon @click.native="removeData(props.row)">
             <v-icon color="orange darken-2" title="删除">delete</v-icon>
           </v-btn>
         </v-card-actions>
@@ -50,7 +50,7 @@
       <v-layout row>
         <v-flex xs11 offset-xs1>
           <v-text-field name="productName" label="Product" light
-                        v-model="searchVm.contains.productName"></v-text-field>
+                        v-model="searchVm.productName"></v-text-field>
         </v-flex>
       </v-layout>
       <v-layout row>
@@ -61,19 +61,19 @@
       <v-layout row>
         <v-flex xs8 offset-xs1>
           <v-slider class="text-xs-central" label="Price 1" light v-bind:max="100"
-                    v-model="searchVm.between.unitPrice.former"></v-slider>
+                    v-model="searchVm.unitPrice.former"></v-slider>
         </v-flex>
         <v-flex xs3>
-          <v-text-field type="number" light v-model="searchVm.between.unitPrice.former"></v-text-field>
+          <v-text-field type="number" light v-model="searchVm.unitPrice.former"></v-text-field>
         </v-flex>
       </v-layout>
       <v-layout row>
         <v-flex xs8 offset-xs1>
           <v-slider class="text-xs-central" label="Price 2" light v-bind:max="999"
-                    v-model="searchVm.between.unitPrice.latter"></v-slider>
+                    v-model="searchVm.unitPrice.latter"></v-slider>
         </v-flex>
         <v-flex xs3>
-          <v-text-field type="number" light v-model="searchVm.between.unitPrice.latter"></v-text-field>
+          <v-text-field type="number" light v-model="searchVm.unitPrice.latter"></v-text-field>
         </v-flex>
       </v-layout>
     </template>
@@ -97,15 +97,11 @@
         machineryTypeList: {"1": "打包机", "2": "运输货车"},
 
         searchVm: {
-          contains: {
-            productName: "",
-            category: ""
-          },
-          between: {
-            unitPrice: {
-              former: 0,
-              latter: 0
-            }
+          productName: "",
+          category: "",
+          unitPrice: {
+            former: 0,
+            latter: 0
           }
         }
       }
@@ -137,13 +133,13 @@
         ).catch((e) => {
         });
       },
-      edit(item) {
+      editData(item) {
         this.$router.push({
           name: "Product",
           params: {id: item.id}
         });
       },
-      remove(item) {
+      removeData(item) {
         this.productId = item.id;
         this.dialog = true;
       }

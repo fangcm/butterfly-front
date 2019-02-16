@@ -6,53 +6,68 @@ const Home = () => import(/* webpackChunkName: "group-home" */ '@/pages/Home');
 const Login = () => import(/* webpackChunkName: "group-login" */ '@/pages/Login');
 const Index = () => import(/* webpackChunkName: "group-index" */ '@/pages/Index');
 
-const PackagingMachinery = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/Packaging');
+const PackagingMachineryList = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackagingList');
+const PackagingMachineryForm = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackagingForm');
 
-const AdminUser = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminUser');
-const AdminRole = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminRole');
-const AdminMenu = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminMenu');
+const AdminUserList = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminUserList');
+const AdminRoleList = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminRoleList');
+const AdminMenuList = () => import(/* webpackChunkName: "group-admin" */ '@/pages/admin/AdminMenuList');
 
 Vue.use(Router);
 
 const routes = [{
   path: '/app',
   name: 'Home',
+  component: Home,
   meta: {
     requireAuth: true
   },
-  component: Home,
   children: [{
     path: 'index',
-    component: Index,
     name: 'Index',
+    component: Index,
     meta: {
       title: '业务演示'
     }
   }, {
-    path: 'packagingMachinery',
-    component: PackagingMachinery,
-    name: 'PackagingMachinery',
+    path: 'packagingMachinerys',
+    name: 'PackagingMachinerys',
+    component: PackagingMachineryList,
     meta: {
       title: '打包机'
     }
   }, {
-    path: 'adminUser',
-    component: AdminUser,
-    name: 'AdminUser',
+    path: 'newPackagingMachinery',
+    name: 'NewPackagingMachinery',
+    component: PackagingMachineryForm,
+    meta: {
+      title: '新增打包机'
+    }
+  }, {
+    path: 'packagingMachinery/:id',
+    name: 'PackagingMachinery',
+    component: PackagingMachineryForm,
+    meta: {
+      title: '修改打包机'
+    }
+  }, {
+    path: 'adminUsers',
+    name: 'AdminUsers',
+    component: AdminUserList,
     meta: {
       title: '用户管理'
     }
   }, {
-    path: 'adminRole',
-    component: AdminRole,
-    name: 'AdminRole',
+    path: 'adminRoles',
+    name: 'AdminRoles',
+    component: AdminRoleList,
     meta: {
       title: '角色管理'
     }
   }, {
-    path: 'adminMenu',
-    component: AdminMenu,
-    name: 'AdminMenu',
+    path: 'adminMenus',
+    name: 'AdminMenus',
+    component: AdminMenuList,
     meta: {
       title: '菜单管理'
     }
