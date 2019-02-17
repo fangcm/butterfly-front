@@ -1,50 +1,36 @@
 <template>
-  <base-list-page :dataList="dataList" :pageNumber="pageNumber" :totalPages="totalPages" addNewPath="/addNew"
-                  @fetchNextPageData="fetchNextPageData" @refreshData="refreshData" @searchData="fetchData">
+  <base-list-page :dataList="dataList" :pageNumber="pageNumber" :totalPages="totalPages"
+                  @fetchNextPageData="fetchNextPageData" @refreshData="refreshData" @searchData="fetchData"
+                  @addNewItem="addNewItem" @editItem="editItem" @deleteItem="deleteItem">
     <template slot="row" slot-scope="props">
-      <v-card color="white">
-        <v-flex xs12>
-          <v-card-text class="font-weight-light">
-            <v-layout align-center row wrap>
-              <v-flex shrink pa-2>
-                <span class="subheading" v-if="props.row.model">{{props.row.model}}</span>
-              </v-flex>
-            </v-layout>
-            <v-layout align-center row wrap>
-              <v-flex shrink pa-2>
-                <span>编号:</span>
-                <span>{{props.row.code}}</span>
-              </v-flex>
-              <v-flex shrink pa-2>
-                <span>类型:</span>
-                <span>{{machineryTypeList[props.row.type.toString()]}}</span>
-              </v-flex>
-              <v-flex shrink pa-2>
-                <span>工作负载:</span>
-                <span>{{props.row.workload}}</span>
-                <span>{{props.row.unit}}</span>
-              </v-flex>
-              <v-flex shrink pa-2>
-                <span>归属:</span>
-                <span>{{props.row.belongTo === 1 ? '公司所有': '个人私有'}}</span>
-              </v-flex>
-              <v-flex shrink pa-2>
-                <span>使用管理人:</span>
-                <span>{{props.row.personInCharge}}</span>
-              </v-flex>
-            </v-layout>
-          </v-card-text>
+      <v-layout align-center row wrap>
+        <v-flex shrink pa-2>
+          <span class="subheading" v-if="props.row.model">{{props.row.model}}</span>
         </v-flex>
-        <v-card-actions class="pa-0">
-          <v-spacer></v-spacer>
-          <v-btn icon @click.native="editData(props.row)">
-            <v-icon color="blue darken-2" title="编辑">edit</v-icon>
-          </v-btn>
-          <v-btn icon @click.native="removeData(props.row)">
-            <v-icon color="orange darken-2" title="删除">delete</v-icon>
-          </v-btn>
-        </v-card-actions>
-      </v-card>
+      </v-layout>
+      <v-layout align-center row wrap>
+        <v-flex shrink pa-2>
+          <span>编号:</span>
+          <span>{{props.row.code}}</span>
+        </v-flex>
+        <v-flex shrink pa-2>
+          <span>类型:</span>
+          <span>{{machineryTypeList[props.row.type.toString()]}}</span>
+        </v-flex>
+        <v-flex shrink pa-2>
+          <span>工作负载:</span>
+          <span>{{props.row.workload}}</span>
+          <span>{{props.row.unit}}</span>
+        </v-flex>
+        <v-flex shrink pa-2>
+          <span>归属:</span>
+          <span>{{props.row.belongTo === 1 ? '公司所有': '个人私有'}}</span>
+        </v-flex>
+        <v-flex shrink pa-2>
+          <span>使用管理人:</span>
+          <span>{{props.row.personInCharge}}</span>
+        </v-flex>
+      </v-layout>
     </template>
     <template slot="search">
       <v-layout row>
@@ -113,6 +99,8 @@
         this.dataList = [];
         this.fetchData();
       },
+      searchData() {
+      },
       fetchNextPageData() {
         console.log("fetchNextPageData ...");
         this.pageNumber = this.pageNumber + 1;
@@ -133,15 +121,42 @@
         ).catch((e) => {
         });
       },
-      editData(item) {
+      addNewItem() {
         this.$router.push({
-          name: "Product",
+          name: "NewPackagingMachinery"
+        });
+      },
+      editItem(item) {
+        this.$router.push({
+          name: "PackagingMachinery",
           params: {id: item.id}
         });
       },
-      removeData(item) {
-        this.productId = item.id;
-        this.dialog = true;
+      deleteItem(item) {
+        this.$createDialog({
+          type: 'confirm',
+          title: '删除',
+          content: '确认要删除【设备:' + item.model + ',编号:' + item.code + '】吗？',
+          confirmBtn: {
+            text: '删除',
+            active: true,
+            disabled: false,
+            href: 'javascript:;'
+          },
+          cancelBtn: {
+            text: '取消',
+            active: false,
+            disabled: false,
+            href: 'javascript:;'
+          },
+          onConfirm: () => {
+            this.$createToast({
+              type: 'warn',
+              time: 1000,
+              txt: '点击确认按钮'
+            }).show()
+          }
+        }).show();
       }
     },
     created() {

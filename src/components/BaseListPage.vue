@@ -2,12 +2,29 @@
   <v-container fluid pa-1 ma-0>
     <v-layout column>
       <v-flex v-for="data in dataList" :key="data.id" pa-0 ma-1>
-        <slot name="row" :row="data"/>
+        <v-card color="white">
+          <v-flex xs12>
+            <v-card-text class="font-weight-light">
+              <slot name="row" :row="data"/>
+            </v-card-text>
+          </v-flex>
+          <v-card-actions class="pa-0">
+            <v-spacer></v-spacer>
+            <v-btn icon @click.native="editItem(data)">
+              <v-icon color="blue darken-2" title="编辑">edit</v-icon>
+            </v-btn>
+            <v-btn icon @click.native="deleteItem(data)">
+              <v-icon color="orange darken-2" title="删除">delete</v-icon>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
       </v-flex>
       <v-flex pa-0 ma-1>
         <load-more :totalPages='totalPages' @nextPage="fetchNextPageData" v-if="showLoadMore"/>
       </v-flex>
     </v-layout>
+
+    <!-- 搜索栏 -->
     <v-navigation-drawer right v-model="showSearchDrawer" :disable-resize-watcher="true" fixed>
       <v-list>
         <v-list-tile class="my-2">
@@ -24,6 +41,8 @@
         </v-layout>
       </v-list>
     </v-navigation-drawer>
+
+    <!-- 快捷按钮 -->
     <v-speed-dial top right fixed direction="bottom">
       <v-btn slot="activator" color="green" dark fab>
         <v-icon>more_vert</v-icon>
@@ -35,12 +54,12 @@
         <span>条件查询</span>
       </v-tooltip>
       <v-tooltip left v-if="showAddNewBtn">
-        <v-btn fab dark small color="red" slot="activator" @click.native="addNew">
+        <v-btn fab dark small color="red" slot="activator" @click.native="addNewItem">
           <v-icon>add</v-icon>
         </v-btn>
         <span>新增</span>
       </v-tooltip>
-      <v-tooltip left v-if="showRefreshBtn">
+      <v-tooltip left>
         <v-btn fab dark small color="blue" slot="activator" @click.native="refreshData">
           <v-icon>refresh</v-icon>
         </v-btn>
@@ -69,15 +88,11 @@
       showSearchBtn: {type: Boolean, default: true},
       // 显示新增按钮
       showAddNewBtn: {type: Boolean, default: true},
-      // 显示刷新按钮
-      showRefreshBtn: {type: Boolean, default: true},
-      // 新增页面地址
-      addNewPath: {type: String, default: ''},
     },
     data() {
       return {
         // 显示搜索框
-        showSearchDrawer: false,
+        showSearchDrawer: false
       };
     },
     computed: {
@@ -87,9 +102,6 @@
       }
     },
     methods: {
-      addNew() {
-        this.$router.push(this.addNewPath);
-      },
       refreshData() {
         this.$emit("refreshData");
       },
@@ -100,6 +112,15 @@
       fetchNextPageData() {
         this.$emit('fetchNextPageData');
       },
+      addNewItem() {
+        this.$emit("addNewItem");
+      },
+      editItem(item) {
+        this.$emit("editItem", item);
+      },
+      deleteItem(item) {
+        this.$emit('deleteItem', item);
+      }
     }
   };
 </script>
