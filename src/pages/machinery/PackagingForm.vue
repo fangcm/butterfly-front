@@ -1,58 +1,41 @@
 <template>
-  <v-container fluid pa-1 ma-0>
-    <v-flex xs12 pa-0 ma-1>
-      <v-card class="grey lighten-4 elevation-0">
-        <v-card-title class="title">
-          {{title}}
-          <v-spacer></v-spacer>
-          <v-btn fab small class="grey" @click.native="cancel()">
-            <v-icon>cancel</v-icon>
-          </v-btn>
-          &nbsp;
-          <v-btn fab small class="purple" @click.native="save()">
-            <v-icon>save</v-icon>
-          </v-btn>
-        </v-card-title>
-        <v-card-text>
-          <v-container fluid grid-list-sm>
-            <v-layout row wrap>
-              <v-flex md9 sm12>
-                <v-container fluid grid-list-sm>
-                  <v-layout row wrap>
-                    <v-flex md4 sm12 xs12  class="mx-1 px-0">
-                      <v-text-field name="firstName" label="First Name" hint="Last name is required" value="Input text" v-model="customer.firstName"
-                                    class="input-group--focused" required></v-text-field>
-                    </v-flex>
-                    <v-flex md4 sm12  class="mx-1 px-0">
-                      <v-text-field name="lastName" label="Last Name" maxlength="10" hint="Last name is required" value="Input text" v-model="customer.lastName"
-                                    class="input-group--focused" required></v-text-field>
-                    </v-flex>
-                    <v-flex md4 sm12  xs12 class="mx-1 px-0">
-                      <v-text-field name="email" type="email" label="Email" value="Input text" v-model="customer.email" v-bind:rules="rules.email"
-                                    class="input-group--focused" required></v-text-field>
-                    </v-flex>
-                    <v-flex md4 sm12 xs12 class="mx-1 px-0">
-                      <v-text-field name="mobile" type="text" label="Mobile" v-model="customer.mobile" class="input-group--focused" required></v-text-field>
-                    </v-flex>
-                    <v-flex md4 sm12  class="mx-1 px-0">
-                      <v-text-field name="workphone" type="text" label="Work Phone" v-model="customer.workphone" class="input-group--focused" required></v-text-field>
-                    </v-flex>
-                    <v-flex md4 sm12 xs12 class="mx-1 px-0">
-                      <v-text-field name="rewards" type="number" label="Rewards" hint="Number between 0 and 9999" v-bind:rules="rules.rewards"
-                                    v-model="customer.rewards" class="input-group--focused" required></v-text-field>
-                    </v-flex>
-                    <v-flex md6 sm12  class="mx-1 px-0">
-                      <v-switch label="Membership" v-model="customer.membership" light></v-switch>
-                    </v-flex>
-                  </v-layout>
-                </v-container>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card-text>
-      </v-card>
-    </v-flex>
-  </v-container>
+  <v-layout column wrap pa-1 ma-0>
+    <v-form>
+      <v-flex md4 sm12 xs12>
+        <v-text-field name="firstName" label="First Name" hint="Last name is required"
+                      value="Input text"
+                      v-model="customer.firstName"
+                      class="input-group--focused" required></v-text-field>
+      </v-flex>
+      <v-flex md4 sm12>
+        <v-text-field name="lastName" label="Last Name" maxlength="10" hint="Last name is required"
+                      value="Input text" v-model="customer.lastName"
+                      class="input-group--focused" required></v-text-field>
+      </v-flex>
+      <v-flex md4 sm12 xs12>
+        <v-text-field name="mobile" type="text" label="Mobile" v-model="customer.lastName"
+                      class="input-group--focused" required></v-text-field>
+      </v-flex>
+      <v-flex md4 sm12 xs12>
+        <v-text-field name="rewards" type="number" label="Rewards" hint="Number between 0 and 9999"
+                      v-bind:rules="rules.rewards"
+                      v-model="customer.lastName" class="input-group--focused" required></v-text-field>
+      </v-flex>
+      <v-flex md6 sm12>
+        <v-switch label="Membership" v-model="customer.membership" light></v-switch>
+      </v-flex>
+      <v-flex md6 sm12>
+        <v-btn dark color="blue-grey" @click.native="cancel()">
+          <v-icon left>cancel</v-icon>
+          取消
+        </v-btn>
+        <v-btn dark color="primary" @click.native="save()">
+          <v-icon left>save</v-icon>
+          保存
+        </v-btn>
+      </v-flex>
+    </v-form>
+  </v-layout>
 </template>
 <script>
 
@@ -60,6 +43,11 @@
     data() {
       return {
         title: '',
+        customer: {
+          firstName: "",
+          lastName: "",
+          membership: false
+        },
         rules: {
           rewards: [() => {
             if (this.customer && (this.customer.rewards < 0 || this.customer.rewards > 9999)) {
@@ -81,7 +69,7 @@
       save() {
       },
       cancel() {
-        this.$router.push({name: 'PackagingMachinerys'})
+        this.$router.back(-1)
       },
       closeSnackbar() {
       },
