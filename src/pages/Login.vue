@@ -4,12 +4,12 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
-            <v-form ref="form" v-model="valid" lazy-validation>
-              <v-card>
-                <v-toolbar dark color="primary">
-                  <v-toolbar-title>{{title}}</v-toolbar-title>
-                </v-toolbar>
-                <v-card-text>
+            <v-card>
+              <v-toolbar dark color="primary">
+                <v-toolbar-title>{{title}}</v-toolbar-title>
+              </v-toolbar>
+              <v-card-text>
+                <v-form ref="form" v-model="valid" lazy-validation>
                   <v-text-field prepend-icon="phone" label="手机号"
                                 v-model="mobile" :rules="mobileRules" required/>
                   <v-text-field prepend-icon="lock" label="密码" type="password"
@@ -17,13 +17,13 @@
                                 @click:append="showPassword = !showPassword"
                                 :append-icon="showPassword ? 'visibility_off' : 'visibility'"
                                 :type="showPassword ? 'text' : 'password'"/>
-                </v-card-text>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="primary" @click="submit">登录</v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-form>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary" @click="submit">登录</v-btn>
+              </v-card-actions>
+            </v-card>
           </v-flex>
         </v-layout>
       </v-container>

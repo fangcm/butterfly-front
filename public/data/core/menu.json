@@ -3,8 +3,8 @@
   "message": "操作成功",
   "data": [
     {
-      "id": 10,
-      "name": "生产业务",
+      "id": 310,
+      "name": "打包作业",
       "rootLevel": 1,
       "icon": "comment",
       "path": "/",
@@ -12,29 +12,173 @@
       "sort": 1,
       "children": [
         {
-          "id": 11,
-          "name": "打包机",
+          "id": 312,
+          "name": "打包",
+          "rootLevel": 0,
+          "icon": "dashboard",
+          "color": "orange darken-2",
+          "path": "/",
+          "parentId": "10",
+          "sort": 2
+        },
+        {
+          "id": 311,
+          "name": "回收",
           "rootLevel": 0,
           "icon": "assignment",
-          "color":"blue darken-2",
+          "color": "orange darken-2",
           "path": "/app/packagingMachinerys",
           "parentId": "10",
           "sort": 1
         },
         {
-          "id": 12,
-          "name": "数据",
+          "id": 313,
+          "name": "集草",
+          "rootLevel": 0,
+          "icon": "assignment",
+          "color": "orange darken-2",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
+        },
+        {
+          "id": 317,
+          "name": "削杆",
+          "rootLevel": 0,
+          "icon": "assignment",
+          "color": "orange darken-2",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
+        },
+        {
+          "id": 318,
+          "name": "搂草",
+          "rootLevel": 0,
+          "icon": "assignment",
+          "color": "orange darken-2",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
+        },
+        {
+          "id": 318,
+          "name": "作业审核",
+          "rootLevel": 0,
+          "icon": "assignment",
+          "color": "teal darken-2",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
+        }
+      ]
+    },
+    {
+      "id": 210,
+      "name": "秸秆运输",
+      "rootLevel": 1,
+      "icon": "comment",
+      "path": "/",
+      "parentId": "",
+      "sort": 1,
+      "children": [
+        {
+          "id": 212,
+          "name": "离田出发",
           "rootLevel": 0,
           "icon": "dashboard",
+          "color": "lime darken-3",
           "path": "/",
           "parentId": "10",
           "sort": 2
+        },
+        {
+          "id": 211,
+          "name": "入厂登记",
+          "rootLevel": 0,
+          "icon": "assignment",
+          "color": "lime darken-3",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "设备管理",
+      "rootLevel": 1,
+      "icon": "comment",
+      "path": "/",
+      "parentId": "",
+      "sort": 1,
+      "children": [
+        {
+          "id": 12,
+          "name": "运输车辆",
+          "rootLevel": 0,
+          "icon": "dashboard",
+          "color": "teal darken-2",
+          "path": "/",
+          "parentId": "10",
+          "sort": 2
+        },
+        {
+          "id": 11,
+          "name": "打包机械",
+          "rootLevel": 0,
+          "icon": "assignment",
+          "color": "teal darken-2",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
+        }
+      ]
+    },
+    {
+      "id": 410,
+      "name": "统计报表",
+      "rootLevel": 1,
+      "icon": "comment",
+      "path": "/",
+      "parentId": "",
+      "sort": 1,
+      "children": [
+        {
+          "id": 412,
+          "name": "作业记录",
+          "rootLevel": 0,
+          "icon": "dashboard",
+          "color": "teal darken-2",
+          "path": "/",
+          "parentId": "10",
+          "sort": 2
+        },
+        {
+          "id": 411,
+          "name": "作业记录详细表",
+          "rootLevel": 0,
+          "icon": "assignment",
+          "color": "teal darken-2",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
+        }
+      ,
+        {
+          "id": 413,
+          "name": "各种报表",
+          "rootLevel": 0,
+          "icon": "assignment",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
         }
       ]
     },
     {
       "id": 13,
-      "name": "食堂",
+      "name": "人员管理",
       "rootLevel": 1,
       "icon": "wb_cloudy",
       "path": "/",
@@ -43,53 +187,57 @@
       "children": [
         {
           "id": 14,
-          "name": "菜品",
+          "name": "经纪人",
           "rootLevel": 0,
           "icon": "restaurant_menu",
-          "color":"orange darken-2",
+          "color": "orange darken-2",
           "path": "/",
           "parentId": "13",
           "sort": 1
         },
         {
           "id": 15,
-          "name": "意见吐槽",
+          "name": "运输司机",
           "rootLevel": 0,
           "icon": "phone",
+          "color": "lime darken-3",
           "path": "/",
           "parentId": "13",
           "sort": 2
         },
         {
           "id": 16,
-          "name": "好吃的菜",
+          "name": "设备操作员",
           "rootLevel": 0,
           "icon": "home",
+          "color": "orange darken-2",
           "path": "/",
           "parentId": "13",
           "sort": 3
         },
         {
           "id": 17,
-          "name": "排队领号",
+          "name": "料场业务员",
           "rootLevel": 0,
           "icon": "build",
+          "color": "lime darken-3",
           "path": "/",
           "parentId": "13",
           "sort": 4
         },
         {
           "id": 18,
-          "name": "预定",
+          "name": "经纪人管理员",
           "rootLevel": 0,
           "icon": "local_shipping",
+          "color": "teal darken-2",
           "path": "/",
           "parentId": "13",
           "sort": 5
         },
         {
           "id": 119,
-          "name": "菜品",
+          "name": "公司管理者",
           "rootLevel": 0,
           "icon": "restaurant_menu",
           "path": "/",
@@ -97,49 +245,14 @@
           "sort": 1
         },
         {
-          "id": 120,
-          "name": "意见吐槽",
+          "id": 129,
+          "name": "系统管理员",
           "rootLevel": 0,
-          "icon": "phone",
+          "icon": "restaurant_menu",
+          "color": "green darken-2",
           "path": "/",
           "parentId": "13",
-          "sort": 2
-        },
-        {
-          "id": 121,
-          "name": "好吃的菜",
-          "rootLevel": 0,
-          "icon": "home",
-          "path": "/",
-          "parentId": "13",
-          "sort": 3
-        },
-        {
-          "id": 122,
-          "name": "排队领号",
-          "rootLevel": 0,
-          "icon": "build",
-          "path": "/",
-          "parentId": "13",
-          "sort": 4
-        },
-        {
-          "id": 123,
-          "name": "预定",
-          "rootLevel": 0,
-          "icon": "local_shipping",
-          "path": "/",
-          "parentId": "13",
-          "sort": 5
-        },
-        {
-          "id": 23,
-          "name": "其他",
-          "rootLevel": 0,
-          "icon": "extension",
-          "path": "/admin/user",
-          "parentId": "19",
-          "sort": 4
+          "sort": 1
         }
       ]
     },
@@ -157,6 +270,7 @@
           "name": "用户管理",
           "rootLevel": 0,
           "icon": "person",
+          "color": "green darken-2",
           "path": "/app/adminUsers",
           "parentId": "19",
           "sort": 1
@@ -166,16 +280,17 @@
           "name": "角色管理",
           "rootLevel": 0,
           "icon": "accessibility",
-          "color":"green darken-2",
+          "color": "green darken-2",
           "path": "/app/adminRoles",
           "parentId": "19",
           "sort": 2
         },
         {
           "id": 22,
-          "name": "菜单管理",
+          "name": "作业区域",
           "rootLevel": 0,
           "icon": "list",
+          "color": "green darken-2",
           "path": "/app/adminMenus",
           "parentId": "19",
           "sort": 3
