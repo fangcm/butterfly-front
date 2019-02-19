@@ -1,7 +1,7 @@
 <template>
   <base-form-page @save="save">
     <v-form ref="form" validation>
-      <v-text-field name="firstName" label="First Name" hint="Last name is required"
+      <v-text-field name="firstName" label="工作区" hint="Last name is required"
                     value="Input text"
                     v-model="customer.firstName"
                     class="input-group--focused" required></v-text-field>

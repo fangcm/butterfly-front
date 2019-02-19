@@ -17,7 +17,7 @@
           "rootLevel": 0,
           "icon": "dashboard",
           "color": "orange darken-2",
-          "path": "/",
+          "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 2
         },
@@ -27,7 +27,7 @@
           "rootLevel": 0,
           "icon": "assignment",
           "color": "orange darken-2",
-          "path": "/app/packagingMachinerys",
+          "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 1
         },
@@ -37,7 +37,7 @@
           "rootLevel": 0,
           "icon": "assignment",
           "color": "orange darken-2",
-          "path": "/app/packagingMachinerys",
+          "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 1
         },
@@ -47,17 +47,17 @@
           "rootLevel": 0,
           "icon": "assignment",
           "color": "orange darken-2",
-          "path": "/app/packagingMachinerys",
+          "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 1
         },
         {
-          "id": 318,
+          "id": 338,
           "name": "搂草",
           "rootLevel": 0,
           "icon": "assignment",
           "color": "orange darken-2",
-          "path": "/app/packagingMachinerys",
+          "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 1
         },
@@ -163,8 +163,7 @@
           "path": "/app/packagingMachinerys",
           "parentId": "10",
           "sort": 1
-        }
-      ,
+        },
         {
           "id": 413,
           "name": "各种报表",

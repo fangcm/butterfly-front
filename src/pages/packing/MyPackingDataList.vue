@@ -1,5 +1,5 @@
 <template>
-  <base-list-page :dataList="dataList" :pageNumber="pageNumber" :totalPages="totalPages"
+  <crud-list-page :dataList="dataList" :pageNumber="pageNumber" :totalPages="totalPages"
                   @fetchNextPageData="fetchNextPageData" @refreshData="refreshData" @searchData="fetchData"
                   @addNewItem="addNewItem" @editItem="editItem" @deleteItem="deleteItem">
     <template slot="row" slot-scope="props">
@@ -63,7 +63,7 @@
         </v-flex>
       </v-layout>
     </template>
-  </base-list-page>
+  </crud-list-page>
 </template>
 
 <script>

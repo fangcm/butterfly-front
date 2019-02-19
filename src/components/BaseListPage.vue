@@ -8,8 +8,7 @@
               <slot name="row" :row="data"/>
             </v-card-text>
           </v-flex>
-          <v-card-actions class="pa-0">
-            <v-spacer></v-spacer>
+          <v-card-actions class="pa-1">
             <slot name="action" :row="data"/>
           </v-card-actions>
         </v-card>
@@ -18,7 +17,6 @@
         <load-more :totalPages='totalPages' @nextPage="fetchNextPageData" v-if="showLoadMore"/>
       </v-flex>
     </v-layout>
-    <slot name="other"/>
   </v-container>
 </template>
 

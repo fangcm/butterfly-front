@@ -8,7 +8,7 @@
               <slot name="row" :row="data"/>
             </v-card-text>
           </v-flex>
-          <v-card-actions class="pa-0">
+          <v-card-actions class="pa-1">
             <v-spacer></v-spacer>
             <v-btn icon @click.native="editItem(data)">
               <v-icon color="blue darken-2" title="编辑">edit</v-icon>

@@ -6,6 +6,10 @@ const Home = () => import(/* webpackChunkName: "group-home" */ '@/pages/Home');
 const Login = () => import(/* webpackChunkName: "group-login" */ '@/pages/Login');
 const Index = () => import(/* webpackChunkName: "group-index" */ '@/pages/Index');
 
+const MyPackingMachineryList = () => import(/* webpackChunkName: "group-packing" */ '@/pages/packing/MyPackingMachineryList');
+const MyPackingDataList = () => import(/* webpackChunkName: "group-packing" */ '@/pages/packing/MyPackingDataList');
+const MyPackingDataForm = () => import(/* webpackChunkName: "group-packing" */ '@/pages/packing/MyPackingDataForm');
+
 const PackagingMachineryList = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackagingList');
 const PackagingMachineryForm = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackagingForm');
 
@@ -24,10 +28,34 @@ const routes = [{
   },
   children: [{
     path: 'index',
-    name: 'Index',
+    name: 'index',
     component: Index,
     meta: {
       title: '业务演示'
+    }
+  }, {
+    // 我的打包机列表
+    path: 'myPackingMachinerys',
+    name: 'myPackingMachinerys',
+    component: MyPackingMachineryList,
+    meta: {
+      title: '我的打包机'
+    }
+  }, {
+    // 我的打包作业列表
+    path: 'myPackingDataList',
+    name: 'myPackingDataList',
+    component: MyPackingDataList,
+    meta: {
+      title: '我的打包数据'
+    }
+  }, {
+    // 提交我的打包数据
+    path: 'myPackingDataForm',
+    name: 'myPackagingDataForm',
+    component: MyPackingDataForm,
+    meta: {
+      title: '提交我的打包数据'
     }
   }, {
     path: 'packagingMachinerys',
