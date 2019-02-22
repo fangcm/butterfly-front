@@ -1,11 +1,11 @@
 <template>
   <base-form-page @save="save">
     <v-form ref="form" validation>
-      <v-text-field label="工作区域" append-outer-icon="address" v-model="item.address"
+      <v-text-field label="工作区域" append-outer-icon="iconfont fcm-address medium" v-model="item.address"
                     readonly required @click:append-outer="showAddressPicker"/>
-      <v-text-field label="设备" append-outer-icon="machinery" v-model="item.machinery"
+      <v-text-field label="设备" append-outer-icon="iconfont fcm-nongfuguanjia" v-model="item.machinery"
                     readonly required @click:append-outer="showAddressPicker"/>
-      <v-text-field label="开工时间" append-outer-icon="event" v-model="item.packingDate"
+      <v-text-field label="开工时间" append-outer-icon="iconfont fcm-jizhuangxiangqiache" v-model="item.packingDate"
                     readonly required @click:append-outer="showTimePicker"/>
       <v-text-field label="收工时间" append-outer-icon="event" v-model="item.packingDate"
                     readonly required @click:append-outer="showTimePicker"/>

@@ -8,9 +8,5 @@ Vue.use(Vuetify, {
   lang: {
     locales: {zhHans},
     current: 'zhHans'
-  },
-  icons: {
-    'cancel': 'iconfont fcm-songda',
-    'menu': 'iconfont fcm-sousuo'
   }
 });
