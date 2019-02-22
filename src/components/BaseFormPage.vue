@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid fill-height>
-    <v-layout column pa-1 ma-0>
-      <v-flex xs12 sm8 md4 lg4 xl4>
+  <v-container fluid pa-1 ma-0>
+    <v-layout row justify-left wra>
+      <v-flex xs12 sm6 md4>
         <slot/>
         <v-layout row class="mb-3">
           <v-flex xs12>

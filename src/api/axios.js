@@ -1,7 +1,6 @@
 import axios from 'axios'
 import store from '@/vuex/store'
 import router from '@/router/index'
-import {stringify} from 'qs'
 
 
 // axios 配置
@@ -62,7 +61,7 @@ export function fetch(url, options) {
       params: opt.params || {},
       // 判断是否有自定义头部，以对参数进行序列化。不定义头部，默认对参数序列化为查询字符串。
 
-      data: (opt.headers && opt.headers['Content-Type'].indexOf('x-www-form-urlencoded') > 0 ? stringify(opt.data) : opt.data) || {},
+      data: opt.data || {},
       responseType: opt.dataType || 'json',
       // 设置默认请求头
       headers: opt.headers || {'Content-Type': 'application/json; charset=UTF-8'},

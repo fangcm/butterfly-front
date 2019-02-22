@@ -1,0 +1,161 @@
+{
+  "code": 0,
+  "message": "操作成功",
+  "data": [
+    {
+      "value": "汤原县",
+      "text": "汤原县",
+      "children": [
+        {
+          "value": "汤原镇",
+          "text": "汤原镇",
+          "sort": 2,
+          "children": [
+            {
+              "value": "农场1连",
+              "text": "农场1连"
+            },
+            {
+              "value": "农场6连",
+              "text": "农场6连",
+              "sort": 2
+            },
+            {
+              "value": "农场4连",
+              "text": "农场4连"
+            }
+          ]
+        },
+        {
+          "value": "竹帘镇",
+          "text": "竹帘镇",
+          "children": [
+            {
+              "value": "前村",
+              "text": "前村"
+            },
+            {
+              "value": "五棵树",
+              "text": "五棵树",
+              "sort": 2
+            },
+            {
+              "value": "赵家村",
+              "text": "赵家村"
+            }
+          ]
+        },
+        {
+          "value": "永发乡",
+          "text": "永发乡",
+          "children": [
+            {
+              "value": "哈林村",
+              "text": "哈林村"
+            }
+          ]
+        },
+        {
+          "value": "汤旺乡",
+          "text": "汤旺乡",
+          "sort": 2,
+          "children": [
+            {
+              "value": "前1村",
+              "text": "前1村"
+            }
+          ]
+        },
+        {
+          "value": "太平川乡",
+          "text": "太平川乡",
+          "children": [
+            {
+              "value": "努尔村",
+              "text": "努尔村"
+            }
+          ]
+        },
+        {
+          "value": "吉祥乡",
+          "text": "吉祥乡",
+          "children": [
+            {
+              "value": "大山村",
+              "text": "大山村"
+            }
+          ]
+        },
+        {
+          "value": "胜利乡",
+          "text": "胜利乡",
+          "sort": 2,
+          "children": [
+            {
+              "value": "左右村",
+              "text": "左右村"
+            }
+          ]
+        },
+        {
+          "value": "香兰镇",
+          "text": "香兰镇",
+          "children": [
+            {
+              "value": "大昌",
+              "text": "大昌"
+            },
+            {
+              "value": "农场",
+              "text": "农场",
+              "sort": 2
+            },
+            {
+              "value": "聂家村",
+              "text": "聂家村"
+            }
+          ]
+        },
+        {
+          "value": "鹤立镇",
+          "text": "鹤立镇",
+          "children": [
+            {
+              "value": "河北村",
+              "text": "河北村"
+            },
+            {
+              "value": "三家子",
+              "text": "三家子",
+              "sort": 2
+            },
+            {
+              "value": "河西村",
+              "text": "河西村"
+            }
+          ]
+        },
+        {
+          "value": "振兴乡",
+          "text": "振兴乡",
+          "sort": 2,
+          "children": [
+            {
+              "value": "郭家村",
+              "text": "郭家村"
+            },
+            {
+              "value": "李家村",
+              "text": "李家村",
+              "sort": 2
+            },
+            {
+              "value": "牛家村",
+              "text": "牛家村"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

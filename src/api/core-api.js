@@ -1,5 +1,11 @@
-import {fetch} from '@/util/api'
+import {fetch} from './axios'
 import api from './api-config'
+
+//地区
+export const addressList = (data) => fetch(api.baseUrl + 'core/address.json', {
+  'params': data,
+  'type': 'get'
+});
 
 //用户登录
 export const userLogin = (data) => fetch(api.baseUrl + 'core/login.json', {

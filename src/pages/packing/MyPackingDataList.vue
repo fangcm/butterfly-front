@@ -67,7 +67,7 @@
 </template>
 
 <script>
-  import {packagingMachineryList} from '@/api/machinery-api'
+  import {myPackingDataList} from '@/api/machinery-api'
   import CrudListPage from '@/components/CrudListPage'
 
   export default {
@@ -109,7 +109,7 @@
       fetchData() {
         console.log("fetchData ...");
         let _data = {'pageNumber': this.pageNumber};
-        packagingMachineryList(_data).then(
+        myPackingDataList(_data).then(
           data => {
             // 保存登录状态和信息
             this.dataList = this.dataList.concat(data.data.content);
@@ -123,12 +123,12 @@
       },
       addNewItem() {
         this.$router.push({
-          name: "NewPackagingMachinery"
+          name: "myPackagingDataForm"
         });
       },
       editItem(item) {
         this.$router.push({
-          name: "PackagingMachinery",
+          name: "myPackagingDataForm",
           params: {id: item.id}
         });
       },

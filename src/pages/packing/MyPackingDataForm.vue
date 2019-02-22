@@ -1,24 +1,32 @@
 <template>
   <base-form-page @save="save">
     <v-form ref="form" validation>
-      <v-text-field name="firstName" label="工作区" hint="Last name is required"
-                    value="Input text"
-                    v-model="customer.firstName"
+      <v-text-field label="工作区域" append-outer-icon="address" v-model="item.address"
+                    readonly required @click:append-outer="showAddressPicker"/>
+      <v-text-field label="设备" append-outer-icon="machinery" v-model="item.machinery"
+                    readonly required @click:append-outer="showAddressPicker"/>
+      <v-text-field label="开工时间" append-outer-icon="event" v-model="item.packingDate"
+                    readonly required @click:append-outer="showTimePicker"/>
+      <v-text-field label="收工时间" append-outer-icon="event" v-model="item.packingDate"
+                    readonly required @click:append-outer="showTimePicker"/>
+      <v-text-field label="Last Name" maxlength="10" hint="Last name is required"
+                    value="Input text" v-model="item.lastName"
                     class="input-group--focused" required></v-text-field>
-      <v-text-field name="lastName" label="Last Name" maxlength="10" hint="Last name is required"
-                    value="Input text" v-model="customer.lastName"
+      <v-text-field name="mobile" type="text" label="Mobile" v-model="item.lastName"
                     class="input-group--focused" required></v-text-field>
-      <v-text-field name="mobile" type="text" label="Mobile" v-model="customer.lastName"
+      <v-text-field label="作业司机" type="text" v-model="item.operator"
                     class="input-group--focused" required></v-text-field>
-      <v-text-field name="rewards" type="number" label="Rewards" hint="Number between 0 and 9999"
-                    v-bind:rules="rules.rewards"
-                    v-model="customer.lastName" class="input-group--focused" required></v-text-field>
-      <v-switch label="Membership" v-model="customer.membership" light></v-switch>
+
+      <v-text-field label="作业量" type="number" :rules="rules.workload" hint="工作时长、包数或公顷数"
+                    v-model="item.workload" class="input-group--focused" required></v-text-field>
+
+      <v-switch label="Membership" v-model="item.membership" light></v-switch>
     </v-form>
   </base-form-page>
 </template>
 <script>
   import BaseFormPage from '@/components/BaseFormPage'
+  import {addressList} from '@/api/core-api'
 
   export default {
     components: {
@@ -26,28 +34,81 @@
     },
     data() {
       return {
-        customer: {
-          firstName: "",
-          lastName: "",
-          membership: false
+        item: {
+          address: "",
+          machinery: "",
+          startDate: this.$dateFilter(new Date(), 'yyyy-MM-dd hh:mm'),
+          endDate: this.$dateFilter(new Date(), 'yyyy-MM-dd hh:mm'),
+          workload: 0,
+          operator: "",
+          abnormalFlag: false,
+          abnormalDesc: ""
         },
+        addressData: [],
         rules: {
-          rewards: [() => {
-            if (this.customer && (this.customer.rewards < 0 || this.customer.rewards > 9999)) {
-              return 'Reward is required. It must be bewteen 0 and 9999'
+          workload: [() => {
+            if (this.item && (this.item.workload < 0 || this.item.workload > 9999)) {
+              return '作业量数据填写有误'
             }
-            return true;
-          }],
-          email: [() => {
-            /* eslint-disable no-useless-escape */
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            if (this.customer && !re.test(this.customer.email)) return 'Email is invalid.'
             return true;
           }]
         }
       }
     },
     methods: {
+      showTimePicker(e) {
+        if (!this.dateTimePicker) {
+          this.dateTimePicker = this.$createDatePicker({
+            title: '时间选择',
+            min: new Date(2008, 7, 8, 8, 0, 0),
+            max: new Date(2020, 9, 20, 20, 59, 59),
+            value: new Date(),
+            columnCount: 5,
+            format: {
+              year: 'YYYY年',
+              month: 'M月',
+              date: 'D日',
+              hour: 'h点',
+              minute: 'm分'
+            },
+            onSelect: (selectedVal, selectedIndex, selectedText) => {
+              this.item.packingDate = this.$dateFilter(date, 'yyyy-MM-dd hh:mm');
+            }
+          })
+        }
+
+        this.dateTimePicker.show()
+      },
+      showAddressPicker() {
+        if (!this.addressPicker) {
+
+          this.addressPicker = this.$createCascadePicker({
+            title: '选择工作区域',
+            onSelect: (selectedVal, selectedIndex, selectedText) => {
+              this.item.address = selectedVal.join(' ');
+              /**
+               const self = this
+               selectedVal.forEach(function (value, index) {
+            if (index === 0) {
+              self.area = value
+            }
+          })
+               */
+            }
+          })
+
+
+        }
+        this.addressPicker.show();
+
+        if (this.addressData.length === 0) {
+          let _data = {};
+          addressList(_data).then((data) => {
+            this.addressData = data.data;
+            this.addressPicker.setData(this.addressData)
+          });
+        }
+      },
       save() {
         if (this.$refs.form.validate()) {
         }

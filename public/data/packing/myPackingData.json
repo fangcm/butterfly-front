@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "content": [
+      {
+        "id": "01",
+        "code": "171001",
+        "model": "x型打包机",
+        "type": 1,
+        "workload": 30,
+        "unit": "包",
+        "belongTo": 1,
+        "personInCharge": "张三"
+      },
+      {
+        "id": "02",
+        "code": "171002",
+        "model": "xx公司y型打包机",
+        "type": 1,
+        "workload": 50,
+        "unit": "包",
+        "belongTo": 1,
+        "personInCharge": "张三"
+      },
+      {
+        "id": "03",
+        "code": "171003",
+        "model": "zz公司m型打包机",
+        "type": 1,
+        "workload": 200,
+        "unit": "包",
+        "belongTo": 1,
+        "personInCharge": "张三"
+      },
+      {
+        "id": "04",
+        "code": "171004",
+        "model": "简易n型打包机",
+        "type": 1,
+        "workload": 20,
+        "unit": "包",
+        "belongTo": 1,
+        "personInCharge": "张三"
+      }
+    ],
+    "pageable": {
+      "sort": {
+        "sorted": false,
+        "unsorted": true
+      },
+      "offset": 0,
+      "pageSize": 10,
+      "pageNumber": 0,
+      "unpaged": false,
+      "paged": true
+    },
+    "totalElements": 1,
+    "totalPages": 3,
+    "last": false,
+    "number": 0,
+    "size": 10,
+    "sort": {
+      "sorted": false,
+      "unsorted": true
+    },
+    "numberOfElements": 1,
+    "first": true
+  }
+}
