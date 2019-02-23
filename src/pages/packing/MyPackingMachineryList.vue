@@ -4,26 +4,23 @@
     <template slot="row" slot-scope="props">
       <v-layout align-center row wrap>
         <v-flex shrink pa-2>
-          <span class="subheading" v-if="props.row.model">{{props.row.model}}</span>
+          <span class="subheading">{{props.row.type|packingMachineryTypeFilter}}</span>
+          <span v-if="props.row.code">&nbsp;:&nbsp;{{props.row.code}}</span>
         </v-flex>
       </v-layout>
       <v-layout align-center row wrap>
         <v-flex shrink pa-2>
-          <span>编号:</span>
-          <span>{{props.row.code}}</span>
+          <span>型号&nbsp;:&nbsp;</span>
+          <span>{{props.row.model}}</span>
         </v-flex>
         <v-flex shrink pa-2>
-          <span>类型:</span>
-          <span>打包机</span>
-        </v-flex>
-        <v-flex shrink pa-2>
-          <span>工作负载:</span>
+          <span>工作负载&nbsp;:&nbsp;</span>
           <span>{{props.row.workload}}</span>
           <span>{{props.row.unit}}</span>
         </v-flex>
-        <v-flex shrink pa-2>
-          <span>今日打包量:</span>
-          <span>{{props.row.workload}}</span>
+        <v-flex shrink pa-2 >
+          <span>今日打包量&nbsp;:&nbsp;</span>
+          <span class="red--text text--darken-2">{{props.row.workload}}</span>
           <span>{{props.row.unit}}</span>
         </v-flex>
       </v-layout>

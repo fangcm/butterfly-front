@@ -5,43 +5,55 @@
     "content": [
       {
         "id": "01",
-        "code": "171001",
-        "model": "x型打包机",
-        "type": 1,
+        "address": "汤原县 汤原镇 农场1连",
+        "machinery": "x型打包机",
+        "startDate": "2019-02-23 08:00",
+        "endDate": "2019-02-23 18:16",
         "workload": 30,
         "unit": "包",
         "belongTo": 1,
-        "personInCharge": "张三"
+        "operator": "张三",
+        "abnormalFlag": false,
+        "abnormalDesc": ""
       },
       {
         "id": "02",
-        "code": "171002",
-        "model": "xx公司y型打包机",
-        "type": 1,
-        "workload": 50,
+        "address": "汤原县 汤原镇 农场1连",
+        "machinery": "x型打包机",
+        "startDate": "2019-02-20 08:00",
+        "endDate": "2019-02-20 21:30",
+        "workload": 45,
         "unit": "包",
         "belongTo": 1,
-        "personInCharge": "张三"
+        "operator": "李四",
+        "abnormalFlag": false,
+        "abnormalDesc": ""
       },
       {
         "id": "03",
-        "code": "171003",
-        "model": "zz公司m型打包机",
-        "type": 1,
-        "workload": 200,
+        "address": "汤原县 汤原镇 农场1连",
+        "machinery": "x型打包机",
+        "startDate": "2019-02-14 08:00",
+        "endDate": "2019-02-14 09:10",
+        "workload": 2,
         "unit": "包",
         "belongTo": 1,
-        "personInCharge": "张三"
+        "operator": "王五",
+        "abnormalFlag": true,
+        "abnormalDesc": "打包机轮子掉了，油没了。"
       },
       {
         "id": "04",
-        "code": "171004",
-        "model": "简易n型打包机",
-        "type": 1,
-        "workload": 20,
+        "address": "汤原县 汤原镇 农场5连",
+        "machinery": "155555",
+        "startDate": "2019-02-12 08:00",
+        "endDate": "2019-02-12 20:00",
+        "workload": 30,
         "unit": "包",
         "belongTo": 1,
-        "personInCharge": "张三"
+        "operator": "木头六",
+        "abnormalFlag": false,
+        "abnormalDesc": ""
       }
     ],
     "pageable": {

@@ -3,8 +3,8 @@
     <v-layout row justify-left wra>
       <v-flex xs12 sm6 md4>
         <slot/>
-        <v-layout row class="mb-3">
-          <v-flex xs12>
+        <v-layout row>
+          <v-flex xs10 offset-xs1>
             <v-btn dark color="blue-grey" @click.native="cancel()">
               <v-icon left>cancel</v-icon>
               取消

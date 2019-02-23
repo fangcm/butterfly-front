@@ -1,26 +1,53 @@
 <template>
   <base-form-page @save="save">
     <v-form ref="form" validation>
-      <v-text-field label="工作区域" append-outer-icon="iconfont fcm-address medium" v-model="item.address"
-                    readonly required @click:append-outer="showAddressPicker"/>
-      <v-text-field label="设备" append-outer-icon="iconfont fcm-nongfuguanjia" v-model="item.machinery"
-                    readonly required @click:append-outer="showAddressPicker"/>
-      <v-text-field label="开工时间" append-outer-icon="iconfont fcm-jizhuangxiangqiache" v-model="item.packingDate"
-                    readonly required @click:append-outer="showTimePicker"/>
-      <v-text-field label="收工时间" append-outer-icon="event" v-model="item.packingDate"
-                    readonly required @click:append-outer="showTimePicker"/>
-      <v-text-field label="Last Name" maxlength="10" hint="Last name is required"
-                    value="Input text" v-model="item.lastName"
-                    class="input-group--focused" required></v-text-field>
-      <v-text-field name="mobile" type="text" label="Mobile" v-model="item.lastName"
-                    class="input-group--focused" required></v-text-field>
-      <v-text-field label="作业司机" type="text" v-model="item.operator"
-                    class="input-group--focused" required></v-text-field>
-
-      <v-text-field label="作业量" type="number" :rules="rules.workload" hint="工作时长、包数或公顷数"
-                    v-model="item.workload" class="input-group--focused" required></v-text-field>
-
-      <v-switch label="Membership" v-model="item.membership" light></v-switch>
+      <v-layout row>
+        <v-flex xs10 offset-xs1>
+          <v-text-field label="工作区域" append-outer-icon="iconfont fcm-address" v-model="item.address"
+                        readonly required @click:append-outer="showAddressPicker"/>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs10 offset-xs1>
+          <v-text-field label="设备" append-outer-icon="iconfont fcm-nongfuguanjia" v-model="item.machinery"
+                        readonly required @click:append-outer="showAddressPicker"/>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs10 offset-xs1>
+          <v-text-field label="开工时间" append-outer-icon="date_range" v-model="item.startDate"
+                        readonly required @click:append-outer="showTimePicker"/>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs10 offset-xs1>
+          <v-text-field label="收工时间" append-outer-icon="date_range" v-model="item.endDate"
+                        readonly required @click:append-outer="showTimePicker"/>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs10 offset-xs1>
+          <v-text-field label="操作员" type="text" maxlength="16" v-model="item.operator"
+                        class="input-group--focused" required></v-text-field>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs10 offset-xs1>
+          <v-text-field label="作业量" type="number" :rules="rules.workload" hint="工作时长、数包或公顷数"
+                        v-model="item.workload" class="input-group--focused" required></v-text-field>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs10 offset-xs1>
+          <v-switch label="运行异常" v-model="item.abnormalFlag" light></v-switch>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs10 offset-xs1>
+          <v-text-field label="异常描述" hint="简单描述异常情况" v-model="item.abnormalDesc"
+                        class="input-group--focused" v-if="item.abnormalFlag"></v-text-field>
+        </v-flex>
+      </v-layout>
     </v-form>
   </base-form-page>
 </template>
@@ -60,8 +87,8 @@
         if (!this.dateTimePicker) {
           this.dateTimePicker = this.$createDatePicker({
             title: '时间选择',
-            min: new Date(2008, 7, 8, 8, 0, 0),
-            max: new Date(2020, 9, 20, 20, 59, 59),
+            min: new Date(2019, 1, 23, 0, 0, 0),
+            max: new Date(2019, 2, 20, 23, 59, 59),
             value: new Date(),
             columnCount: 5,
             format: {
@@ -72,7 +99,7 @@
               minute: 'm分'
             },
             onSelect: (selectedVal, selectedIndex, selectedText) => {
-              this.item.packingDate = this.$dateFilter(date, 'yyyy-MM-dd hh:mm');
+              this.item.startDate = this.$dateFilter(selectedVal, 'yyyy-MM-dd hh:mm');
             }
           })
         }
@@ -112,6 +139,7 @@
       save() {
         if (this.$refs.form.validate()) {
         }
+        this.$router.back(-1)
       }
     },
     mounted() {

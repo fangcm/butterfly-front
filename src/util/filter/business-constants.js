@@ -1,8 +1,27 @@
 import Vue from 'vue';
 
+export function packingMachineryType(value) {
+  switch (value) {
+    case 1:
+      return "打包机";
+    case 2:
+      return "回收机";
+    case 3:
+      return "集草机";
+    case 4:
+      return "灭茬机";
+    case 5:
+      return "搂草机";
+    case 6:
+      return "破冰机";
+    default:
+      return "-";
+  }
+}
+
 /**
-// 状态
-export function mbrStatus(value) {
+ // 状态
+ export function mbrStatus(value) {
   switch (value) {
     case "VALID":
       return "有效";
@@ -15,7 +34,7 @@ export function mbrStatus(value) {
   }
 }
 
-export function defaultStatusFilter(value) {
+ export function defaultStatusFilter(value) {
   switch (value) {
     case false:
       return "否";
@@ -26,7 +45,7 @@ export function defaultStatusFilter(value) {
   }
 }
 
-export function payMethod(value) {
+ export function payMethod(value) {
   return {
     ALIPAY_PAGE: "支付宝网页",
     ALIPAY_F2F: "支付宝扫码",
@@ -34,8 +53,8 @@ export function payMethod(value) {
   }[value];
 }
 
-// 提交状态
-export function submitStatus(value) {
+ // 提交状态
+ export function submitStatus(value) {
   switch (value) {
     case "有效":
       return "VALID";
@@ -48,8 +67,8 @@ export function submitStatus(value) {
   }
 }
 
-// 奖金池类型
-export function prizeType(value) {
+ // 奖金池类型
+ export function prizeType(value) {
   switch (value) {
     case "PAYOUT":
       return "奖金";
@@ -67,8 +86,8 @@ export function prizeType(value) {
   }
 }
 
-// 支付方式
-export function paymentMethod(value) {
+ // 支付方式
+ export function paymentMethod(value) {
   switch (value) {
     case "ALIPAY_PAGE":
       return "支付宝网页";
@@ -81,29 +100,29 @@ export function paymentMethod(value) {
   }
 }
 
-Vue.filter('payMethod', (val) => {
+ Vue.filter('payMethod', (val) => {
   return payMethod(val)
 });
 
-Vue.filter('statusFilter', (val) => {
+ Vue.filter('statusFilter', (val) => {
   if (!val) return '-';
   return mbrStatus(val)
 });
-Vue.filter('defaultAddressFilter', (val) => {
+ Vue.filter('defaultAddressFilter', (val) => {
   if (!val) return '否';
   return defaultStatusFilter(val)
 });
-Vue.filter('submitStatusFilter', (val) => {
+ Vue.filter('submitStatusFilter', (val) => {
   return submitStatus(val)
 });
-Vue.filter('paymentMethodFilter', (val) => {
+ Vue.filter('paymentMethodFilter', (val) => {
   if (!val) return '-';
   return paymentMethod(val)
 });
-Vue.filter('prizeTypeFilter', (val) => {
+ Vue.filter('prizeTypeFilter', (val) => {
   return prizeType(val)
 });
-Vue.filter('orderStatus', val => {
+ Vue.filter('orderStatus', val => {
   return {
     "REQUEST": "待支付",
     "PROCESS": "待收货",
@@ -111,18 +130,23 @@ Vue.filter('orderStatus', val => {
     "CANCEL": "取消",
   }[val]
 })
-Vue.filter('productStatus',val=>{
+ Vue.filter('productStatus',val=>{
   return {
     "CLOSE": "已下架",
     "VALID": "上架中",
   }[val]
 });
 
-Vue.prototype.$statusFilter = Vue.filter('statusFilter'); // 状态
-Vue.prototype.$defaultAddressFilter = Vue.filter('defaultAddressFilter'); // 默认地址显示
-Vue.prototype.$submitStatusFilter = Vue.filter('submitStatusFilter'); // 提交状态
-Vue.prototype.$paymentMethodFilter = Vue.filter('paymentMethodFilter'); // 支付方式
-Vue.prototype.$prizeTypeFilter = Vue.filter('prizeTypeFilter'); // 奖金池类型
-Vue.prototype.$amountTypeFilter = Vue.filter('amount'); // 积分正负号
-Vue.prototype.$orderStatus = Vue.filter('orderStatus');
-*/
+ Vue.prototype.$statusFilter = Vue.filter('statusFilter'); // 状态
+ Vue.prototype.$defaultAddressFilter = Vue.filter('defaultAddressFilter'); // 默认地址显示
+ Vue.prototype.$submitStatusFilter = Vue.filter('submitStatusFilter'); // 提交状态
+ Vue.prototype.$paymentMethodFilter = Vue.filter('paymentMethodFilter'); // 支付方式
+ Vue.prototype.$prizeTypeFilter = Vue.filter('prizeTypeFilter'); // 奖金池类型
+ Vue.prototype.$amountTypeFilter = Vue.filter('amount'); // 积分正负号
+ Vue.prototype.$orderStatus = Vue.filter('orderStatus');
+ */
+
+
+Vue.filter('packingMachineryTypeFilter', (val) => {
+  return packingMachineryType(val)
+});

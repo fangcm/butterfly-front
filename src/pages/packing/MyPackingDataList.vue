@@ -5,61 +5,51 @@
     <template slot="row" slot-scope="props">
       <v-layout align-center row wrap>
         <v-flex shrink pa-2>
-          <span class="subheading" v-if="props.row.model">{{props.row.model}}</span>
+          <span class="subheading">开工时间&nbsp;:&nbsp;</span>
+          <span>{{props.row.startDate}}</span>
+        </v-flex>
+        <v-flex shrink pa-2>
+          <span class="subheading">收工时间&nbsp;:&nbsp;</span>
+          <span>{{props.row.endDate}}</span>
         </v-flex>
       </v-layout>
       <v-layout align-center row wrap>
         <v-flex shrink pa-2>
-          <span>编号:</span>
-          <span>{{props.row.code}}</span>
+          <span>操作员&nbsp;:&nbsp;</span>
+          <span>{{props.row.operator}}</span>
         </v-flex>
         <v-flex shrink pa-2>
-          <span>类型:</span>
-          <span>{{machineryTypeList[props.row.type.toString()]}}</span>
-        </v-flex>
-        <v-flex shrink pa-2>
-          <span>工作负载:</span>
+          <span>作业量&nbsp;:&nbsp;</span>
           <span>{{props.row.workload}}</span>
           <span>{{props.row.unit}}</span>
         </v-flex>
         <v-flex shrink pa-2>
-          <span>归属:</span>
-          <span>{{props.row.belongTo === 1 ? '公司所有': '个人私有'}}</span>
+          <span>工作区域&nbsp;:&nbsp;</span>
+          <span>{{props.row.address}}</span>
         </v-flex>
-        <v-flex shrink pa-2>
-          <span>使用管理人:</span>
-          <span>{{props.row.personInCharge}}</span>
+        <v-flex shrink pa-2 v-if="props.row.abnormalFlag">
+          <span class="red--text text--darken-2">异常描述&nbsp;:&nbsp;</span>
+          <span class="red--text text--darken-2">{{props.row.abnormalDesc}}</span>
         </v-flex>
       </v-layout>
     </template>
     <template slot="search">
       <v-layout row>
-        <v-flex xs11 offset-xs1>
-          <v-text-field name="productName" label="Product" light
+        <v-flex xs10 offset-xs1>
+          <v-text-field name="productName" label="开工时间" light
                         v-model="searchVm.productName"></v-text-field>
         </v-flex>
       </v-layout>
       <v-layout row>
-        <v-flex xs11 offset-xs1>
-          <label class="heading text-sm-central" light>Price Range</label>
+        <v-flex xs10 offset-xs1>
+          <v-text-field name="productName" label="操作员" light
+                        v-model="searchVm.productName"></v-text-field>
         </v-flex>
       </v-layout>
       <v-layout row>
-        <v-flex xs8 offset-xs1>
-          <v-slider class="text-xs-central" label="Price 1" light v-bind:max="100"
-                    v-model="searchVm.unitPrice.former"></v-slider>
-        </v-flex>
-        <v-flex xs3>
-          <v-text-field type="number" light v-model="searchVm.unitPrice.former"></v-text-field>
-        </v-flex>
-      </v-layout>
-      <v-layout row>
-        <v-flex xs8 offset-xs1>
-          <v-slider class="text-xs-central" label="Price 2" light v-bind:max="999"
-                    v-model="searchVm.unitPrice.latter"></v-slider>
-        </v-flex>
-        <v-flex xs3>
-          <v-text-field type="number" light v-model="searchVm.unitPrice.latter"></v-text-field>
+        <v-flex xs10 offset-xs1>
+          <v-text-field name="productName" label="工作区域" light
+                        v-model="searchVm.productName"></v-text-field>
         </v-flex>
       </v-layout>
     </template>
@@ -79,8 +69,6 @@
         pageNumber: 0,
         totalPages: 1,
         dataList: [],
-
-        machineryTypeList: {"1": "打包机", "2": "运输货车"},
 
         searchVm: {
           productName: "",
