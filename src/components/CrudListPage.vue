@@ -48,7 +48,7 @@
         <v-icon>more_vert</v-icon>
       </v-btn>
       <v-tooltip left v-if="showSearchBtn">
-        <v-btn fab dark small color="indigo" slot="activator" @click.native.stop="showSearchDrawer = !showSearchDrawer">
+        <v-btn fab dark small color="indigo" slot="activator" @click.native="showSearchDrawer = !showSearchDrawer">
           <v-icon>search</v-icon>
         </v-btn>
         <span>条件查询</span>
@@ -106,7 +106,7 @@
         this.$emit("refreshData");
       },
       searchData() {
-        this.showSearchDrawer = !this.showSearchDrawer;
+        this.showSearchDrawer = false;
         this.$emit('searchData');
       },
       fetchNextPageData() {

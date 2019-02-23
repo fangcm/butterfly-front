@@ -295,6 +295,47 @@
           "sort": 3
         }
       ]
+    },
+    {
+      "id": 99,
+      "name": "我的",
+      "rootLevel": 1,
+      "icon": "wb_sunny",
+      "path": "/",
+      "parentId": "",
+      "sort": 3,
+      "children": [
+        {
+          "id": 20,
+          "name": "我的信息",
+          "rootLevel": 0,
+          "icon": "iconfont fcm-user",
+          "color": "green darken-2",
+          "path": "/app/adminUsers",
+          "parentId": "19",
+          "sort": 1
+        },
+        {
+          "id": 21,
+          "name": "设置",
+          "rootLevel": 0,
+          "icon": "iconfont fcm-role",
+          "color": "green darken-2",
+          "path": "/app/adminRoles",
+          "parentId": "19",
+          "sort": 2
+        },
+        {
+          "id": 22,
+          "name": "退出登录",
+          "rootLevel": 0,
+          "icon": "iconfont fcm-address",
+          "color": "green darken-2",
+          "path": "/app/adminMenus",
+          "parentId": "19",
+          "sort": 3
+        }
+      ]
     }
   ]
 }
