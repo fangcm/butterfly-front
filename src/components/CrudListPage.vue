@@ -45,7 +45,7 @@
     </v-navigation-drawer>
 
     <!-- 快捷按钮 -->
-    <v-speed-dial top right fixed direction="bottom" v-model="showSpeedButton">
+    <v-speed-dial top right fixed direction="bottom" v-if="showSpeedButton">
       <v-btn slot="activator" color="green" dark fab>
         <v-icon>more_vert</v-icon>
       </v-btn>
