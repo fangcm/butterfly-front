@@ -9,6 +9,7 @@ const Index = () => import(/* webpackChunkName: "group-index" */ '@/pages/Index'
 const MyPackingMachineryList = () => import(/* webpackChunkName: "group-packing" */ '@/pages/packing/MyPackingMachineryList');
 const MyPackingDataList = () => import(/* webpackChunkName: "group-packing" */ '@/pages/packing/MyPackingDataList');
 const MyPackingDataForm = () => import(/* webpackChunkName: "group-packing" */ '@/pages/packing/MyPackingDataForm');
+const AuditPackingDataList = () => import(/* webpackChunkName: "group-packing" */ '@/pages/packing/AuditPackingDataList');
 
 const PackagingMachineryList = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackagingList');
 const PackagingMachineryForm = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackagingForm');
@@ -42,6 +43,14 @@ const routes = [{
       title: '我的打包机'
     }
   }, {
+    // 提交我的打包数据
+    path: 'myPackingDataForm',
+    name: 'myPackingDataForm',
+    component: MyPackingDataForm,
+    meta: {
+      title: '提交我的打包数据'
+    }
+  }, {
     // 我的打包作业列表
     path: 'myPackingDataList',
     name: 'myPackingDataList',
@@ -50,12 +59,12 @@ const routes = [{
       title: '我的打包数据'
     }
   }, {
-    // 提交我的打包数据
-    path: 'myPackingDataForm',
-    name: 'myPackingDataForm',
-    component: MyPackingDataForm,
+    // 审核打包作业列表
+    path: 'auditPackingDataList',
+    name: 'auditPackingDataList',
+    component: AuditPackingDataList,
     meta: {
-      title: '提交我的打包数据'
+      title: '作业审核'
     }
   }, {
     path: 'packagingMachinerys',

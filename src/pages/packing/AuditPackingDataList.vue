@@ -1,7 +1,6 @@
 <template>
   <crud-list-page :dataList="dataList" :pageNumber="pageNumber" :totalPages="totalPages" :showAddNewBtn="false"
-                  @fetchNextPageData="fetchNextPageData" @refreshData="refreshData" @searchData="fetchData"
-                  @addNewItem="addNewItem" @editItem="editItem" @deleteItem="deleteItem">
+                  @fetchNextPageData="fetchNextPageData" @refreshData="refreshData" @searchData="fetchData">
     <template slot="row" slot-scope="props">
       <v-layout align-center row wrap>
         <v-flex shrink pa-2>
@@ -32,6 +31,15 @@
           <span class="red--text text--darken-2">{{props.row.abnormalDesc}}</span>
         </v-flex>
       </v-layout>
+    </template>
+    <template slot="action" slot-scope="props">
+      <v-spacer></v-spacer>
+      <v-btn icon @click.native="auditPassItem(props.row)">
+        <v-icon color="blue darken-2" title="通过">iconfont fcm-shenhe</v-icon>
+      </v-btn>
+      <v-btn icon @click.native="auditErrorItem(props.row)">
+        <v-icon color="orange darken-2" title="驳回">assignment_late</v-icon>
+      </v-btn>
     </template>
     <template slot="search">
       <v-layout row>
@@ -109,24 +117,13 @@
         ).catch((e) => {
         });
       },
-      addNewItem() {
-        this.$router.push({
-          name: "myPackingDataForm"
-        });
-      },
-      editItem(item) {
-        this.$router.push({
-          name: "myPackingDataForm",
-          params: {id: item.id}
-        });
-      },
-      deleteItem(item) {
+      auditPassItem(item) {
         this.$createDialog({
           type: 'confirm',
-          title: '删除',
-          content: '确认要删除【设备:' + item.model + ',编号:' + item.code + '】吗？',
+          title: '审核确认',
+          content: '您正在审核的打包数据【设备:' + item.model + ',编号:' + item.code + '】',
           confirmBtn: {
-            text: '删除',
+            text: '通过',
             active: true,
             disabled: false,
             href: 'javascript:;'
@@ -138,11 +135,27 @@
             href: 'javascript:;'
           },
           onConfirm: () => {
-            this.$createToast({
-              type: 'warn',
-              time: 1000,
-              txt: '点击确认按钮'
-            }).show()
+          }
+        }).show();
+      },
+      auditErrorItem(item) {
+        this.$createDialog({
+          type: 'confirm',
+          title: '审核确认',
+          content: '您正在审核的打包数据【设备:' + item.model + ',编号:' + item.code + '】',
+          confirmBtn: {
+            text: '通过',
+            active: true,
+            disabled: false,
+            href: 'javascript:;'
+          },
+          cancelBtn: {
+            text: '取消',
+            active: false,
+            disabled: false,
+            href: 'javascript:;'
+          },
+          onConfirm: () => {
           }
         }).show();
       }

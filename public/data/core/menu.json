@@ -63,7 +63,7 @@
         },
         {
           "id": 318,
-          "name": "查询作业数据",
+          "name": "我的作业数据",
           "rootLevel": 0,
           "icon": "iconfont fcm-baobiao",
           "color": "teal--text text--darken-2",
@@ -77,7 +77,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-shenhe",
           "color": "teal--text text--darken-2",
-          "path": "/app/packagingMachinerys",
+          "path": "/app/auditPackingDataList",
           "parentId": "10",
           "sort": 1
         }
@@ -111,6 +111,16 @@
           "path": "/app/packagingMachinerys",
           "parentId": "10",
           "sort": 1
+        },
+        {
+          "id": 210,
+          "name": "运输记录",
+          "rootLevel": 0,
+          "icon": "iconfont fcm-baobiao",
+          "color": "lime--text text--darken-3",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
         }
       ]
     },
@@ -136,6 +146,26 @@
         {
           "id": 11,
           "name": "打包机械",
+          "rootLevel": 0,
+          "icon": "iconfont fcm-dabaojixie",
+          "color": "teal--text text--darken-2",
+          "path": "/app/packagingMachinerys",
+          "parentId": "10",
+          "sort": 1
+        },
+        {
+          "id": 12,
+          "name": "我的运输车辆",
+          "rootLevel": 0,
+          "icon": "iconfont fcm-yunshuche",
+          "color": "teal--text text--darken-2",
+          "path": "/",
+          "parentId": "10",
+          "sort": 2
+        },
+        {
+          "id": 11,
+          "name": "我的打包机械",
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaojixie",
           "color": "teal--text text--darken-2",
@@ -267,7 +297,7 @@
     },
     {
       "id": 19,
-      "name": "系统管理",
+      "name": "基础数据",
       "rootLevel": 1,
       "icon": "wb_sunny",
       "path": "/",
@@ -289,6 +319,16 @@
           "name": "角色管理",
           "rootLevel": 0,
           "icon": "iconfont fcm-role",
+          "color": "green--text text--darken-2",
+          "path": "/app/adminRoles",
+          "parentId": "19",
+          "sort": 2
+        },
+        {
+          "id": 29,
+          "name": "机构管理",
+          "rootLevel": 0,
+          "icon": "iconfont fcm-bumen",
           "color": "green--text text--darken-2",
           "path": "/app/adminRoles",
           "parentId": "19",
