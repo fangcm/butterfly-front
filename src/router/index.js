@@ -52,7 +52,7 @@ const routes = [{
   }, {
     // 提交我的打包数据
     path: 'myPackingDataForm',
-    name: 'myPackagingDataForm',
+    name: 'myPackingDataForm',
     component: MyPackingDataForm,
     meta: {
       title: '提交我的打包数据'

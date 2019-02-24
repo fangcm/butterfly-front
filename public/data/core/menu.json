@@ -4,7 +4,7 @@
   "data": [
     {
       "id": 310,
-      "name": "打包作业",
+      "name": "提交打包作业",
       "rootLevel": 1,
       "icon": "comment",
       "path": "/",
@@ -17,7 +17,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaoji",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingMachinerys",
+          "path": "/app/myPackingDataForm",
           "parentId": "10",
           "sort": 2
         },
@@ -27,7 +27,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-huishouji",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingMachinerys",
+          "path": "/app/myPackingDataForm",
           "parentId": "10",
           "sort": 1
         },
@@ -37,7 +37,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-jicaoche",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingMachinerys",
+          "path": "/app/myPackingDataForm",
           "parentId": "10",
           "sort": 1
         },
@@ -47,7 +47,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-miechaji",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingMachinerys",
+          "path": "/app/myPackingDataForm",
           "parentId": "10",
           "sort": 1
         },
@@ -57,12 +57,22 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-loucaoji",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingMachinerys",
+          "path": "/app/myPackingDataForm",
           "parentId": "10",
           "sort": 1
         },
         {
           "id": 318,
+          "name": "查询作业数据",
+          "rootLevel": 0,
+          "icon": "iconfont fcm-baobiao",
+          "color": "teal--text text--darken-2",
+          "path": "/app/myPackingDataList",
+          "parentId": "10",
+          "sort": 1
+        },
+        {
+          "id": 319,
           "name": "作业审核",
           "rootLevel": 0,
           "icon": "iconfont fcm-shenhe",

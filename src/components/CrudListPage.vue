@@ -9,13 +9,15 @@
             </v-card-text>
           </v-flex>
           <v-card-actions class="pa-1">
-            <v-spacer></v-spacer>
-            <v-btn icon @click.native="editItem(data)">
-              <v-icon color="blue darken-2" title="编辑">edit</v-icon>
-            </v-btn>
-            <v-btn icon @click.native="deleteItem(data)">
-              <v-icon color="orange darken-2" title="删除">delete</v-icon>
-            </v-btn>
+            <slot name="action" :row="data">
+              <v-spacer></v-spacer>
+              <v-btn icon @click.native="editItem(data)">
+                <v-icon color="blue darken-2" title="编辑">edit</v-icon>
+              </v-btn>
+              <v-btn icon @click.native="deleteItem(data)">
+                <v-icon color="orange darken-2" title="删除">delete</v-icon>
+              </v-btn>
+            </slot>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -25,7 +27,7 @@
     </v-layout>
 
     <!-- 搜索栏 -->
-    <v-navigation-drawer right v-model="showSearchDrawer" :disable-resize-watcher="true" fixed>
+    <v-navigation-drawer right fixed v-model="showSearchDrawer" :disable-resize-watcher="true">
       <v-list>
         <v-list-tile class="my-2">
           <v-list-tile-title class="title">查询</v-list-tile-title>
@@ -43,10 +45,16 @@
     </v-navigation-drawer>
 
     <!-- 快捷按钮 -->
-    <v-speed-dial top right fixed direction="bottom">
+    <v-speed-dial top right fixed direction="bottom" v-model="showSpeedButton">
       <v-btn slot="activator" color="green" dark fab>
         <v-icon>more_vert</v-icon>
       </v-btn>
+      <v-tooltip left>
+        <v-btn fab dark small color="blue" slot="activator" @click.native="refreshData">
+          <v-icon>refresh</v-icon>
+        </v-btn>
+        <span>刷新</span>
+      </v-tooltip>
       <v-tooltip left v-if="showSearchBtn">
         <v-btn fab dark small color="indigo" slot="activator" @click.native="showSearchDrawer = !showSearchDrawer">
           <v-icon>search</v-icon>
@@ -58,12 +66,6 @@
           <v-icon>add</v-icon>
         </v-btn>
         <span>新增</span>
-      </v-tooltip>
-      <v-tooltip left>
-        <v-btn fab dark small color="blue" slot="activator" @click.native="refreshData">
-          <v-icon>refresh</v-icon>
-        </v-btn>
-        <span>刷新</span>
       </v-tooltip>
     </v-speed-dial>
   </v-container>
@@ -84,6 +86,8 @@
       pageNumber: {type: Number, default: 0},
       // 总页数
       totalPages: {type: Number, default: 1},
+      // 显示快捷按钮
+      showSpeedButton: {type: Boolean, default: true},
       // 显示搜索按钮
       showSearchBtn: {type: Boolean, default: true},
       // 显示新增按钮
