@@ -6,11 +6,8 @@
         <v-divider></v-divider>
         <v-container fluid grid-list-sm>
           <v-layout row wrap>
-            <v-flex v-for="child in menu.children" :key="child.id" xs4>
-              <v-btn flat :color="child.color" :to="child.path">
-                <v-icon left size="28px">{{child.icon}}</v-icon>
-                <span>{{child.name}}</span>
-              </v-btn>
+            <v-flex xs3 v-for="child in menu.children" :key="child.id">
+              <icon-button :color="child.color" :to="child.path" :icon="child.icon" :label="child.name"/>
             </v-flex>
           </v-layout>
         </v-container>
@@ -21,6 +18,7 @@
 
 <script>
   import {userMenu} from '@/api/core-api'
+  import IconButton from '@/components/IconButton'
 
   export default {
     name: "index",
@@ -29,7 +27,7 @@
         menuList: []
       }
     },
-    components: {},
+    components: {IconButton},
     created() {
       console.log("enter index page");
       let _data = {};

@@ -16,7 +16,7 @@
           "name": "打包",
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaoji",
-          "color": "orange darken-2",
+          "color": "orange--text text--darken-2",
           "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 2
@@ -26,7 +26,7 @@
           "name": "回收",
           "rootLevel": 0,
           "icon": "iconfont fcm-huishouji",
-          "color": "orange darken-2",
+          "color": "orange--text text--darken-2",
           "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 1
@@ -36,7 +36,7 @@
           "name": "集草",
           "rootLevel": 0,
           "icon": "iconfont fcm-jicaoche",
-          "color": "orange darken-2",
+          "color": "orange--text text--darken-2",
           "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 1
@@ -46,7 +46,7 @@
           "name": "灭茬",
           "rootLevel": 0,
           "icon": "iconfont fcm-miechaji",
-          "color": "orange darken-2",
+          "color": "orange--text text--darken-2",
           "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 1
@@ -56,7 +56,7 @@
           "name": "搂草",
           "rootLevel": 0,
           "icon": "iconfont fcm-loucaoji",
-          "color": "orange darken-2",
+          "color": "orange--text text--darken-2",
           "path": "/app/myPackingMachinerys",
           "parentId": "10",
           "sort": 1
@@ -66,7 +66,7 @@
           "name": "作业审核",
           "rootLevel": 0,
           "icon": "iconfont fcm-shenhe",
-          "color": "teal darken-2",
+          "color": "teal--text text--darken-2",
           "path": "/app/packagingMachinerys",
           "parentId": "10",
           "sort": 1
@@ -87,7 +87,7 @@
           "name": "离田出发",
           "rootLevel": 0,
           "icon": "iconfont fcm-chufa",
-          "color": "lime darken-3",
+          "color": "lime--text text--darken-3",
           "path": "/",
           "parentId": "10",
           "sort": 2
@@ -97,7 +97,7 @@
           "name": "入厂登记",
           "rootLevel": 0,
           "icon": "iconfont fcm-daoda",
-          "color": "lime darken-3",
+          "color": "lime--text text--darken-3",
           "path": "/app/packagingMachinerys",
           "parentId": "10",
           "sort": 1
@@ -118,7 +118,7 @@
           "name": "运输车辆",
           "rootLevel": 0,
           "icon": "iconfont fcm-yunshuche",
-          "color": "teal darken-2",
+          "color": "teal--text text--darken-2",
           "path": "/",
           "parentId": "10",
           "sort": 2
@@ -128,7 +128,7 @@
           "name": "打包机械",
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaojixie",
-          "color": "teal darken-2",
+          "color": "teal--text text--darken-2",
           "path": "/app/packagingMachinerys",
           "parentId": "10",
           "sort": 1
@@ -149,7 +149,7 @@
           "name": "作业记录",
           "rootLevel": 0,
           "icon": "iconfont fcm-baobiao",
-          "color": "teal darken-2",
+          "color": "teal--text text--darken-2",
           "path": "/",
           "parentId": "10",
           "sort": 2
@@ -159,7 +159,7 @@
           "name": "作业记录详细表",
           "rootLevel": 0,
           "icon": "iconfont fcm-baobiao",
-          "color": "teal darken-2",
+          "color": "teal--text text--darken-2",
           "path": "/app/packagingMachinerys",
           "parentId": "10",
           "sort": 1
@@ -189,7 +189,7 @@
           "name": "经纪人",
           "rootLevel": 0,
           "icon": "iconfont fcm-jjr",
-          "color": "orange darken-2",
+          "color": "orange--text text--darken-2",
           "path": "/",
           "parentId": "13",
           "sort": 1
@@ -199,7 +199,7 @@
           "name": "运输司机",
           "rootLevel": 0,
           "icon": "iconfont fcm-siji",
-          "color": "lime darken-3",
+          "color": "lime--text text--darken-3",
           "path": "/",
           "parentId": "13",
           "sort": 2
@@ -209,7 +209,7 @@
           "name": "设备操作员",
           "rootLevel": 0,
           "icon": "iconfont fcm-shebeiczy",
-          "color": "orange darken-2",
+          "color": "orange--text text--darken-2",
           "path": "/",
           "parentId": "13",
           "sort": 3
@@ -219,7 +219,7 @@
           "name": "料场业务员",
           "rootLevel": 0,
           "icon": "iconfont fcm-liaochangywy",
-          "color": "lime darken-3",
+          "color": "lime--text text--darken-3",
           "path": "/",
           "parentId": "13",
           "sort": 4
@@ -229,7 +229,7 @@
           "name": "经纪人管理员",
           "rootLevel": 0,
           "icon": "iconfont fcm-jjrmanager",
-          "color": "teal darken-2",
+          "color": "teal--text text--darken-2",
           "path": "/",
           "parentId": "13",
           "sort": 5
@@ -248,7 +248,7 @@
           "name": "系统管理员",
           "rootLevel": 0,
           "icon": "iconfont fcm-admin",
-          "color": "green darken-2",
+          "color": "green--text text--darken-2",
           "path": "/",
           "parentId": "13",
           "sort": 1
@@ -269,7 +269,7 @@
           "name": "用户管理",
           "rootLevel": 0,
           "icon": "iconfont fcm-user",
-          "color": "green darken-2",
+          "color": "green--text text--darken-2",
           "path": "/app/adminUsers",
           "parentId": "19",
           "sort": 1
@@ -279,7 +279,7 @@
           "name": "角色管理",
           "rootLevel": 0,
           "icon": "iconfont fcm-role",
-          "color": "green darken-2",
+          "color": "green--text text--darken-2",
           "path": "/app/adminRoles",
           "parentId": "19",
           "sort": 2
@@ -289,7 +289,7 @@
           "name": "作业区域",
           "rootLevel": 0,
           "icon": "iconfont fcm-address",
-          "color": "green darken-2",
+          "color": "green--text text--darken-2",
           "path": "/app/adminMenus",
           "parentId": "19",
           "sort": 3
@@ -310,7 +310,7 @@
           "name": "我的信息",
           "rootLevel": 0,
           "icon": "iconfont fcm-user",
-          "color": "green darken-2",
+          "color": "green--text text--darken-2",
           "path": "/app/adminUsers",
           "parentId": "19",
           "sort": 1
@@ -320,7 +320,7 @@
           "name": "设置",
           "rootLevel": 0,
           "icon": "iconfont fcm-role",
-          "color": "green darken-2",
+          "color": "green--text text--darken-2",
           "path": "/app/adminRoles",
           "parentId": "19",
           "sort": 2
@@ -330,7 +330,7 @@
           "name": "退出登录",
           "rootLevel": 0,
           "icon": "iconfont fcm-address",
-          "color": "green darken-2",
+          "color": "green--text text--darken-2",
           "path": "/app/adminMenus",
           "parentId": "19",
           "sort": 3

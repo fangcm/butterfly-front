@@ -4,7 +4,9 @@
     <template slot="row" slot-scope="props">
       <v-layout align-center row wrap>
         <v-flex shrink pa-2>
-          <span class="subheading">{{props.row.type|packingMachineryTypeFilter}}</span>
+          <h6><strong>
+            <span class="subheading">{{props.row.type|packingMachineryTypeFilter}}</span>
+          </strong></h6>
           <span v-if="props.row.code">&nbsp;:&nbsp;{{props.row.code}}</span>
         </v-flex>
       </v-layout>
@@ -18,7 +20,7 @@
           <span>{{props.row.workload}}</span>
           <span>{{props.row.unit}}</span>
         </v-flex>
-        <v-flex shrink pa-2 >
+        <v-flex shrink pa-2>
           <span>今日打包量&nbsp;:&nbsp;</span>
           <span class="red--text text--darken-2">{{props.row.workload}}</span>
           <span>{{props.row.unit}}</span>
