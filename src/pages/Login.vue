@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <v-content>
-      <v-container fluid>
+      <v-container fluid pa-1 ma-0>
         <v-layout justify-center>
           <v-flex xs12 sm8 md4>
             <v-card>
@@ -61,7 +61,8 @@
     methods: {
       ...mapActions([
         'setUserInfo',
-        'setUserToken'
+        'setUserToken',
+        'loginOut'
       ]),
       submit() {
         if (this.$refs.form.validate()) {
@@ -91,9 +92,7 @@
       ])
     },
     created() {
-      this.setUserInfo({});
-      this.setUserToken(null);
-      sessionStorage.clear();
+      this.loginOut();
     }
   }
 </script>

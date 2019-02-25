@@ -29,7 +29,6 @@
     },
     components: {IconButton},
     created() {
-      console.log("enter index page");
       let _data = {};
       userMenu(_data).then((data) => {
         // 保存登录状态和信息

@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid pa-1 ma-0>
+  <v-container fluid pa-0 ma-0>
     <v-layout column>
       <v-flex v-for="data in dataList" :key="data.id" pa-0 ma-1>
         <v-card color="white">
@@ -8,7 +8,7 @@
               <slot name="row" :row="data"/>
             </v-card-text>
           </v-flex>
-          <v-card-actions class="pa-1">
+          <v-card-actions class="pa-0">
             <slot name="action" :row="data">
               <v-spacer></v-spacer>
               <v-btn icon @click.native="editItem(data)">

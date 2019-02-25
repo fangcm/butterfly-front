@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar dense fixed clipped-left app dark color="primary">
-      <v-btn icon @click="routerBack()">
+      <v-btn icon @click="onBackClicked()" v-if="showBackButton">
         <v-icon>arrow_back</v-icon>
       </v-btn>
       <v-btn icon @click="toPage('/app/index')">
@@ -15,13 +15,11 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     data() {
-      return {
-        drawer: null
-      }
+      return {}
     },
     created() {
       if (!this.userToken) {
@@ -29,31 +27,10 @@
       }
     },
     methods: {
-      ...mapActions([
-        'loginOut'
-      ]),
-      clickMenu() {
-        this.$refs.menuComponent.toggle()
-      },
       toPage(path) {
         this.$router.push(path)
       },
-      logout() {
-        this.loginOut();
-        this.$router.push({path: '/login'})
-      },
-      routerBack() {
-        /*        if(this.$store.state.sessionToken){
-                  if(this.$store.state.isFirst){
-                    this.setIsFirst(false);
-                    this.$router.go(-1);
-                    this.$router.go(-1);
-                  }else{
-                    this.$router.go(-1)
-                  }
-                }else{
-                  this.$router.go(-1)
-                }*/
+      onBackClicked() {
         this.$router.go(-1)
       }
     },
@@ -62,8 +39,11 @@
       ...mapGetters([
         'userToken'
       ]),
-      isLogin() {
-        return !(this.userToken === null || this.userToken === undefined || this.userToken === '')
+      showBackButton() {
+        if (this.userToken === null || this.userToken === undefined || this.userToken === '') {
+          return false;
+        }
+        return this.$route.name !== 'index';
       },
       breadcrumbs() {
         return this.$route.meta.title

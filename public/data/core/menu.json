@@ -134,7 +134,7 @@
       "sort": 1,
       "children": [
         {
-          "id": 12,
+          "id": 1002,
           "name": "运输车辆",
           "rootLevel": 0,
           "icon": "iconfont fcm-yunshuche",
@@ -144,7 +144,7 @@
           "sort": 2
         },
         {
-          "id": 11,
+          "id": 1001,
           "name": "打包机械",
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaojixie",

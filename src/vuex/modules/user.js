@@ -38,7 +38,9 @@ const actions = {
 
   //用户退出
   loginOut({commit}) {
+    sessionStorage.setItem('userInfo', {});
     sessionStorage.setItem('userToken', null);
+    sessionStorage.clear();
     commit(USER_LOGIN_OUT)
   }
 };
