@@ -4,9 +4,7 @@
     <template slot="row" slot-scope="props">
       <v-layout align-center row wrap>
         <v-flex shrink pa-2>
-          <h6><strong>
-            <span class="subheading">{{props.row.type|packingMachineryTypeFilter}}</span>
-          </strong></h6>
+          <span class="subheading">{{props.row.type|packingMachineryTypeFilter}}</span>
           <span v-if="props.row.code">&nbsp;:&nbsp;{{props.row.code}}</span>
         </v-flex>
       </v-layout>

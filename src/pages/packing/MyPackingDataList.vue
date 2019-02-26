@@ -5,6 +5,9 @@
     <template slot="row" slot-scope="props">
       <v-layout align-center row wrap>
         <v-flex shrink pa-2>
+          <span class="subheading">打包机&nbsp;:&nbsp;171001</span>
+        </v-flex>
+        <v-flex shrink pa-2>
           <span class="subheading">开工时间&nbsp;:&nbsp;</span>
           <span>{{props.row.startDate}}</span>
         </v-flex>
