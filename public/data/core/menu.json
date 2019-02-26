@@ -17,7 +17,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaoji",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingDataForm",
+          "path": "/packing/submitPackingData",
           "parentId": "10",
           "sort": 2
         },
@@ -27,7 +27,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-huishouji",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingDataForm",
+          "path": "/packing/submitPackingData",
           "parentId": "10",
           "sort": 1
         },
@@ -37,7 +37,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-jicaoche",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingDataForm",
+          "path": "/packing/submitPackingData",
           "parentId": "10",
           "sort": 1
         },
@@ -47,7 +47,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-miechaji",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingDataForm",
+          "path": "/packing/submitPackingData",
           "parentId": "10",
           "sort": 1
         },
@@ -57,7 +57,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-loucaoji",
           "color": "orange--text text--darken-2",
-          "path": "/app/myPackingDataForm",
+          "path": "/packing/submitPackingData",
           "parentId": "10",
           "sort": 1
         },
@@ -67,7 +67,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-baobiao",
           "color": "teal--text text--darken-2",
-          "path": "/app/myPackingDataList",
+          "path": "/packing/myPackingData",
           "parentId": "10",
           "sort": 1
         },
@@ -77,7 +77,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-shenhe",
           "color": "teal--text text--darken-2",
-          "path": "/app/auditPackingDataList",
+          "path": "/packing/auditPackingData",
           "parentId": "10",
           "sort": 1
         }
@@ -98,7 +98,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-chufa",
           "color": "lime--text text--darken-3",
-          "path": "/",
+          "path": "/transport/submitTruckDepartData",
           "parentId": "10",
           "sort": 2
         },
@@ -108,7 +108,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-daoda",
           "color": "lime--text text--darken-3",
-          "path": "/app/packagingMachinerys",
+          "path": "/transport/submitTruckEntryRegData",
           "parentId": "10",
           "sort": 1
         },
@@ -118,7 +118,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-baobiao",
           "color": "lime--text text--darken-3",
-          "path": "/app/packagingMachinerys",
+          "path": "/transport/myTransportRecord",
           "parentId": "10",
           "sort": 1
         }
@@ -139,7 +139,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-yunshuche",
           "color": "teal--text text--darken-2",
-          "path": "/",
+          "path": "/machinery/packagingMachinery",
           "parentId": "10",
           "sort": 2
         },
@@ -149,7 +149,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaojixie",
           "color": "teal--text text--darken-2",
-          "path": "/app/packagingMachinerys",
+          "path": "/machinery/packagingMachinery",
           "parentId": "10",
           "sort": 1
         },
@@ -159,7 +159,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-yunshuche",
           "color": "teal--text text--darken-2",
-          "path": "/",
+          "path": "/machinery/myMachinery",
           "parentId": "10",
           "sort": 2
         },
@@ -169,7 +169,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaojixie",
           "color": "teal--text text--darken-2",
-          "path": "/app/packagingMachinerys",
+          "path": "/machinery/myMachinery",
           "parentId": "10",
           "sort": 1
         }

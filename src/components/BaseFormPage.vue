@@ -1,19 +1,17 @@
 <template>
   <v-container fluid pa-1 ma-0>
-    <v-layout row justify-left wra>
+    <v-layout row justify-center>
       <v-flex xs12 sm6 md4>
         <slot/>
-        <v-layout row>
-          <v-flex xs10 offset-xs1>
-            <v-btn dark color="blue-grey" @click.native="cancel()">
-              <v-icon left>cancel</v-icon>
-              取消
-            </v-btn>
-            <v-btn dark color="primary" @click.native="save()">
-              <v-icon left>save</v-icon>
-              保存
-            </v-btn>
-          </v-flex>
+        <v-layout justify-center>
+          <v-btn dark color="blue-grey" @click.native="cancel()">
+            <v-icon left>cancel</v-icon>
+            取消
+          </v-btn>
+          <v-btn dark color="primary" @click.native="save()">
+            <v-icon left>save</v-icon>
+            保存
+          </v-btn>
         </v-layout>
       </v-flex>
     </v-layout>
