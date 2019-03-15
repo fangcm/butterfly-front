@@ -139,7 +139,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-yunshuche",
           "color": "teal--text text--darken-2",
-          "path": "/machinery/packagingMachinery",
+          "path": "/machinery/transportMachinery",
           "parentId": "10",
           "sort": 2
         },
@@ -159,7 +159,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-yunshuche",
           "color": "teal--text text--darken-2",
-          "path": "/machinery/myMachinery",
+          "path": "/machinery/myTransportMachinery",
           "parentId": "10",
           "sort": 2
         },
@@ -169,7 +169,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaojixie",
           "color": "teal--text text--darken-2",
-          "path": "/machinery/myMachinery",
+          "path": "/machinery/myPackingMachinery",
           "parentId": "10",
           "sort": 1
         }
@@ -190,7 +190,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-baobiao",
           "color": "teal--text text--darken-2",
-          "path": "/",
+          "path": "/report/report1",
           "parentId": "10",
           "sort": 2
         },
@@ -200,7 +200,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-baobiao",
           "color": "teal--text text--darken-2",
-          "path": "/app/packagingMachinerys",
+          "path": "/report/report1",
           "parentId": "10",
           "sort": 1
         },
@@ -209,7 +209,7 @@
           "name": "各种报表",
           "rootLevel": 0,
           "icon": "iconfont fcm-report",
-          "path": "/app/packagingMachinerys",
+          "path": "/report/report1",
           "parentId": "10",
           "sort": 1
         }
@@ -230,7 +230,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-jjr",
           "color": "orange--text text--darken-2",
-          "path": "/",
+          "path": "/user/listUser/broker",
           "parentId": "13",
           "sort": 1
         },
@@ -240,7 +240,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-siji",
           "color": "lime--text text--darken-3",
-          "path": "/",
+          "path": "/user/listUser/driver",
           "parentId": "13",
           "sort": 2
         },
@@ -250,7 +250,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-shebeiczy",
           "color": "orange--text text--darken-2",
-          "path": "/",
+          "path": "/user/listUser/1",
           "parentId": "13",
           "sort": 3
         },
@@ -260,7 +260,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-liaochangywy",
           "color": "lime--text text--darken-3",
-          "path": "/",
+          "path": "/user/listUser/fuel_yard_staff",
           "parentId": "13",
           "sort": 4
         },
@@ -270,7 +270,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-jjrmanager",
           "color": "teal--text text--darken-2",
-          "path": "/",
+          "path": "/user/listUser/broker_manager",
           "parentId": "13",
           "sort": 5
         },
@@ -279,7 +279,7 @@
           "name": "公司管理者",
           "rootLevel": 0,
           "icon": "iconfont fcm-leader",
-          "path": "/",
+          "path": "/user/listUser/company_manager",
           "parentId": "13",
           "sort": 1
         },
@@ -289,7 +289,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-admin",
           "color": "green--text text--darken-2",
-          "path": "/",
+          "path": "/user/listUser/admin",
           "parentId": "13",
           "sort": 1
         }
@@ -310,7 +310,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-user",
           "color": "green--text text--darken-2",
-          "path": "/app/adminUsers",
+          "path": "/core/user",
           "parentId": "19",
           "sort": 1
         },
@@ -320,7 +320,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-role",
           "color": "green--text text--darken-2",
-          "path": "/app/adminRoles",
+          "path": "/core/role",
           "parentId": "19",
           "sort": 2
         },
@@ -330,7 +330,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-bumen",
           "color": "green--text text--darken-2",
-          "path": "/app/adminRoles",
+          "path": "/core/org",
           "parentId": "19",
           "sort": 2
         },
@@ -340,7 +340,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-address",
           "color": "green--text text--darken-2",
-          "path": "/app/adminMenus",
+          "path": "/core/address",
           "parentId": "19",
           "sort": 3
         }
@@ -361,7 +361,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-user",
           "color": "green--text text--darken-2",
-          "path": "/app/adminUsers",
+          "path": "/app/myInfo",
           "parentId": "19",
           "sort": 1
         },
@@ -371,7 +371,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-role",
           "color": "green--text text--darken-2",
-          "path": "/app/adminRoles",
+          "path": "/app/setting",
           "parentId": "19",
           "sort": 2
         },
