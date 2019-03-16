@@ -15,7 +15,7 @@ export const myPackingDataList = (data) => fetch(api.baseUrl + 'packing/myPackin
 });
 
 // 打包机
-export const packagingMachineryList = (data) => fetch(api.baseUrl + 'machinery/packaging' + data.pageNumber + '.json', {
+export const packingMachineryList = (data) => fetch(api.baseUrl + 'machinery/packaging' + data.pageNumber + '.json', {
   'params': data,
   'type': 'get'
 });

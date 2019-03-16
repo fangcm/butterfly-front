@@ -149,7 +149,7 @@
           "rootLevel": 0,
           "icon": "iconfont fcm-dabaojixie",
           "color": "teal--text text--darken-2",
-          "path": "/machinery/packagingMachinery",
+          "path": "/machinery/packingMachinery",
           "parentId": "10",
           "sort": 1
         },

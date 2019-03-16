@@ -14,8 +14,8 @@ const SubmitTruckDepartData = () => import(/* webpackChunkName: "group-transport
 const SubmitTruckEntryRegData = () => import(/* webpackChunkName: "group-transport" */ '@/pages/transport/SubmitTruckEntryRegData');
 const MyTransportRecord = () => import(/* webpackChunkName: "group-transport" */ '@/pages/transport/MyTransportRecord');
 
-const PackagingMachineryList = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackagingMachineryList');
-const PackagingMachineryForm = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackagingMachineryForm');
+const PackingMachineryList = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackingMachineryList');
+const PackingMachineryForm = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/PackingMachineryForm');
 const TransportMachineryList = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/TransportMachineryList');
 const TransportMachineryForm = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/TransportMachineryForm');
 const MyPackingMachineryList = () => import(/* webpackChunkName: "group-machinery" */ '@/pages/machinery/MyPackingMachineryList');
@@ -102,23 +102,23 @@ const routes = [{
     requireAuth: true
   },
   children: [{
-    path: 'packagingMachinery',
-    name: 'packagingMachinery',
-    component: PackagingMachineryList,
+    path: 'packingMachinery',
+    name: 'packingMachinery',
+    component: PackingMachineryList,
     meta: {
       title: '打包机'
     }
   }, {
-    path: 'newPackagingMachinery',
-    name: 'newPackagingMachinery',
-    component: PackagingMachineryForm,
+    path: 'newPackingMachinery',
+    name: 'newPackingMachinery',
+    component: PackingMachineryForm,
     meta: {
       title: '新增打包机'
     }
   }, {
-    path: 'packagingMachinery/:id',
-    name: 'packagingMachinery',
-    component: PackagingMachineryForm,
+    path: 'editPackingMachinery/:id',
+    name: 'editPackingMachinery',
+    component: PackingMachineryForm,
     meta: {
       title: '修改打包机'
     }
@@ -137,8 +137,8 @@ const routes = [{
       title: '新增运输车辆'
     }
   }, {
-    path: 'transportMachinery/:id',
-    name: 'transportMachinery',
+    path: 'editTransportMachinery/:id',
+    name: 'editTransportMachinery',
     component: TransportMachineryForm,
     meta: {
       title: '修改运输车辆'
@@ -211,21 +211,21 @@ const routes = [{
   },
   children: [{
     path: 'user',
-    name: 'user',
+    name: 'adminUser',
     component: AdminUserList,
     meta: {
       title: '用户管理'
     }
   }, {
     path: 'role',
-    name: 'role',
+    name: 'adminRole',
     component: AdminRoleList,
     meta: {
       title: '角色管理'
     }
   }, {
     path: 'org',
-    name: 'org',
+    name: 'adminOrg',
     component: AdminOrgList,
     meta: {
       title: '机构管理'
